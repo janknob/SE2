@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <color name="colorPrimary">#037D07</color>
+    <color name="colorPrimaryDark">#105302</color>
+    <color name="colorAccent">#2ADA03</color>
+
+    <color name="pageBackground">#000000</color>
+    <color name="buttonBackground">#838383</color>
+    <color name="dialogBackground">#212121</color>
+    <color name="cardBackground">#4A4A4A</color>
+    <color name="cardBackgroundHighlited">#108E00</color>
+    <color name="toolbarBackground">#151515</color>
+
+    <color name="pageTitle">#007300</color>
+
+    <color name="normalText">#FFFFFF</color>
+    <color name="backgroundText">#8A8A8A</color>
+    <color name="cardviewChangeText">#FF0000</color>
+    <color name="hintText">#838383</color>
+    <color name="taskToday">#FF6D00</color>
+    <color name="taskToLate">#FF0000</color>
+
+    <color name="tabunselected">#616161</color>
+
+</resources>

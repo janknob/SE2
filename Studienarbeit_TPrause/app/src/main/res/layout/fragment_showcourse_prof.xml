@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_showCourse_prof"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/pageTitle"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_showCourse_prof"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="horizontal"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                tools:visibility="visible"
+                tools:ignore="NestedWeights">
+
+                <TextView
+                    android:id="@+id/tv_person_kind1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/normalText"
+                    android:textSize="20sp"
+                    tools:visibility="visible" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/tv_person_adress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/normalText"
+                    android:textSize="20sp"
+                    tools:visibility="visible" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/tv_person_room"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/normalText"
+                    android:textSize="20sp"
+                    tools:visibility="visible" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iv_person"
+                android:layout_width="133dp"
+                android:layout_height="199dp"
+                android:layout_weight="0"
+                android:scaleType="fitXY"
+                tools:srcCompat="@tools:sample/avatars"
+                tools:visibility="visible"
+                android:contentDescription="@string/app_name" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="vertical"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/tv_person_fon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/normalText"
+                android:textSize="20sp"
+                tools:visibility="visible" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tv_person_fax"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/normalText"
+                android:textSize="20sp"
+                tools:visibility="visible" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tv_person_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/normalText"
+                android:textSize="20sp"
+                tools:visibility="visible" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                tools:visibility="visible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                tools:visibility="visible">
+
+                <Button
+                    android:id="@+id/btn_person_searchRoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/person_searchRoom"
+                    android:textColor="@color/normalText"
+                    android:visibility="invisible"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:background="@color/buttonBackground"
+                    tools:visibility="visible" />
+
+                <Space
+                    android:layout_width="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0" />
+
+                <Button
+                    android:id="@+id/btn_person_call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/person_call"
+                    android:textColor="@color/normalText"
+                    android:visibility="invisible"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:background="@color/buttonBackground"
+                    tools:visibility="visible" />
+
+                <Space
+                    android:layout_width="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0" />
+
+                <Button
+                    android:id="@+id/btn_person_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/person_writeEmail"
+                    android:textColor="@color/normalText"
+                    android:visibility="invisible"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:background="@color/buttonBackground"
+                    tools:visibility="visible" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_person_full"
+        android:layout_width="412dp"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_showCourse_prof"
+        tools:srcCompat="@tools:sample/avatars" />
+</androidx.constraintlayout.widget.ConstraintLayout>

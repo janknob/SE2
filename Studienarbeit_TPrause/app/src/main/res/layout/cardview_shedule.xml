@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.cardview.widget.CardView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_cardview_shedule"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:elevation="20dp"
+    android:paddingLeft="50dp"
+    android:paddingTop="20dp"
+    android:paddingRight="50dp"
+    android:paddingBottom="20dp"
+    app:cardBackgroundColor="@color/cardBackground"
+
+    app:contentPaddingBottom="5dp"
+    app:contentPaddingLeft="5dp"
+    app:contentPaddingRight="5dp"
+    app:contentPaddingTop="5dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/cardBackground"
+        app:cardCornerRadius="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_cardview_shedule_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:paddingBottom="5dp"
+                android:text="Kursname"
+                android:textAlignment="center"
+                android:textColor="@color/normalText"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="150dp"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tv_cardview_shedule_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Kurs\Zeit"
+                android:textAlignment="center"
+                android:textColor="@color/normalText"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="150dp"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tv_cardview_shedule_prof"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:text="Professor"
+                android:textAlignment="center"
+                android:textColor="@color/normalText"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_cardview_shedule_room_kind"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="romm | Kind"
+                android:textAlignment="center"
+                android:textColor="@color/normalText"
+                android:textSize="18sp" />
+
+            <TextView
+
+                android:id="@+id/tv_cardview_shedule_chatActive"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/chatActive"
+                android:textAlignment="center"
+                android:textColor="@color/normalText"
+                android:textSize="18sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_cardview_shedule_changes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="@color/cardviewChangeText"
+                android:textSize="18sp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.cardview.widget.CardView>

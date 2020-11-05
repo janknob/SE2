@@ -1,0 +1,158 @@
+<resources>
+
+    <string name="app_name">Studienarbeit</string>
+
+    <!--App strings!-->
+
+    <string name="welcome">Willkommen!</string>
+    <string name="select_degree">Wähle deinen Studiengang aus!</string>
+    <string name="select_semester">Wähle deinen Semester aus!</string>
+    <string name="select_username">Wähle deinen Nutzernamen aus!</string>
+    <string name="username">Nutzername</string>
+    <string name="save">Speichern</string>
+    <string name="downloading_information">Erforderliche Daten werden heruntergeladen…</string>
+
+    <string name="url_fh_website">https://www.hof-university.de</string>
+    <string name="url_shedule">https://www.hof-university.de/studierende/info-service/stundenplaene/?type=1421771406&amp;id=79&amp;tx_stundenplan[controller]=Ajax&amp;tx_stundenplan_stundenplan[studiengang]=%s&amp;tx_stundenplan_stundenplan[semester]=%s</string>
+    <string name="url_news">https://www.hof-university.de/ueber-uns/aktuelles/news.html</string>
+    <string name="url_modulbook_all">https://www.hof-university.de/studierende/info-service/modulhandbuecher?type=1421771407&amp;id=167&amp;controller=Ajax&amp;tx_modulhandbuch_modulhandbuch[cl]=%s&amp;tx_modulhandbuch_modulhandbuch[ye]=%s&amp;tx_modulhandbuch_modulhandbuch[se]=%s</string>
+    <string name="url_person">https://www.hof-university.de/ueber-uns/personen.html</string>
+    <string name="url_maps_template">https://www.bing.com/maps/default.aspx?lvl=10&amp;rtp=pos.%s_%s&amp;style=a</string>
+    <string name="url_sheduleChanges_template">https://www.hof-university.de/index.php?type=1421771406&amp;id=166&amp;tx_stundenplan_stundenplan[controller]=Ajax&amp;tx_stundenplan_stundenplan[action]=loadAenderungen&amp;tx_stundenplan_stundenplan[studiengang]=%s&amp;tx_stundenplan_stundenplan[semester]=%s&amp;tx_stundenplan_stundenplan[datum]=%s&amp;1591119624290</string>
+    <string name="url_events">https://www.hof-university.de/ueber-uns/aktuelles/veranstaltungen.html</string>
+
+    <string name="warning_no_username">Kein Benutzernamen eingegeben!</string>
+    <string name="setupassistant_warning_message">Du musst keinen Nutzernamen eingeben, aber ohne diesen hast du keinen Zugriff auf die Chatfunktion. Du kannst diesen aber jederzeit nachträglich eintragen/ändern.</string>
+    <string name="warning_positiv">Jetzt eingeben!</string>
+    <string name="warning_negativ">Später / Verzichten</string>
+    <string name="warning_deleteNote">Diese Notiz wirklich löschen?</string>
+    <string name="warning_deleteNote_yes">Ja, löschen!</string>
+    <string name="warning_deleteNote_no">Nein, behalten!</string>
+
+    <string name="shedule">Stundenplan</string>
+    <string name="tasks">Aufgaben</string>
+    <string name="news">News</string>
+    <string name="settings">Einstellungen</string>
+
+    <string name="with">mit</string>
+
+    <string name="order_by">Sortiert nach</string>
+    <string name="title">Titel</string>
+    <string name="deadline">Abgabetermin</string>
+    <string name="invert">umdrehen</string>
+    <string name="taskDeleted">Aufgabe %s gelöscht.</string>
+    <string name="undo">Rückgängig</string>
+    <string name="newTask">Füge eine neue Aufgabe hinzu</string>
+    <string name="desription">Beschreibung</string>
+    <string name="opt">Optional</string>
+    <string name="needed">Erforderlich</string>
+    <string name="addField">Füge Felder hinzu/Entferne Felder</string>
+    <string name="finished">Fertig</string>
+    <string name="warning_no_title">Keinen Titel angegeben!</string>
+    <string name="warning_message2">Bitte gebe einen Titel an, damit man die Aufgaben anhand desssen unterscheiden kann.</string>
+    <string name="warning_ok">OK</string>
+    <string name="warning_cancle_add_task">Aufgabenentwurf verwerfen?</string>
+    <string name="warning_message3">Vorsicht! Wenn du jetzt zum Stundenplan zurückkehrs, geht die Aufgabe mitsamt ihrer Details verloren!</string>
+    <string name="warning_backToShedule">Zurück zum Stundenplan</string>
+    <string name="warning_cancle">Abbrechen</string>
+    <string name="goToCourse">Zum Kurs</string>
+
+    <string name="studyinformation">Studiumsinformationen</string>
+    <string name="degree">Studiengang</string>
+    <string name="semester">Semester</string>
+    <string name="allowAnimations">Erlaube Animationen</string>
+    <string name="rerun_setupassistant">Starte den Einrichtungsassistent erneut</string>
+    <string name="renderingsettings">Darstellungseinstellungen</string>
+    <string name="description">Beschreibung</string>
+    <string name="course">Kurs</string>
+
+    <string name="overview">Übersicht</string>
+    <string name="modulbook">Modulhandbuch</string>
+    <string name="notes">Notizen</string>
+
+    <string name="time">Uhrzeit</string>
+    <string name="day">Tag</string>
+    <string name="prof">Professor</string>
+    <string name="room">Raum</string>
+    <string name="kind">Typ</string>
+    <string name="enterChat">Betrete den Chat</string>
+    <string name="person_writeEmail">EMail schreiben</string>
+    <string name="person_call">Anrufen</string>
+    <string name="person_searchRoom">Raumsuche</string>
+    <string name="person_not_found">Zu Ihrer Suche wurde kein Ergebnis gefunden. Benutzen Sie weitere Filter oder die Freitextsuche.</string>
+    <string name="person_fon">Telefon:</string>
+    <string name="person_email">E-Mail:</string>
+    <string name="choose_EmailClient">Wähle einen EMail-Client aus.</string>
+
+    <string name="whereistheroom">Wo ist der Raum %s?</string>
+
+    <string name="virtualRoom">Dieser Raum ist kein physischer, sondern ein virtueller Raum. Den Zugang zu diesen findest du in dem Kurs in Moodle.</string>
+    <string name="buildingA">Gebäude A</string>
+    <string name="buildingACoordinates">50.325112,11.939525</string>
+    <string name="buildingB">Gebäude B</string>
+    <string name="buildingBCoordinates">50.325532,11.940039</string>
+    <string name="buildingC">Gebäude C</string>
+    <string name="buildingCCoordinates">50.325666,11.94088</string>
+    <string name="buildingD">Gebäude D</string>
+    <string name="buildingDCoordinates">50.324914,11.937654</string>
+    <string name="buildingG">Gebäude G</string>
+    <string name="buildingGCoordinates">50.325431,11.942418</string>
+    <string name="groundFloor">Erdgeschoss</string>
+    <string name="firstFloor">1. Stockwerk</string>
+    <string name="secondFloor">2. Stockwerk</string>
+    <string name="refresh">Aktualisieren</string>
+    <string name="edit">Bearbeiten</string>
+    <string name="addFilter">Filtern</string>
+    <string name="removeFilter">Filter entfernen</string>
+    <string name="startTime">Beginn</string>
+    <string name="endTime">Ende</string>
+    <string name="type">Typ</string>
+    <string name="chooseValue">Wähle den Wert aus, nach dem du filtern möchtest.</string>
+    <string name="deleteFinishedTasks">Aufgaben nach Abschluss löschen</string>
+    <string name="deleteTasks">Eine Aufgabe löschen</string>
+    <string name="howToDeleteTasks">Um eine Aufgabe zu löschen, klicke lange auf diese!</string>
+    <string name="toWebsite">zur Website</string>
+    <string name="info">Info</string>
+    <string name="searchForUpdates">Nach Updates suchen</string>
+    <string name="url_versionCheck">https://www.semify.de/wp-content/uploads/StundenplanVersion.html</string>
+    <string name="url_newApp">https://www.semify.de/wp-content/uploads/StundenplanHof.apk</string>
+    <string name="warning_newAppVersion_title"> ist verfügbar!</string>
+    <string name="warning_newAppVersion_message">Dieses Update enthält Fehlerbehebungen und eventuell neue Features! Was genau passiert ist kannst du in den Changelogs nachschauen.</string>
+    <string name="warning_newAppVersion_no">Später</string>
+    <string name="warning_newAppVersion_yes">Installieren!</string>
+    <string name="warning_noStorageWritePermission">Da die App keine Dateien speichern darf können keine Updates heruntergeladen werden!</string>
+    <string name="upToDate">Aktuellste Version ist installiert!</string>
+    <string name="semify">Unterstützt durch</string>
+    <string name="semifyDe">https://www.semify.de/</string>
+    <string name="chatActive">Chat aktiv</string>
+    <string name="editShedule">Bearbeite deinen Studnenplan</string>
+    <string name="helpHowTo">Hier siehst du alle Vorlesungen, Übungen, etc., die aktuell in deinem offiziellen Stundenplan enthalten sind.\nWenn du davon jedoch etwas nicht benötigst/willst, kannst du diese für deine Übersicht auf der Startseite ausblenden lassen.\nDazu reicht es, einmal auf die Vorlesung zu klicken.\nAusgeblendete Elemente werden hier dann durchgestrichen.</string>
+    <string name="chat">Chat</string>
+    <string name="message">Nachricht</string>
+    <string name="send">Senden</string>
+    <string name="warning_nousername_message">Du hast keinen Nutzernamen hinterlegt! Deshalb kannst du nicht auf den Chat zugreifen! Du kannst hier aber einen Nutzernamen festlegen:</string>
+    <string name="dontUse">Verzichten</string>
+    <string name="chat_userEntered">ist dem Chat beigetreten</string>
+    <string name="chat_userLeft">hat den Chat verlassen</string>
+    <string name="username_notAvaiable">Nutzername nicht verfügbar</string>
+    <string name="username_notAvaiable_message">Sorry aber deinen Nutzernamen hat sich schon wer anders geschnappt :/\nSorry!</string>
+    <string name="username_ok">OK, Schade!</string>
+    <string name="shedule_changed_time">"Beginn um "</string>
+    <string name="shedule_changed_canceld">Fällt aus</string>
+    <string name="mainActivityLandscape">Dies hier wäre das Layout für den Landscape-Modus…\nDa ich jedoch keine Ahnung habe, was ich hier anders gestallten sollte, habe ich nun diesen Text in dieser XML angelegt.</string>
+    <string name="appTheme">AppTheme</string>
+    <string name="OK">Okay!</string>
+    <string name="events">Veranstaltungen</string>
+    <array name="appthemeSettings">
+
+        <item>System</item>
+        <item>Hell</item>
+        <item>Dunkel</item>
+
+    </array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="date">Datum</string>
+    <string name="place">Ort</string>
+
+</resources>

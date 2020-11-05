@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mi_tasks_deleteFinished"
+        android:checkable="true"
+        android:title="@string/deleteFinishedTasks" />
+
+    <item
+        android:id="@+id/mi_tasks_del"
+        android:title="@string/deleteTasks" />
+
+</menu>

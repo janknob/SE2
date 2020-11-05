@@ -1,0 +1,50 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+    <style name="buttonStyle" parent="Widget.AppCompat.Button">
+
+        <item name="android:background">@color/buttonBackground</item>
+        <item name="android:textColor">@color/normalText</item>
+        <item name="elevation">10dp</item>
+        <item name="android:radius">20dp</item>
+
+    </style>
+
+    <style name="CalenderViewCustom" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">@color/normalText</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/normalText</item>
+        <item name="android:weekNumberColor">@color/pageTitle</item>
+    </style>
+
+    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/pageTitle</item>
+    </style>
+
+    <style name="popupmenu" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:textColor">@color/normalText</item>
+        <item name="android:itemBackground">@color/cardBackground</item>
+        <item name="android:background">@color/cardBackground</item>
+    </style>
+
+    <style name="dialogMenu" parent="Widget.AppCompat.ButtonBar.AlertDialog">
+        <item name="android:textColorPrimary">@color/normalText</item>
+        <item name="textColorAlertDialogListItem">@color/normalText</item>
+        <item name="android:textColorAlertDialogListItem">@color/normalText</item>
+        <item name="checkboxStyle">@color/normalText</item>
+        <item name="android:checkboxStyle">@color/normalText</item>
+        <item name="android:background">@color/cardBackground</item>
+    </style>
+
+
+</resources>
