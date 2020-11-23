@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         // set the view with XML file acitvity_main which contains the bottom navigation bar
         setContentView(R.layout.activity_main);
 
+        Manager.getInstance().setContext(this);
+
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new LifestyleFragment();
                     break;
                 case R.id.nav_university:
-                    selectedFragment = new UniversityFragment();
+                    selectedFragment = UniversityFragment.newInstance();
                     break;
                 case R.id.nav_profile:
                     //SharedPreferences.Editor editor = getSharedPreferences("PREFS", MODE_PRIVATE).edit();

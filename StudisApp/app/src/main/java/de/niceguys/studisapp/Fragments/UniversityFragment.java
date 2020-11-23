@@ -2,11 +2,26 @@ package de.niceguys.studisapp.Fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.material.navigation.NavigationView;
+
+import java.util.Objects;
 
 import de.niceguys.studisapp.R;
 
@@ -17,33 +32,18 @@ import de.niceguys.studisapp.R;
  */
 public class UniversityFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private ActionBarDrawerToggle toggle;
+    private DrawerLayout dL;
+    private Toolbar tb;
+    private NavigationView nV;
+    private University_TimetableFragment timetableFragment;
+    private University_NewsFragment newsFragment;
+    private University_EventsFragment eventsFragment;
+    private University_TasksFragment tasksFragment;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public UniversityFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment UniversityFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static UniversityFragment newInstance(String param1, String param2) {
+    public static UniversityFragment newInstance() {
         UniversityFragment fragment = new UniversityFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,16 +51,133 @@ public class UniversityFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_university, container, false);
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        dL = view.findViewById(R.id.dL_university);
+        tb = view.findViewById(R.id.tb_university);
+
+        tb.setNavigationOnClickListener(view1 -> dL.openDrawer(GravityCompat.START));
+
+        nV = view.findViewById(R.id.nV_university);
+        nV.setNavigationItemSelectedListener(item -> {
+            assert getFragmentManager() != null;
+            switch (item.getItemId()) {
+
+                case R.id.menu_university_timetable:
+
+                    //Change fragment
+                    Log.w("UniversityFragment", "Timetable selected");
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    if (newsFragment != null && newsFragment.isAdded()) ft.hide(newsFragment);
+                    if (eventsFragment != null && eventsFragment.isAdded()) ft.hide(eventsFragment);
+                    if (tasksFragment != null && tasksFragment.isAdded()) ft.hide(tasksFragment);
+                    ft.show(timetableFragment);
+                    ft.commit();
+                    tb.setTitle(getResources().getString(R.string.timetable));
+
+                    break;
+
+                case R.id.menu_university_news:
+
+                    if (newsFragment == null) {
+                        newsFragment = University_NewsFragment.newInstance();
+                        FragmentTransaction ft2 = getFragmentManager().beginTransaction();
+                        ft2.add(R.id.fl_university_fragmentContainer, newsFragment);
+                        ft2.commit();
+                    }
+
+
+                    FragmentTransaction ft3 = getFragmentManager().beginTransaction();
+                    if (eventsFragment != null && eventsFragment.isAdded()) ft3.hide(eventsFragment);
+                    if (tasksFragment != null && tasksFragment.isAdded()) ft3.hide(tasksFragment);
+                    ft3.hide(timetableFragment);
+                    ft3.show(newsFragment);
+                    ft3.commit();
+                    tb.setTitle(getResources().getString(R.string.news));
+
+                    break;
+
+                case R.id.menu_university_events:
+
+                    if (eventsFragment == null) {
+                        eventsFragment = University_EventsFragment.newInstance();
+                        FragmentTransaction ft2 = getFragmentManager().beginTransaction();
+                        ft2.add(R.id.fl_university_fragmentContainer, eventsFragment);
+                        ft2.commit();
+                    }
+
+                    FragmentTransaction ft4 = getFragmentManager().beginTransaction();
+
+                    if (newsFragment != null && newsFragment.isAdded()) ft4.hide(newsFragment);
+                    if (tasksFragment != null && tasksFragment.isAdded()) ft4.hide(tasksFragment);
+                    ft4.hide(timetableFragment);
+                    ft4.show(eventsFragment);
+                    ft4.commit();
+                    tb.setTitle(getResources().getString(R.string.universityEvents));
+
+                    break;
+
+                case R.id.menu_university_tasks:
+
+                    if (tasksFragment == null) {
+                        tasksFragment = University_TasksFragment.newInstance();
+                        FragmentTransaction ft2 = getFragmentManager().beginTransaction();
+                        ft2.add(R.id.fl_university_fragmentContainer, tasksFragment);
+                        ft2.commit();
+                    }
+
+                    FragmentTransaction ft5 = getFragmentManager().beginTransaction();
+                    if (newsFragment != null && newsFragment.isAdded()) ft5.hide(newsFragment);
+                    if (eventsFragment != null && eventsFragment.isAdded()) ft5.hide(eventsFragment);
+                    ft5.hide(timetableFragment);
+                    ft5.show(tasksFragment);
+                    ft5.commit();
+                    tb.setTitle(getResources().getString(R.string.tasks));
+
+                    break;
+
+            }
+            dL.closeDrawer(GravityCompat.START);
+            return false;
+        });
+
+        timetableFragment = University_TimetableFragment.newInstance();
+
+        FragmentTransaction ft = Objects.requireNonNull(getFragmentManager()).beginTransaction();
+        ft.add(R.id.fl_university_fragmentContainer, timetableFragment);
+        ft.commit();
+
+    }
+
+    //@Override
+    //public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//
+    //    switch (item.getItemId()) {
+//
+    //        case R.id.menu_university_timetable:
+    //            Log.w("UniversityFragment", "Menu item Clicked!");
+    //            break;
+//
+    //    }
+//
+    //    requireActivity().runOnUiThread(() -> dL.closeDrawer(GravityCompat.START));
+//
+    //    return super.onOptionsItemSelected(item);
+//
+    //}
+
+
 }
+
+

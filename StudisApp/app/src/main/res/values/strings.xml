@@ -1,5 +1,54 @@
 <resources>
     <string name="app_name">StudisApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="timetable">Stundenplan</string>
+    <string name="tasks">Aufgaben</string>
+    <string name="news">News</string>
+    <string name="universityEvents">Veranstaltungen</string>
+
+
+    <!--used as templates for downloading htmlpages in universityfragments-->
+
+    <string name="url_fh_website">https://www.hof-university.de</string>
+    <string name="url_timetable">https://www.hof-university.de/studierende/info-service/stundenplaene/?type=1421771406&amp;id=79&amp;tx_stundenplan[controller]=Ajax&amp;tx_stundenplan_stundenplan[studiengang]=%s&amp;tx_stundenplan_stundenplan[semester]=%s</string>
+    <string name="url_news">https://www.hof-university.de/ueber-uns/aktuelles/news.html</string>
+    <string name="url_modulbook_all">https://www.hof-university.de/studierende/info-service/modulhandbuecher?type=1421771407&amp;id=167&amp;controller=Ajax&amp;tx_modulhandbuch_modulhandbuch[cl]=%s&amp;tx_modulhandbuch_modulhandbuch[ye]=%s&amp;tx_modulhandbuch_modulhandbuch[se]=%s</string>
+    <string name="url_person">https://www.hof-university.de/ueber-uns/personen.html</string>
+    <string name="url_maps_template">https://www.bing.com/maps/default.aspx?lvl=10&amp;rtp=pos.%s_%s&amp;style=a</string>
+    <string name="url_timetableChanges_template">https://www.hof-university.de/index.php?type=1421771406&amp;id=166&amp;tx_stundenplan_stundenplan[controller]=Ajax&amp;tx_stundenplan_stundenplan[action]=loadAenderungen&amp;tx_stundenplan_stundenplan[studiengang]=%s&amp;tx_stundenplan_stundenplan[semester]=%s&amp;tx_stundenplan_stundenplan[datum]=%s&amp;1591119624290</string>
+    <string name="url_events">https://www.hof-university.de/ueber-uns/aktuelles/veranstaltungen.html</string>
+
+    <string name="person_not_found">Zu Ihrer Suche wurde kein Ergebnis gefunden. Benutzen Sie weitere Filter oder die Freitextsuche.</string>
+    <string name="with">mit</string>
+    <string name="shedule_changed_time">"Beginn um "</string>
+    <string name="shedule_changed_canceld">Fällt aus</string>
+    <string name="downloading_information">Erforderliche Daten werden heruntergeladen…</string>
+
+    <string name="time">Uhrzeit</string>
+    <string name="date">Datum</string>
+    <string name="place">Ort</string>
+
+    <string name="order_by">Sortiert nach</string>
+    <string name="title">Titel</string>
+    <string name="deadline">Abgabetermin</string>
+    <string name="invert">umdrehen</string>
+    <string name="taskDeleted">Aufgabe %s gelöscht.</string>
+    <string name="undo">Rückgängig</string>
+    <string name="newTask">Füge eine neue Aufgabe hinzu</string>
+    <string name="desription">Beschreibung</string>
+    <string name="opt">Optional</string>
+    <string name="needed">Erforderlich</string>
+    <string name="addField">Füge Felder hinzu/Entferne Felder</string>
+    <string name="finished">Fertig</string>
+    <string name="warning_no_title">Keinen Titel angegeben!</string>
+    <string name="warning_message2">Bitte gebe einen Titel an, damit man die Aufgaben anhand desssen unterscheiden kann.</string>
+    <string name="warning_ok">OK</string>
+    <string name="warning_cancle_add_task">Aufgabenentwurf verwerfen?</string>
+    <string name="warning_message3">Vorsicht! Wenn du jetzt zum Stundenplan zurückkehrs, geht die Aufgabe mitsamt ihrer Details verloren!</string>
+    <string name="warning_backToShedule">Zurück zum Stundenplan</string>
+    <string name="warning_cancle">Abbrechen</string>
+    <string name="goToCourse">Zum Kurs</string>
+    <string name="createUniversityTask">Erstelle eine neue Aufgabe!</string>
+    <string name="save">Speichern</string>
+
+
 </resources>
