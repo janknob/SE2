@@ -88,11 +88,11 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/edit_name"
+                            android:id="@+id/edit_user_ame"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_marginTop="10dp"
-                            android:hint="Benutzername"/>
+                            android:hint="Udo42"/>
 
 
                     </LinearLayout>
@@ -105,18 +105,18 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Wohnort"
+                            android:text="Studiengang"
                             android:textColor="@color/black"
                             android:textSize="13sp" />
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/edit_place"
+                            android:id="@+id/edit_course_of_study"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_marginTop="10dp"
-                            android:hint="Wohnort"/>
+                            android:hint="Medieninformatik"/>
 
 
                     </LinearLayout>
@@ -129,18 +129,18 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Geschlecht"
+                            android:text="Postleitzahl"
                             android:textColor="@color/black"
                             android:textSize="13sp" />
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/edit_sex"
+                            android:id="@+id/edit_postal_code"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_marginTop="10dp"
-                            android:hint="Geschlecht"/>
+                            android:hint="96369"/>
 
 
 
@@ -155,18 +155,18 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Alter"
+                            android:text="Semester"
                             android:textColor="@color/black"
                             android:textSize="13sp" />
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/edit_age"
+                            android:id="@+id/edit_semester"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_marginTop="10dp"
-                            android:hint="alter"/>
+                            android:hint="4"/>
 
 
 
@@ -182,18 +182,18 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Über mich"
+                            android:text="Universität"
                             android:textColor="@color/black"
                             android:textSize="13sp" />
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/edit_desc"
+                            android:id="@+id/edit_university"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_marginTop="10dp"
-                            android:hint="Beschreibung"/>
+                            android:hint="Hochschule Hof"/>
 
 
 
@@ -207,7 +207,7 @@
                         android:gravity="center">
 
                         <Button
-                            android:id="@+id/btn_saveProfile"
+                            android:id="@+id/btn_save_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"

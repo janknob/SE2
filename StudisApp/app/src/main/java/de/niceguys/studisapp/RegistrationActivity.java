@@ -84,7 +84,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
                 else if (str_password.length() < 6)
                 {
-                    Toast.makeText(RegistrationActivity.this, "Das Passwort muss mindestenst 6 Ziffern lang sein!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrationActivity.this, "Das Passwort muss mindestenst 6 Zeichen lang sein!", Toast.LENGTH_SHORT).show();
                     pd.dismiss();
                 }
                 else
@@ -109,11 +109,11 @@ public class RegistrationActivity extends AppCompatActivity {
                     HashMap<String, Object> hashMap = new HashMap<>();
                     hashMap.put("id", userid);
                     hashMap.put("username", username.toLowerCase());
-                    hashMap.put("sex", "");
-                    hashMap.put("age", "");
-                    hashMap.put("postalcode", "");
-                    hashMap.put("location", "");
-                    hashMap.put("imgurl", "https://firebasestorage.googleapis.com/v0/b/neighborhood-c6fc2.appspot.com/o/ic_user.png?alt=media&token=144394aa-d3ed-4229-9950-deeb530f8e45");
+                    hashMap.put("semester", "");
+                    hashMap.put("courseOfStudy", "");
+                    hashMap.put("postalCode", "");
+                    hashMap.put("university", "");
+                    hashMap.put("imgUrl", "https://firebasestorage.googleapis.com/v0/b/neighborhood-c6fc2.appspot.com/o/ic_user.png?alt=media&token=144394aa-d3ed-4229-9950-deeb530f8e45");
                     // Method which is called when the Registration was successful and automatically switch to the MainActivity
                     reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
