@@ -22,9 +22,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:text="Joining the Neighborhood..."
+            android:text="Joining StudisApp..."
             android:textSize="40sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -58,7 +58,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Join the Neighborhood"
+            android:text="Join StudisApp"
             android:layout_gravity="bottom"
             android:id="@+id/btn_register"/>
 
