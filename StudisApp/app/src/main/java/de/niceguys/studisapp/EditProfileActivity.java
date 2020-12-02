@@ -36,12 +36,17 @@ import java.io.ByteArrayOutputStream;
 public class EditProfileActivity extends AppCompatActivity {
 
     Button mBtn_saveProfile;
-    EditText mEditName, mEditPlace, mEditSex, mEditAge, mEditDesc;
+    EditText mEditUserName, mEditCourseOfStudy, mEditPostalCode, mEditSemester, mEditUniversity;
     ImageView profileImageView;
-    String newName, newPlace, newSex, newAge, newDec;
+    String newUsername, newCourseOfStudy, newPostalCode, newSemester, newUniversity;
     private DatabaseReference userRef;
     private FirebaseDatabase database;
     private static final String USER = "Users";
+    private static final String UNAME = "username";
+    private static final String COURSE = "courseOfStudy";
+    private static final String POSTCODE = "postalCode";
+    private static final String SEM = "semester";
+    private static final String UNI = "university";
 
     String PROFILE_IMAGE_URL = null;
     int TAKE_IMAGE_CODE = 10001;
@@ -52,12 +57,12 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         //initialize Hooks
-        mBtn_saveProfile = (Button) findViewById(R.id.btn_saveProfile);
-        mEditName = findViewById(R.id.edit_name);
-        mEditPlace = findViewById(R.id.edit_place);
-        mEditSex = findViewById(R.id.edit_sex);
-        mEditAge = findViewById(R.id.edit_age);
-        mEditDesc = findViewById(R.id.edit_desc);
+        mBtn_saveProfile = (Button) findViewById(R.id.btn_save_profile);
+        mEditUserName = findViewById(R.id.edit_user_ame);
+        mEditCourseOfStudy = findViewById(R.id.edit_course_of_study);
+        mEditPostalCode = findViewById(R.id.edit_postal_code);
+        mEditSemester = findViewById(R.id.edit_semester);
+        mEditUniversity = findViewById(R.id.edit_university);
         profileImageView = findViewById(R.id.image_edit_profile);
 
         //DB references
@@ -76,11 +81,11 @@ public class EditProfileActivity extends AppCompatActivity {
 
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     if(ds.child("id").getValue().equals(user.getUid())) {
-                        mEditName.setText(ds.child("username").getValue(String.class));
-                        mEditPlace.setText(ds.child("place").getValue(String.class));
-                        mEditAge.setText(ds.child("age").getValue(String.class));
-                        mEditSex.setText(ds.child("sex").getValue(String.class));
-                        mEditDesc.setText(ds.child("desc").getValue(String.class));
+                        mEditUserName.setText(ds.child(UNAME).getValue(String.class));
+                        mEditCourseOfStudy.setText(ds.child(COURSE).getValue(String.class));
+                        mEditPostalCode.setText(ds.child(POSTCODE).getValue(String.class));
+                        mEditSemester.setText(ds.child(SEM).getValue(String.class));
+                        mEditUniversity.setText(ds.child(UNI).getValue(String.class));
 
                     }
                 }
@@ -110,18 +115,18 @@ public class EditProfileActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final String USERID = user.getUid();
 
-        newName = mEditName.getText().toString();
-        newPlace = mEditPlace.getText().toString();
-        newSex = mEditSex.getText().toString();
-        newAge = mEditAge.getText().toString();
-        newDec = mEditDesc.getText().toString();
+        newUsername = mEditUserName.getText().toString();
+        newCourseOfStudy = mEditCourseOfStudy.getText().toString();
+        newPostalCode = mEditPostalCode.getText().toString();
+        newSemester = mEditSemester.getText().toString();
+        newUniversity = mEditUniversity.getText().toString();
 
         //DB Changes
-        userRef.child(USERID).child("username").setValue(newName);
-        userRef.child(USERID).child("place").setValue(newPlace);
-        userRef.child(USERID).child("sex").setValue(newSex);
-        userRef.child(USERID).child("age").setValue(newAge);
-        userRef.child(USERID).child("desc").setValue(newDec);
+        userRef.child(USERID).child(UNAME).setValue(newUsername);
+        userRef.child(USERID).child(COURSE).setValue(newCourseOfStudy);
+        userRef.child(USERID).child(POSTCODE).setValue(newPostalCode);
+        userRef.child(USERID).child(POSTCODE).setValue(newSemester);
+        userRef.child(USERID).child(UNI).setValue(newUniversity);
 
 
 
