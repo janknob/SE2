@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "897441631870",
+    "firebase_url": "https://studisapp-45ebf.firebaseio.com",
+    "project_id": "studisapp-45ebf",
+    "storage_bucket": "studisapp-45ebf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897441631870:android:7f32729d57fbc667fe922f",
+        "android_client_info": {
+          "package_name": "de.niceguys.studisapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "897441631870-6pcb8ljjk8dmj1lq83skp6ooeblmbjpo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAV_y0QqcnLwV_cSrLuCYG2FvuhTXFzeWA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "897441631870-6pcb8ljjk8dmj1lq83skp6ooeblmbjpo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
