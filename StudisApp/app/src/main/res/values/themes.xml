@@ -22,4 +22,12 @@
     <style name="Theme.StudisApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.StudisApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="dialogMenu" parent="Widget.AppCompat.ButtonBar.AlertDialog">
+        <item name="android:textColorPrimary">@color/normalText</item>
+        <item name="textColorAlertDialogListItem">@color/normalText</item>
+        <item name="android:textColorAlertDialogListItem">@color/normalText</item>
+        <item name="checkboxStyle">@color/normalText</item>
+        <item name="android:checkboxStyle">@color/normalText</item>
+        <item name="android:background">@color/cardBackground</item>
+    </style>
 </resources>
