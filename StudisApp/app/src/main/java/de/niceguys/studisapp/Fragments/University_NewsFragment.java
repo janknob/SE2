@@ -98,6 +98,7 @@ public class University_NewsFragment extends Fragment implements Interface_Parse
     private void showNews(){
 
         LinearLayout ll_news = view.findViewById(R.id.ll_news);
+        requireActivity().runOnUiThread(ll_news::removeAllViews);
 
         SharedPreferences sp_news = Manager.getInstance().getData("news");
 
@@ -165,10 +166,6 @@ public class University_NewsFragment extends Fragment implements Interface_Parse
             } else notfirst = true;
 
             ll_news.addView(container);
-
-
-
-
 
         }
 

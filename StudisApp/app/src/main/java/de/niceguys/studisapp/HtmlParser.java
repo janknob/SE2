@@ -223,6 +223,7 @@ public class HtmlParser implements Interface_Downloader {
 
                 title = html.substring(html.indexOf("<b>")+3, html.indexOf("</b>"));
 
+                title = title.replace("&quot;", "\"");
 
                 html = html.substring(html.indexOf("<br />")+6);
                 html = html.substring(html.indexOf("<br />")+6);
