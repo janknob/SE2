@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_lifestyle_events"
+        android:icon="@drawable/icon_timetable"
+        android:title="@string/events" />
+    <item
+        android:id="@+id/menu_lifestyle_discounts"
+        android:icon="@drawable/icon_tasks"
+        android:title="@string/discounts" />
+    <item
+        android:id="@+id/menu_lifestyle_specials"
+        android:icon="@drawable/icon_news"
+        android:title="@string/specials" />
+    <item
+        android:id="@+id/menu_lifestyle_jobs"
+        android:icon="@drawable/icon_events"
+        android:title="@string/jobs" />
+    <item
+        android:id="@+id/menu_lifestyle_tutoring"
+        android:icon="@drawable/icon_events"
+        android:title="@string/tutoring" />
+    <item
+        android:id="@+id/menu_lifestyle_apartments"
+        android:icon="@drawable/icon_events"
+        android:title="@string/apartments" />
+</menu>

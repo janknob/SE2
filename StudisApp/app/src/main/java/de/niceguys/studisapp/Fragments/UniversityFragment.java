@@ -32,7 +32,6 @@ import de.niceguys.studisapp.R;
  */
 public class UniversityFragment extends Fragment {
 
-    private ActionBarDrawerToggle toggle;
     private DrawerLayout dL;
     private Toolbar tb;
     private NavigationView nV;
@@ -154,7 +153,7 @@ public class UniversityFragment extends Fragment {
 
         timetableFragment = University_TimetableFragment.newInstance();
 
-        FragmentTransaction ft = Objects.requireNonNull(getFragmentManager()).beginTransaction();
+        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
         ft.add(R.id.fl_university_fragmentContainer, timetableFragment);
         ft.commit();
 

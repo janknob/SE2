@@ -15,6 +15,13 @@
     <string name="tasks">Aufgaben</string>
     <string name="news">News</string>
     <string name="universityEvents">Veranstaltungen</string>
+    <string name="events">Events</string>
+    <string name="discounts">Angebote</string>
+    <string name="specials">Specials</string>
+    <string name="jobs">Jobangebote</string>
+    <string name="tutoring">Nachhilfe/Lerngruppen</string>
+    <string name="apartments">Wohnungen</string>
+    <string name="timeline">Timeline</string>
 
 
     <!--used as templates for downloading htmlpages in universityfragments-->
