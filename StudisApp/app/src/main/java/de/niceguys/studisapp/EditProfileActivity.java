@@ -58,7 +58,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
         //initialize Hooks
         mBtn_saveProfile = (Button) findViewById(R.id.btn_save_profile);
-        mEditUserName = findViewById(R.id.edit_user_ame);
+        mEditUserName = findViewById(R.id.edit_user_name);
         mEditCourseOfStudy = findViewById(R.id.edit_course_of_study);
         mEditPostalCode = findViewById(R.id.edit_postal_code);
         mEditSemester = findViewById(R.id.edit_semester);
@@ -125,7 +125,7 @@ public class EditProfileActivity extends AppCompatActivity {
         userRef.child(USERID).child(UNAME).setValue(newUsername);
         userRef.child(USERID).child(COURSE).setValue(newCourseOfStudy);
         userRef.child(USERID).child(POSTCODE).setValue(newPostalCode);
-        userRef.child(USERID).child(POSTCODE).setValue(newSemester);
+        userRef.child(USERID).child(SEM).setValue(newSemester);
         userRef.child(USERID).child(UNI).setValue(newUniversity);
 
 
