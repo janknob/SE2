@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_profile_main"
+        android:icon="@drawable/icon_timetable"
+        android:title="@string/profile" />
+    <item
+        android:id="@+id/menu_profile_editProfile"
+        android:icon="@drawable/icon_tasks"
+        android:title="@string/editProfile" />
+    <item
+        android:id="@+id/menu_profile_settings"
+        android:icon="@drawable/icon_news"
+        android:title="@string/settings" />
+</menu>

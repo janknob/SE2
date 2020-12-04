@@ -44,11 +44,20 @@
         android:layout_below="@id/toolbar"
         android:padding="15dp">
 
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/post_spinner"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
+
 
 
         <EditText
             android:id="@+id/post_text"
+            android:layout_below="@+id/post_spinner"
             android:layout_width="match_parent"
+            android:paddingTop="30dp"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:hint="Geben Sie hier ihren Text ein..."
