@@ -17,9 +17,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -44,10 +47,16 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 import de.niceguys.studisapp.EditProfileActivity;
+import de.niceguys.studisapp.HtmlParser;
+import de.niceguys.studisapp.Interfaces.Interface_Parser;
 import de.niceguys.studisapp.MainActivity;
+import de.niceguys.studisapp.Manager;
 import de.niceguys.studisapp.Model.User;
 import de.niceguys.studisapp.R;
 
@@ -56,13 +65,14 @@ import de.niceguys.studisapp.R;
  * Use the {@link Profile_EditFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Profile_EditFragment extends Fragment {
+public class Profile_EditFragment extends Fragment implements Interface_Parser {
 
-    View view;
-    Button mBtn_saveProfile;
-    EditText mEditUserName, mEditCourseOfStudy, mEditPostalCode, mEditSemester, mEditUniversity;
-    ImageView prof_image;
-    String newUsername, newCourseOfStudy, newPostalCode, newSemester, newUniversity;
+    private View view;
+    private Button mBtn_saveProfile;
+    private EditText mEditUserName,  mEditPostalCode, mEditUniversity;
+    private Spinner mSpinnerCourseOfStudy, mSpinnerSemester;
+    private ImageView prof_image;
+    private String newUsername, newCourseOfStudy, newPostalCode, newSemester, newUniversity;
     private DatabaseReference userRef;
     private FirebaseDatabase database;
     private static final String USER = "Users";
@@ -75,7 +85,8 @@ public class Profile_EditFragment extends Fragment {
     FirebaseUser firebaseUser;
     private Uri mImageUri;
     private StorageTask uploadTask;
-
+            // Mobile Computing, MC, 3 WS 2020, 3%23SS%23SS
+    private String degree, degree_id, semester, semester_id;
     String PROFILE_IMAGE_URL = null;
     int TAKE_IMAGE_CODE = 10001;
 
@@ -104,9 +115,9 @@ public class Profile_EditFragment extends Fragment {
         //initialize Hooks
         mBtn_saveProfile = (Button) view.findViewById(R.id.btn_save_profile);
         mEditUserName = view.findViewById(R.id.edit_user_ame);
-        mEditCourseOfStudy = view.findViewById(R.id.edit_course_of_study);
+        mSpinnerCourseOfStudy = view.findViewById(R.id.mSpinnerCourseOfStudy);
         mEditPostalCode = view.findViewById(R.id.edit_postal_code);
-        mEditSemester = view.findViewById(R.id.edit_semester);
+        mSpinnerSemester = view.findViewById(R.id.mSpinnerSemester);
         mEditUniversity = view.findViewById(R.id.edit_university);
         prof_image = view.findViewById(R.id.image_edit_profile);
 
@@ -125,18 +136,22 @@ public class Profile_EditFragment extends Fragment {
 
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+                try {
 
-                for (DataSnapshot ds : snapshot.getChildren()) {
-                    if(ds.child("id").getValue().equals(user.getUid())) {
-                        User user1 = ds.getValue(User.class);
-                        Glide.with(getActivity().getApplicationContext()).load(user1.getImgurl()).into(prof_image);
-                        mEditUserName.setText(ds.child(UNAME).getValue(String.class));
-                        mEditCourseOfStudy.setText(ds.child(COURSE).getValue(String.class));
-                        mEditPostalCode.setText(ds.child(POSTCODE).getValue(String.class));
-                        mEditSemester.setText(ds.child(SEM).getValue(String.class));
-                        mEditUniversity.setText(ds.child(UNI).getValue(String.class));
+                    for (DataSnapshot ds : snapshot.getChildren()) {
+                        if (ds.child("id").getValue().equals(user.getUid())) {
+                            User user1 = ds.getValue(User.class);
+                            Glide.with(getActivity().getApplicationContext()).load(user1.getImgurl()).into(prof_image);
+                            mEditUserName.setText(ds.child(UNAME).getValue(String.class));
+                            //TODO insert if selected //mEditCourseOfStudy.setText((ds.child(COURSE).getValue(String.class) == null) ? ("") : ds.child(COURSE).getValue(String.class));
+                            mEditPostalCode.setText(ds.child(POSTCODE).getValue(String.class));
+                            mEditUniversity.setText(ds.child(UNI).getValue(String.class));
 
+                        }
                     }
+
+                } catch (Exception e) {
+                    //
                 }
 
             }
@@ -164,6 +179,14 @@ public class Profile_EditFragment extends Fragment {
             }
         });
         return view;
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        new HtmlParser(this).parse(Manager.Parser.degrees);
 
     }
 
@@ -229,16 +252,17 @@ public class Profile_EditFragment extends Fragment {
         final String USERID = user.getUid();
 
         newUsername = mEditUserName.getText().toString();
-        newCourseOfStudy = mEditCourseOfStudy.getText().toString();
+
         newPostalCode = mEditPostalCode.getText().toString();
-        newSemester = mEditSemester.getText().toString();
+
         newUniversity = mEditUniversity.getText().toString();
 
         //DB Changes
+        //TODO
         userRef.child(USERID).child(UNAME).setValue(newUsername);
-        userRef.child(USERID).child(COURSE).setValue(newCourseOfStudy);
+        //userRef.child(USERID).child(COURSE).setValue(newCourseOfStudy);
         userRef.child(USERID).child(POSTCODE).setValue(newPostalCode);
-        userRef.child(USERID).child(POSTCODE).setValue(newSemester);
+        //userRef.child(USERID).child(POSTCODE).setValue(newSemester);
         userRef.child(USERID).child(UNI).setValue(newUniversity);
 
 
@@ -336,4 +360,105 @@ public class Profile_EditFragment extends Fragment {
                     }
                 });
     }
+
+    @Override
+    public void parsed(Map<String, String> values, String mode) {
+
+        if (mode.equals("degrees")) {
+
+            fillDegrees(values);
+
+        } else if (mode.equals("semester")) {
+
+            fillSemester(values);
+
+        }
+
+    }
+
+    private void fillSemester(Map<String, String> values) {
+
+        ArrayList<String> temp = new ArrayList<>(values.values());
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, temp);
+        mSpinnerSemester.setAdapter(arrayAdapter);
+
+        mSpinnerSemester.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                semester = mSpinnerSemester.getItemAtPosition(position).toString();
+                if (!semester.equals("Semester wählen")) {
+
+                    for (String s : values.keySet()) {
+
+                        if (Objects.equals(values.get(s), semester)) {
+
+                            semester_id = s;
+                            break;
+
+                        }
+
+                    }
+
+                    downloadSemester();
+
+                } else semester = "";
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+    }
+
+    //Mobile Computing / MC
+    private void fillDegrees(Map<String, String> values) {
+
+
+        ArrayList<String> temp = new ArrayList<>(values.values());
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, temp);
+        mSpinnerCourseOfStudy.setAdapter(arrayAdapter);
+
+        mSpinnerCourseOfStudy.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                degree = mSpinnerCourseOfStudy.getItemAtPosition(position).toString();
+                if (!degree.equals("Studiengang wählen")) {
+
+                    for (String s : values.keySet()) {
+
+                        if (Objects.equals(values.get(s), degree)) {
+
+                            degree_id = s;
+                            break;
+
+                        }
+
+                    }
+
+                    downloadSemester();
+
+                } else degree = "";
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+    }
+
+    private void downloadSemester() {
+
+        new HtmlParser(this).parse(Manager.Parser.semester, degree_id);
+
+    }
+
 }

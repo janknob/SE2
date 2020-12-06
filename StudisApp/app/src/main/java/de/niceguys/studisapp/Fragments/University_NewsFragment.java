@@ -73,7 +73,7 @@ public class University_NewsFragment extends Fragment implements Interface_Parse
         alertDialog.show();
 
         HtmlParser parser = new HtmlParser(this);
-        parser.parse("news");
+        parser.parse(Manager.Parser.news);
 
     }
 

@@ -11,4 +11,9 @@
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment" />
 
+    <Spinner
+        android:id="@+id/sp_profile_settings_degree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </FrameLayout>

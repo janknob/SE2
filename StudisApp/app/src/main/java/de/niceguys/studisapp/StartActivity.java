@@ -17,13 +17,10 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(StartActivity.this, RegistrationActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(StartActivity.this, RegistrationActivity.class);
+            startActivity(intent);
+            finish();
         }, SPLASH_SCREEN);
         try {
             VideoView videoView = findViewById(R.id.background_video);
@@ -42,5 +39,5 @@ public class StartActivity extends AppCompatActivity {
             return;
         startActivity(new Intent(this, RegistrationActivity.class));
         finish();
-        }
+    }
 }

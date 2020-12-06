@@ -66,7 +66,7 @@ public class University_EventsFragment extends Fragment implements Interface_Par
         alertDialog.show();
 
         HtmlParser parser = new HtmlParser(this);
-        parser.parse("events");
+        parser.parse(Manager.Parser.event);
 
     }
 
