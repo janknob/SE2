@@ -24,18 +24,18 @@ public class HtmlParser implements Interface_Downloader {
 
     }
 
-    public void parse(String what, String... args) {
+    public void parse(Manager.Parser what, String... args) {
 
         switch (what) {
             //TODO add what to manager;
-            case "degrees": downloadDegrees(); break;
-            case "semester": downloadSemester(args); break;
-            case "courses": downloadCourses(); break;
-            case "news": downloadNews(); break;
-            case "modulbook": downloadAllModulbook(args); break;
-            case "person": downloadPersonSearch(args); break;
-            case "sheduleChanges": downloadSheduleChanges(args); break;
-            case "events": downloadEvents(); break;
+            case degrees: downloadDegrees(); break;
+            case semester: downloadSemester(args); break;
+            case courses: downloadCourses(); break;
+            case news: downloadNews(); break;
+            case modulbook: downloadAllModulbook(args); break;
+            case person: downloadPersonSearch(args); break;
+            case scheduleChanges: downloadSheduleChanges(args); break;
+            case event: downloadEvents(); break;
 
         }
 

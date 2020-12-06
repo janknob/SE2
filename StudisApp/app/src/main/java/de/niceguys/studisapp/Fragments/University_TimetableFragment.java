@@ -89,7 +89,7 @@ public class University_TimetableFragment extends Fragment implements Interface_
         }
 
         HtmlParser parser = new HtmlParser(this);
-        parser.parse("courses");
+        parser.parse(Manager.Parser.courses);
 
     }
 
@@ -464,7 +464,7 @@ public class University_TimetableFragment extends Fragment implements Interface_
         String firstDayOfWeek = f.format(date);
 
         HtmlParser parser = new HtmlParser(this);
-        parser.parse("sheduleChanges", firstDayOfWeek);
+        parser.parse(Manager.Parser.scheduleChanges, firstDayOfWeek);
 
     }
 

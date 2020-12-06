@@ -88,7 +88,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:paddingBottom="10dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -97,14 +98,11 @@
                             android:textColor="@color/black"
                             android:textSize="13sp" />
 
-                        <com.google.android.material.textfield.TextInputEditText
+                        <Spinner
+                            android:id="@+id/mSpinnerCourseOfStudy"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/edit_course_of_study"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="10dp"
-                            android:hint="Medieninformatik"/>
+                            android:spinnerMode="dialog" />
 
 
                     </LinearLayout>
@@ -147,15 +145,10 @@
                             android:textColor="@color/black"
                             android:textSize="13sp" />
 
-                        <com.google.android.material.textfield.TextInputEditText
+                        <Spinner
+                            android:id="@+id/mSpinnerSemester"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/edit_semester"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="10dp"
-                            android:hint="4"/>
-
+                            android:layout_height="wrap_content" />
 
 
                     </LinearLayout>
