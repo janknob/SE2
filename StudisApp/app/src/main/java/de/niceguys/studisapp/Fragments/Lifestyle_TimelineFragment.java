@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,11 +37,12 @@ public class Lifestyle_TimelineFragment extends Fragment {
     private PostAdapter postAdapter;
     private List<Post> postList;
     private FloatingActionButton floatingActionButton;
+    private  DatabaseReference reference;
     // Method which is called when the Fragment is clicked
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_lifestyle, container, false);
+        View view = inflater.inflate(R.layout.fragment_lifestyle__timeline, container, false);
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -58,7 +61,7 @@ public class Lifestyle_TimelineFragment extends Fragment {
                 startActivity(i);
             }
         });
-        readPosts();
+        readPosts(reference);
         return view;
     }
     public static Lifestyle_TimelineFragment newInstance() {
@@ -69,9 +72,12 @@ public class Lifestyle_TimelineFragment extends Fragment {
         return fragment;
 
     }
-    private void readPosts()
+    public void setReference ( DatabaseReference reference)
     {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
+        this.reference = reference;
+    }
+    private void readPosts(DatabaseReference reference)
+    {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -89,5 +95,6 @@ public class Lifestyle_TimelineFragment extends Fragment {
             {
             }
         });
+
     }
 }
