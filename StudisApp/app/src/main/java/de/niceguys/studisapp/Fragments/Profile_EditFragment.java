@@ -72,14 +72,16 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
     private EditText mEditUserName,  mEditPostalCode, mEditUniversity;
     private Spinner mSpinnerCourseOfStudy, mSpinnerSemester;
     private ImageView prof_image;
-    private String newUsername, newCourseOfStudy, newPostalCode, newSemester, newUniversity;
+    private String newUsername, newCourseOfStudy,newCourseOfStudyId, newPostalCode, newSemester, newSemesterId, newUniversity;
     private DatabaseReference userRef;
     private FirebaseDatabase database;
     private static final String USER = "Users";
     private static final String UNAME = "username";
     private static final String COURSE = "courseOfStudy";
+    private static final String COURSEID = "courseOfStudyId";
     private static final String POSTCODE = "postalCode";
     private static final String SEM = "semester";
+    private static final String SEMID = "semesterId";
     private static final String UNI = "university";
     StorageReference storageReference;
     FirebaseUser firebaseUser;
@@ -257,12 +259,22 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
 
         newUniversity = mEditUniversity.getText().toString();
 
+        newSemester = semester;
+
+        newSemesterId = semester_id;
+
+        newCourseOfStudy = degree;
+
+        newCourseOfStudyId = degree_id;
+
         //DB Changes
         //TODO
         userRef.child(USERID).child(UNAME).setValue(newUsername);
-        //userRef.child(USERID).child(COURSE).setValue(newCourseOfStudy);
+        userRef.child(USERID).child(COURSE).setValue(newCourseOfStudy);
+        userRef.child(USERID).child(COURSEID).setValue(newCourseOfStudyId);
         userRef.child(USERID).child(POSTCODE).setValue(newPostalCode);
-        //userRef.child(USERID).child(POSTCODE).setValue(newSemester);
+        userRef.child(USERID).child(SEM).setValue(newSemester);
+        userRef.child(USERID).child(SEMID).setValue(newSemesterId);
         userRef.child(USERID).child(UNI).setValue(newUniversity);
 
 
@@ -399,8 +411,6 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
                         }
 
                     }
-
-                    downloadSemester();
 
                 } else semester = "";
 

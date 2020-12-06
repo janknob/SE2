@@ -110,7 +110,9 @@ public class RegistrationActivity extends AppCompatActivity {
                     hashMap.put("id", userid);
                     hashMap.put("username", username.toLowerCase());
                     hashMap.put("semester", "");
+                    hashMap.put("semesterId", "");
                     hashMap.put("courseOfStudy", "");
+                    hashMap.put("courseOfStudyId", "");
                     hashMap.put("postalCode", "");
                     hashMap.put("university", "");
                     hashMap.put("imgUrl", "https://firebasestorage.googleapis.com/v0/b/neighborhood-c6fc2.appspot.com/o/ic_user.png?alt=media&token=144394aa-d3ed-4229-9950-deeb530f8e45");
