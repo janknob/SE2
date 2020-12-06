@@ -7,9 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,7 +29,7 @@ public class PostActivity extends AppCompatActivity {
     Button btn_post;
     EditText post_text;
     StorageReference storageReferencere;
-
+    DatabaseReference reference;
 
 
     @Override
@@ -37,6 +40,43 @@ public class PostActivity extends AppCompatActivity {
         btn_close = findViewById(R.id.btn_close);
         btn_post = findViewById(R.id.btn_post);
         post_text = findViewById(R.id.post_text);
+
+        Spinner spinner = (Spinner) findViewById(R.id.post_spinner);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(PostActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.names));
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        reference = FirebaseDatabase.getInstance().getReference("Posts").child("Events");
+                        break;
+                    case 1:
+                        reference = FirebaseDatabase.getInstance().getReference("Posts").child("Discounts");
+                        break;
+                    case 2:
+                        reference = FirebaseDatabase.getInstance().getReference("Posts").child("Specials");
+                        break;
+                    case 3:
+                        reference = FirebaseDatabase.getInstance().getReference("Posts").child("Jobs");
+                        break;
+                    case 4:
+                        reference = FirebaseDatabase.getInstance().getReference("Posts").child("Tutoring");
+                        break;
+                    case 5:
+                        reference = FirebaseDatabase.getInstance().getReference("Posts").child("Apartments");
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         storageReferencere = FirebaseStorage.getInstance().getReference("posts");
 
@@ -64,7 +104,7 @@ public class PostActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    uploadPost(str_post_text);
+                    uploadPost(str_post_text, reference);
                     progressDialog.dismiss();
                     startActivity(new Intent(PostActivity.this, MainActivity.class));
                     finish();
@@ -72,8 +112,8 @@ public class PostActivity extends AppCompatActivity {
             }
         });
     }
-    private void uploadPost(String postText) {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
+
+    private void uploadPost(String postText, DatabaseReference reference) {
 
         String postid = reference.push().getKey();
 
