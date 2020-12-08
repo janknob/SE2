@@ -23,6 +23,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.Objects;
 
+import de.niceguys.studisapp.Manager;
 import de.niceguys.studisapp.R;
 
 /**
@@ -77,10 +78,14 @@ public class UniversityFragment extends Fragment {
 
                     //Change fragment
                     Log.w("UniversityFragment", "Timetable selected");
+                    Manager.getInstance().getData("settings").edit().putBoolean("downloadShedule", true).apply();
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
                     if (newsFragment != null && newsFragment.isAdded()) ft.hide(newsFragment);
                     if (eventsFragment != null && eventsFragment.isAdded()) ft.hide(eventsFragment);
                     if (tasksFragment != null && tasksFragment.isAdded()) ft.hide(tasksFragment);
+                    ft.remove(timetableFragment);
+                    timetableFragment = University_TimetableFragment.newInstance();
+                    ft.add(R.id.fl_university_fragmentContainer, timetableFragment);
                     ft.show(timetableFragment);
                     ft.commit();
                     tb.setTitle(getResources().getString(R.string.timetable));

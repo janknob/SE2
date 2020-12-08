@@ -116,8 +116,6 @@ public class University_TimetableFragment extends Fragment implements Interface_
                     //Log.wtf("Scrolled to ", scrollX + ", " + scrollY);
                     // Log.wtf("DeviceWidth", deviceWidth * 0.5 + "");
 
-
-
                     for (int i = 0; i < days; i++) {
 
                         int under = (int)((deviceWidth*(i-1)) + (deviceWidth*0.5));

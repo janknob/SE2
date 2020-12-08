@@ -45,8 +45,8 @@ public class HtmlParser implements Interface_Downloader {
 
         DateFormat sdf = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
         String dateString = args[0];
-        String course = Manager.getInstance().getCourse(); //shortForm!
-        String semester = Manager.getInstance().getSemester(); //shortForm!
+        String course = Manager.getInstance().getCourseId(); //shortForm!
+        String semester = Manager.getInstance().getSemesterId(); //shortForm!
         try {
 
             Date firstDate = sdf.parse(dateString);
@@ -82,7 +82,7 @@ public class HtmlParser implements Interface_Downloader {
 
     private void downloadCourses() {
 
-        String url = String.format(Manager.getInstance().getContext().getResources().getString(R.string.url_timetable), Manager.getInstance().getCourse(), Manager.getInstance().getSemester());
+        String url = String.format(Manager.getInstance().getContext().getResources().getString(R.string.url_timetable), Manager.getInstance().getCourseId(), Manager.getInstance().getSemesterId());
         HtmlDownloader htmlDownloader = new HtmlDownloader(this, "courses");
         htmlDownloader.download(url);
 
@@ -401,7 +401,7 @@ public class HtmlParser implements Interface_Downloader {
     private void downloadAllModulbook(String[] args) {
 
         coursename = args[0];
-        String semesteryear = Manager.getInstance().getSemesterFull();
+        String semesteryear = Manager.getInstance().getSemester();
         String semester = semesteryear.substring(0, semesteryear.indexOf(" - "));
         semesteryear = semesteryear.substring(semesteryear.indexOf(" - ") + 3);
         semesteryear = semesteryear.replace(" ", "%20");

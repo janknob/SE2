@@ -1,5 +1,9 @@
 package de.niceguys.studisapp.Model;
 
+import android.util.Log;
+
+import de.niceguys.studisapp.Manager;
+
 public class User {
 
     private String id;
@@ -8,24 +12,59 @@ public class User {
     private String desc;
     private String sex;
     private String age;
+    private String semesterId;
+    private String degreeId;
+    private String semester;
+    private String degree;
     private double latitude;
     private double longitude;
     private String location;
+    private static User instance;
 
-    public User (String id, String username, String imgurl, double latitude, double longitude, String location, String desc, String sex, String age)
-    {
-        this.id = id;
-        this.username = username;
-        this.imgurl = imgurl;
-        this.location = location;
-        this.desc = desc;
-        this.sex = sex;
-        this.age = age;
-        this.latitude = latitude;
-        this.longitude = longitude;
+    public static User getInstance() {
+
+        if (instance == null)
+            instance = new User();
+
+        return instance;
+
     }
 
-    public User() {
+    private User() {
+    }
+
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        Manager.getInstance().getData("settings").edit().putBoolean("UniversityStuff_selected", true).apply();
+        Log.wtf("USER-Semester", semester);
+        this.semester = semester;
+    }
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree;
+    }
+
+    public String getSemesterId() {
+        return semesterId;
+    }
+
+    public void setSemesterId(String semesterId) {
+        this.semesterId = semesterId;
+    }
+
+    public String getDegreeId() {
+        return degreeId;
+    }
+
+    public void setDegreeId(String degreeId) {
+        this.degreeId = degreeId;
     }
 
     public String getId() {

@@ -16,10 +16,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudisApp">
         <activity android:name=".PostActivity" />
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".RegistrationActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".RegistrationActivity" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".EditProfileActivity"/>
         <activity android:name=".StartActivity">
             <intent-filter>
@@ -28,6 +35,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+       <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
+
     </application>
 
 </manifest>

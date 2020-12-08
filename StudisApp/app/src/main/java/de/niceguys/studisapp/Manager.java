@@ -2,13 +2,32 @@ package de.niceguys.studisapp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.service.autofill.Dataset;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.lang.ref.WeakReference;
+
+import de.niceguys.studisapp.Model.User;
 
 public class Manager {
 
     private static Manager instance;
     private WeakReference<Context> context;
+    private DatabaseReference userRef;
+    private FirebaseDatabase database;
 
     public enum Parser {
         degrees, semester, courses, news, modulbook, person, scheduleChanges, event
@@ -32,7 +51,6 @@ public class Manager {
 
     }
 
-
     public void setContext(Context context) {
         this.context = new WeakReference<Context>(context);
     }
@@ -41,22 +59,35 @@ public class Manager {
         return context.get();
     }
 
+    public String getCourseId() {
+
+        //DataSnapshot ds = getUser();
+        //return ds.child("courseOfStudyId").getValue(String.class);
+        return User.getInstance().getDegreeId();
+
+    }
+
     public String getCourse() {
 
-        return "MC"; //TODO: this is a dummy! Replace with actual fetching from database!
+        //DataSnapshot ds = getUser();
+        //return ds.child("courseOfStudy").getValue(String.class);
+
+        return User.getInstance().getDegree();
+    }
+
+    public String getSemesterId() {
+
+        //DataSnapshot ds = getUser();
+        //return ds.child("semesterId").getValue(String.class);
+        return User.getInstance().getSemesterId();
 
     }
 
     public String getSemester() {
 
-        return "3%23WS%232020"; //TODO: this is a dummy! Replace with actual fetching from database!
-
-    }
-
-    public String getSemesterFull() {
-
-        return "3 - WS 2020"; //TODO: this is a dummy! Replace with actual fetching from database!
-
+        //DataSnapshot ds = getUser();
+        //return ds.child("semester").getValue(String.class);
+        return User.getInstance().getSemester();
     }
 
 }

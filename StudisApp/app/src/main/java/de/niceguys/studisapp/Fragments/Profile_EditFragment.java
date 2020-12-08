@@ -1,7 +1,6 @@
 package de.niceguys.studisapp.Fragments;
 
 import android.app.ProgressDialog;
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -88,7 +87,7 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
     private Uri mImageUri;
     private StorageTask uploadTask;
             // Mobile Computing, MC, 3 WS 2020, 3%23SS%23SS
-    private String degree, degree_id, semester, semester_id;
+    private String degree, degree_id, semester = "0", semester_id;
     String PROFILE_IMAGE_URL = null;
     int TAKE_IMAGE_CODE = 10001;
 
@@ -128,8 +127,6 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
         userRef = database.getReference(USER);
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         storageReference = FirebaseStorage.getInstance().getReference("uploads");
-
-
 
         //Get current Information
         userRef.addValueEventListener(new ValueEventListener() {
@@ -180,6 +177,7 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
                 CropImage.activity().setAspectRatio(1,1).setCropShape(CropImageView.CropShape.OVAL).start(getActivity());
             }
         });
+        new HtmlParser(this).parse(Manager.Parser.degrees);
         return view;
 
     }
@@ -188,7 +186,7 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        new HtmlParser(this).parse(Manager.Parser.degrees);
+        //new HtmlParser(this).parse(Manager.Parser.degrees);
 
     }
 
@@ -277,7 +275,11 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
         userRef.child(USERID).child(SEMID).setValue(newSemesterId);
         userRef.child(USERID).child(UNI).setValue(newUniversity);
 
-
+        User temp = User.getInstance();
+        temp.setSemesterId(newSemesterId);
+        temp.setDegreeId(newCourseOfStudyId);
+        temp.setDegree(newCourseOfStudy);
+        temp.setSemester(newSemester);
 
         //sending confirmation toast
 
@@ -286,6 +288,8 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
 
         Toast toast = Toast.makeText(getActivity(), text, duration);
         toast.show();
+        if (!degree.equals("") && !semester.equals("0")) Manager.getInstance().getData("settings").edit().putBoolean("UniversityStuff_selected", true).apply();
+        Manager.getInstance().getData("settings").edit().putBoolean("downloadShedule", true).apply();
     }
 
     @Override
@@ -392,6 +396,17 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
 
         ArrayList<String> temp = new ArrayList<>(values.values());
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, temp);
+
+        try {
+
+            mSpinnerSemester.setSelection(0);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        mSpinnerSemester.setAdapter(null);
+
         mSpinnerSemester.setAdapter(arrayAdapter);
 
         mSpinnerSemester.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -422,6 +437,13 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
             }
         });
 
+        if (Manager.getInstance().getData("settings").getBoolean("UniversityStuff_selected", false)) {
+
+            String selected_Semester = Manager.getInstance().getSemester();
+
+            mSpinnerSemester.setSelection(temp.indexOf(selected_Semester));
+
+        }
 
     }
 
@@ -438,13 +460,19 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 degree = mSpinnerCourseOfStudy.getItemAtPosition(position).toString();
-                if (!degree.equals("Studiengang wählen")) {
+                if (position != 0) {
 
                     for (String s : values.keySet()) {
 
                         if (Objects.equals(values.get(s), degree)) {
 
-                            degree_id = s;
+                            degree_id = s;                                                           //JA                                               //SAME  -> nichts
+                                                                                                //mal gespeichert?                              //gespeichertes vs ausgewähltes
+                            if (Manager.getInstance().getData("settings").getBoolean("UniversityStuff_selected", false) && User.getInstance().getDegree().equals(degree))
+                                System.out.println("yolo");
+
+                            else Manager.getInstance().getData("settings").edit().putBoolean("UniversityStuff_selected", false).apply();
+
                             break;
 
                         }
@@ -462,6 +490,19 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
 
             }
         });
+
+        if (Manager.getInstance().getData("settings").getBoolean("UniversityStuff_selected", false)) {
+
+            String selected_Degree = Manager.getInstance().getCourse();
+
+            mSpinnerCourseOfStudy.setSelection(temp.indexOf(selected_Degree));
+
+        } else {
+
+            Manager.getInstance().getData("settings").edit().putBoolean("UniversityStuff_selected", false).apply();
+
+        }
+
 
     }
 
