@@ -128,7 +128,6 @@ public class HtmlParser implements Interface_Downloader {
 
             Calendar c = Calendar.getInstance();
             c.setTime(firstDate);
-            c.add(Calendar.DATE, 1);
             firstDate = c.getTime();
 
             System.out.println("Starting with:" + firstDate.toString());
@@ -706,8 +705,16 @@ public class HtmlParser implements Interface_Downloader {
 
     private void parseMeals(String html) {
 
-        String date = html.substring(html.indexOf("tx-bwrkspeiseplan__datetime")+30, html.indexOf("</div>", html.indexOf("tx-bwrkspeiseplan__datetime")));
+        if (html.contains("Page not found!")) return;
 
+        String date = "";
+        try {
+            date = html.substring(html.indexOf("tx-bwrkspeiseplan__datetime") + 30, html.indexOf("</div>", html.indexOf("tx-bwrkspeiseplan__datetime")));
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
         Log.w("HTMLPARSER","Working on " + date);
 
         Map<String, Map<String, String>> returnmap = new HashMap<>();

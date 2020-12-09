@@ -171,15 +171,12 @@ public class University_MealsFragment extends Fragment implements Interface_Pars
     @SuppressLint("InflateParams")
     private void downloadMeals() {
 
-        Context cw = new ContextThemeWrapper(Manager.getInstance().getContext(), R.style.dialogMenu);
-        AlertDialog.Builder downloading = new AlertDialog.Builder(cw);
-        LayoutInflater inflater = getLayoutInflater();
-        downloading.setView(inflater.inflate(R.layout.dialog_downloading, null));
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek());
         Date date = calendar.getTime();
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd", Locale.GERMAN);
         String firstDayOfWeek = f.format(date);
+
         HtmlParser parser = new HtmlParser(this);
         parser.parse(Manager.Parser.meals, firstDayOfWeek);
 
