@@ -26,11 +26,9 @@ public class Manager {
 
     private static Manager instance;
     private WeakReference<Context> context;
-    private DatabaseReference userRef;
-    private FirebaseDatabase database;
 
     public enum Parser {
-        degrees, semester, courses, news, modulbook, person, scheduleChanges, event
+        degrees, semester, courses, news, modulbook, person, scheduleChanges, event, meals
     }
 
     private Manager() {

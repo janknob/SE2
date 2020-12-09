@@ -46,6 +46,7 @@
     <string name="url_maps_template">https://www.bing.com/maps/default.aspx?lvl=10&amp;rtp=pos.%s_%s&amp;style=a</string>
     <string name="url_timetableChanges_template">https://www.hof-university.de/index.php?type=1421771406&amp;id=166&amp;tx_stundenplan_stundenplan[controller]=Ajax&amp;tx_stundenplan_stundenplan[action]=loadAenderungen&amp;tx_stundenplan_stundenplan[studiengang]=%s&amp;tx_stundenplan_stundenplan[semester]=%s&amp;tx_stundenplan_stundenplan[datum]=%s&amp;1591119624290</string>
     <string name="url_events">https://www.hof-university.de/ueber-uns/aktuelles/veranstaltungen.html</string>
+    <string name="url_meals">https://www.studentenwerk-oberfranken.de/essen/speiseplaene/hof/%s.html</string>
 
     <string name="person_not_found">Zu Ihrer Suche wurde kein Ergebnis gefunden. Benutzen Sie weitere Filter oder die Freitextsuche.</string>
     <string name="with">mit</string>
@@ -79,6 +80,7 @@
     <string name="goToCourse">Zum Kurs</string>
     <string name="createUniversityTask">Erstelle eine neue Aufgabe!</string>
     <string name="save">Speichern</string>
+    <string name="meals">Speiseplan</string>
 
 
 </resources>

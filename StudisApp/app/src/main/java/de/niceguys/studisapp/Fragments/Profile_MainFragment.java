@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -78,6 +79,7 @@ public class Profile_MainFragment extends Fragment {
                         //tvUniversity.setText(ds.child(UNI).getValue(String.class));
                         //User user1 = ds.getValue(User.class);
                         //Glide.with(getContext()).load(user1.getImgurl()).into(image);
+                        //Glide.with(getActivity().getApplicationContext()).load(user1.getImgurl()).into(prof_image);
                     }
                 }
 

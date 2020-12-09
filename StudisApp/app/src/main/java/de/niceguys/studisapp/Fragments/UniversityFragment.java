@@ -40,6 +40,7 @@ public class UniversityFragment extends Fragment {
     private University_NewsFragment newsFragment;
     private University_EventsFragment eventsFragment;
     private University_TasksFragment tasksFragment;
+    private University_MealsFragment mealsFragment;
 
     public static UniversityFragment newInstance() {
         UniversityFragment fragment = new UniversityFragment();
@@ -83,6 +84,7 @@ public class UniversityFragment extends Fragment {
                     if (newsFragment != null && newsFragment.isAdded()) ft.hide(newsFragment);
                     if (eventsFragment != null && eventsFragment.isAdded()) ft.hide(eventsFragment);
                     if (tasksFragment != null && tasksFragment.isAdded()) ft.hide(tasksFragment);
+                    if (mealsFragment != null && mealsFragment.isAdded()) ft.hide(mealsFragment);
                     ft.remove(timetableFragment);
                     timetableFragment = University_TimetableFragment.newInstance();
                     ft.add(R.id.fl_university_fragmentContainer, timetableFragment);
@@ -103,6 +105,7 @@ public class UniversityFragment extends Fragment {
 
 
                     FragmentTransaction ft3 = getFragmentManager().beginTransaction();
+                    if (mealsFragment != null && mealsFragment.isAdded()) ft3.hide(mealsFragment);
                     if (eventsFragment != null && eventsFragment.isAdded()) ft3.hide(eventsFragment);
                     if (tasksFragment != null && tasksFragment.isAdded()) ft3.hide(tasksFragment);
                     ft3.hide(timetableFragment);
@@ -125,6 +128,7 @@ public class UniversityFragment extends Fragment {
 
                     if (newsFragment != null && newsFragment.isAdded()) ft4.hide(newsFragment);
                     if (tasksFragment != null && tasksFragment.isAdded()) ft4.hide(tasksFragment);
+                    if (mealsFragment != null && mealsFragment.isAdded()) ft4.hide(mealsFragment);
                     ft4.hide(timetableFragment);
                     ft4.show(eventsFragment);
                     ft4.commit();
@@ -144,6 +148,7 @@ public class UniversityFragment extends Fragment {
                     FragmentTransaction ft5 = getFragmentManager().beginTransaction();
                     if (newsFragment != null && newsFragment.isAdded()) ft5.hide(newsFragment);
                     if (eventsFragment != null && eventsFragment.isAdded()) ft5.hide(eventsFragment);
+                    if (mealsFragment != null && mealsFragment.isAdded()) ft5.hide(mealsFragment);
                     ft5.hide(timetableFragment);
                     ft5.show(tasksFragment);
                     ft5.commit();
@@ -151,6 +156,26 @@ public class UniversityFragment extends Fragment {
 
                     break;
 
+
+                case R.id.menu_university_meals:
+
+                    if (mealsFragment == null) {
+                        mealsFragment = University_MealsFragment.newInstance();
+                        FragmentTransaction ft2 = getFragmentManager().beginTransaction();
+                        ft2.add(R.id.fl_university_fragmentContainer, mealsFragment);
+                        ft2.commit();
+                    }
+
+                    FragmentTransaction ft6 = getFragmentManager().beginTransaction();
+                    if (newsFragment != null && newsFragment.isAdded()) ft6.hide(newsFragment);
+                    if (eventsFragment != null && eventsFragment.isAdded()) ft6.hide(eventsFragment);
+                    if (tasksFragment != null && tasksFragment.isAdded()) ft6.hide(tasksFragment);
+                    ft6.hide(timetableFragment);
+                    ft6.show(mealsFragment);
+                    ft6.commit();
+                    tb.setTitle(getResources().getString(R.string.meals));
+
+                    break;
             }
             dL.closeDrawer(GravityCompat.START);
             return false;

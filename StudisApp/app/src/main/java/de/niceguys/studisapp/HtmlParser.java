@@ -1,10 +1,13 @@
 package de.niceguys.studisapp;
 
+import android.util.Log;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -36,6 +39,7 @@ public class HtmlParser implements Interface_Downloader {
             case person: downloadPersonSearch(args); break;
             case scheduleChanges: downloadSheduleChanges(args); break;
             case event: downloadEvents(); break;
+            case meals: downloadMeals(args); break;
 
         }
 
@@ -113,6 +117,43 @@ public class HtmlParser implements Interface_Downloader {
 
     }
 
+    private void downloadMeals(String[] args) {
+
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.GERMAN);
+        String dateString = args[0];
+
+        try {
+
+            Date firstDate = sdf.parse(dateString);
+
+            Calendar c = Calendar.getInstance();
+            c.setTime(firstDate);
+            c.add(Calendar.DATE, 1);
+            firstDate = c.getTime();
+
+            System.out.println("Starting with:" + firstDate.toString());
+
+            for (int i = 0; i < 6; i++) {
+
+                String checkDate = sdf.format(Objects.requireNonNull(firstDate));
+                //TODO
+                HtmlDownloader htmlDownloader = new HtmlDownloader(this, "meals");
+                htmlDownloader.download(String.format(Manager.getInstance().getContext().getResources().getString(R.string.url_meals), checkDate));
+
+                Calendar c2 = Calendar.getInstance();
+                c2.setTime(firstDate);
+                c2.add(Calendar.DATE, 1);
+                firstDate = c2.getTime();
+
+            }
+
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     @Override
     public void finishedDownload(String html, String mode) {
 
@@ -127,11 +168,11 @@ public class HtmlParser implements Interface_Downloader {
             case "person_search": parsePersonSearch(html); break;
             case "sheduleChanges": parseSheduleChanges(html); break;
             case "events": parseEvents(html); break;
+            case "meals": parseMeals(html); break;
 
         }
 
     }
-
 
     private void parseSheduleChanges(String html) {
 
@@ -660,6 +701,132 @@ public class HtmlParser implements Interface_Downloader {
         }
 
         caller.parsed(values, "events");
+
+    }
+
+    private void parseMeals(String html) {
+
+        String date = html.substring(html.indexOf("tx-bwrkspeiseplan__datetime"), html.indexOf("</div>", html.indexOf("tx-bwrkspeiseplan__datetime")));
+
+        Log.w("HTMLPARSER","Working on " + date);
+
+        Map<String, Map<String, String>> returnmap = new HashMap<>();
+        Map<String, String> mainmap = new HashMap<>();
+        Map<String, String> extramap = new HashMap<>();
+        Map<String, String> desertmap = new HashMap<>();
+        Map<String, String> saladsmap = new HashMap<>();
+
+        if (!html.contains("Am gewählten Tag sind keine Gerichte verfügbar")) {
+
+            html = html.substring(html.indexOf("class=\"tx-bwrkspeiseplan__hauptgerichte\""), html.indexOf("row tx-bwrkspeiseplan__bar--footer") + 34);
+
+            html = html.substring(html.indexOf("row"));
+
+            html = html + "class=\"tx-bwrkspeiseplan";
+
+            // cuts html right
+
+            String main = "";
+            String extras = "";
+            String desserts = "";
+            String salads = "";
+            try {
+                main = html.substring(html.indexOf("class=\"tx-bwrkspeiseplan__hauptgerichte"), html.indexOf("class=\"tx-bwrkspeiseplan", html.indexOf("class=\"tx-bwrkspeiseplan__hauptgerichte") + 10));
+            } catch (Exception e) {
+                Log.wtf("HTMLParser", "No 'Maintable' for " + date);
+            }
+            try {
+                extras = html.substring(html.indexOf("class=\"tx-bwrkspeiseplan__beilagen"), html.indexOf("class=\"tx-bwrkspeiseplan", html.indexOf("class=\"tx-bwrkspeiseplan__beilagen") + 10));
+            } catch (Exception e) {
+                Log.wtf("HTMLParser", "No 'extratable' for " + date);
+            }
+            try {
+                desserts = html.substring(html.indexOf("class=\"tx-bwrkspeiseplan__desserts"), html.indexOf("class=\"tx-bwrkspeiseplan", html.indexOf("class=\"tx-bwrkspeiseplan__desserts") + 10));
+            } catch (Exception e) {
+                Log.wtf("HTMLParser", "No 'desserttable' for " + date);
+            }
+            try {
+                salads = html.substring(html.indexOf("class=\"tx-bwrkspeiseplan__salatsuppen"), html.indexOf("class=\"tx-bwrkspeiseplan", html.indexOf("class=\"tx-bwrkspeiseplan__salatsuppen") + 10));
+            } catch (Exception e) {
+                Log.wtf("HTMLParser", "No 'saladstable' for " + date);
+            }
+            while (main.contains("tr class=\"\"")) {
+
+                main = main.substring(main.indexOf("tr class=\"\""));
+                String description = main.substring(main.indexOf("<td>") + 4, main.indexOf("<sup>"));
+                main = main.substring(main.indexOf("</td>"));
+
+                main = main.substring(main.indexOf("preise preis_typ1"));
+
+                String cost = main.substring(main.indexOf("\">") + 2, main.indexOf("</span>"));
+                cost = cost.replace("&euro;", "€");
+                main = main.substring(main.indexOf("</tr>") + 5);
+
+                mainmap.put(description, cost);
+
+            }
+
+            while (extras.contains("tr class=\"\"")) {
+
+                extras = extras.substring(extras.indexOf("tr class=\"\""));
+                String description = extras.substring(extras.indexOf("<td>") + 4, extras.indexOf("<sup>"));
+                extras = extras.substring(extras.indexOf("</td>"));
+
+                extras = extras.substring(extras.indexOf("preise preis_typ1"));
+
+                String cost = extras.substring(extras.indexOf("\">") + 2, extras.indexOf("</span>"));
+                cost = cost.replace("&euro;", "€");
+                extras = extras.substring(extras.indexOf("</tr>") + 5);
+
+                extramap.put(description, cost);
+
+            }
+
+            while (desserts.contains("tr class=\"\"")) {
+
+                desserts = desserts.substring(desserts.indexOf("tr class=\"\""));
+                String description = desserts.substring(desserts.indexOf("<td>") + 4, desserts.indexOf("<sup>"));
+                desserts = desserts.substring(desserts.indexOf("</td>"));
+
+                desserts = desserts.substring(desserts.indexOf("preise preis_typ1"));
+
+                String cost = desserts.substring(desserts.indexOf("\">") + 2, desserts.indexOf("</span>"));
+                cost = cost.replace("&euro;", "€");
+                desserts = desserts.substring(desserts.indexOf("</tr>") + 5);
+
+                desertmap.put(description, cost);
+
+            }
+
+            while (salads.contains("tr class=\"\"")) {
+
+                salads = salads.substring(salads.indexOf("tr class=\"\""));
+                String description = "";
+                try {
+                    description = salads.substring(salads.indexOf("<td>") + 4, salads.indexOf("<a "));
+                } catch (Exception e) {
+                    description = salads.substring(salads.indexOf("<td>") + 4, salads.indexOf("</td>"));
+                }
+                salads = salads.substring(salads.indexOf("</td>"));
+
+                salads = salads.substring(salads.indexOf("preise preis_typ1"));
+
+                String cost = salads.substring(salads.indexOf("\">") + 2, salads.indexOf("</span>"));
+                cost = cost.replace("&euro;", "€");
+                salads = salads.substring(salads.indexOf("</tr>") + 5);
+
+                saladsmap.put(description, cost);
+
+            }
+
+        }
+
+        returnmap.put(date, mainmap);
+        returnmap.put("extra", extramap);
+        returnmap.put("desert", desertmap);
+        returnmap.put("salads", saladsmap);
+
+        caller.parsed(returnmap, "meals");
 
     }
 
