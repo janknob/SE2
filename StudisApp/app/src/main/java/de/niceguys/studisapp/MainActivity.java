@@ -9,15 +9,25 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import de.niceguys.studisapp.Fragments.LifestyleFragment;
 import de.niceguys.studisapp.Fragments.ProfileFragment;
 import de.niceguys.studisapp.Fragments.UniversityFragment;
+import de.niceguys.studisapp.Model.User;
 
 public class MainActivity extends AppCompatActivity {
 
     Fragment selectedFragment = null;
     BottomNavigationView bottomNavigationView;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference userRef = database.getReference("Users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +53,21 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.nav_university:
                     selectedFragment = UniversityFragment.newInstance();
+
+                    //TO-DO
+                    /*
+                    if (User.getInstance().getDegree() != null)
+                    {
+                        selectedFragment = UniversityFragment.newInstance();
+
+                    }
+                    else
+                    {
+                        openDialog();
+                    }
+
+                     */
+
                     break;
                 case R.id.nav_profile:
                     //SharedPreferences.Editor editor = getSharedPreferences("PREFS", MODE_PRIVATE).edit();
@@ -56,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
             }
             return true;
-        }
-    };
+        }};
+    public void openDialog()
+    {
+        UniversitySemesterDialog universitySemesterDialog = new UniversitySemesterDialog();
+        universitySemesterDialog.show(getSupportFragmentManager(), "UniversityStudinegang");
+    }
 }

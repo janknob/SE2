@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,6 +34,8 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 
+import de.niceguys.studisapp.Model.User;
+
 public class EditProfileActivity extends AppCompatActivity {
 
     Button mBtn_saveProfile;
@@ -41,6 +44,8 @@ public class EditProfileActivity extends AppCompatActivity {
     String newUsername, newCourseOfStudy, newPostalCode, newSemester, newUniversity;
     private DatabaseReference userRef;
     private FirebaseDatabase database;
+    private FirebaseUser firebaseUser;
+    private StorageReference storageReference;
     private static final String USER = "Users";
     private static final String UNAME = "username";
     private static final String COURSE = "courseOfStudy";
@@ -68,7 +73,8 @@ public class EditProfileActivity extends AppCompatActivity {
         //DB references
         database = FirebaseDatabase.getInstance();
         userRef = database.getReference(USER);
-
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        storageReference = FirebaseStorage.getInstance().getReference("uploads");
 
 
         //Get current Information
@@ -81,12 +87,13 @@ public class EditProfileActivity extends AppCompatActivity {
 
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     if(ds.child("id").getValue().equals(user.getUid())) {
+                        User user1 = ds.getValue(User.class);
                         mEditUserName.setText(ds.child(UNAME).getValue(String.class));
                         mEditCourseOfStudy.setText(ds.child(COURSE).getValue(String.class));
                         mEditPostalCode.setText(ds.child(POSTCODE).getValue(String.class));
                         mEditSemester.setText(ds.child(SEM).getValue(String.class));
                         mEditUniversity.setText(ds.child(UNI).getValue(String.class));
-
+                        Glide.with(getApplicationContext()).load(user1.getImgUrl()).into(profileImageView);
                     }
                 }
 

@@ -8,7 +8,7 @@ public class User {
 
     private String id;
     private String username;
-    private String imgurl;
+    private String imgUrl;
     private String desc;
     private String sex;
     private String age;
@@ -29,7 +29,6 @@ public class User {
         return instance;
 
     }
-
     private User() {
     }
 
@@ -83,12 +82,12 @@ public class User {
         this.username = username;
     }
 
-    public String getImgurl() {
-        return imgurl;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setImgurl(String imageurl) {
-        this.imgurl = imageurl;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public Object getLocation() {

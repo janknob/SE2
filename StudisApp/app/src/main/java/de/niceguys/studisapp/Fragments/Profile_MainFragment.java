@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -21,7 +22,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import de.niceguys.studisapp.EditProfileActivity;
+import de.niceguys.studisapp.Model.User;
 import de.niceguys.studisapp.R;
 
 
@@ -49,12 +53,12 @@ public class Profile_MainFragment extends Fragment {
 
         //initialize
         tvUserName = (TextView) view.findViewById(R.id.tv_user_name);
-        //tvCourseOfStudy = (TextView) view.findViewById(R.id.tv_course_of_study);
-        //tvPostalCode = (TextView) view.findViewById(R.id.tv_postal_code);
-        //tvSemester = (TextView) view.findViewById(R.id.tv_semester);
-        //tvUniversity = (TextView) view.findViewById(R.id.tv_university);
         image = view.findViewById(R.id.iv_profileImage);
-        btn_editProfile = (Button) view.findViewById(R.id.btn_editProfile);
+        tvCourseOfStudy = view.findViewById(R.id.tv_course);
+        tvPostalCode = view.findViewById(R.id.tv_postalcode);
+        tvSemester = view.findViewById(R.id.tv_semester);
+        tvUniversity = view.findViewById(R.id.tv_university);
+
 
         //DB Reference
         database = FirebaseDatabase.getInstance();
@@ -72,12 +76,12 @@ public class Profile_MainFragment extends Fragment {
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     if(ds.child("id").getValue().equals(user.getUid())) {
                         tvUserName.setText(ds.child(UNAME).getValue(String.class));
-                        // tvCourseOfStudy.setText(ds.child(COURSE).getValue(String.class));
-                        //tvPostalCode.setText(ds.child(POSTCODE).getValue(String.class));
-                        //tvSemester.setText(ds.child(SEM).getValue(String.class));
-                        //tvUniversity.setText(ds.child(UNI).getValue(String.class));
-                        //User user1 = ds.getValue(User.class);
-                        //Glide.with(getContext()).load(user1.getImgurl()).into(image);
+                        User user1 = ds.getValue(User.class);
+                        tvCourseOfStudy.setText(ds.child(COURSE).getValue(String.class));
+                        tvPostalCode.setText(ds.child(POSTCODE).getValue(String.class));
+                        tvSemester.setText(ds.child(SEM).getValue(String.class));
+                        tvUniversity.setText(ds.child(UNI).getValue(String.class));
+                        Glide.with(getContext()).load(user1.getImgUrl()).into(image);
                     }
                 }
 

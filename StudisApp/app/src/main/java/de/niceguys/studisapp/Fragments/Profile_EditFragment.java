@@ -1,6 +1,8 @@
 package de.niceguys.studisapp.Fragments;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -140,7 +142,7 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
                     for (DataSnapshot ds : snapshot.getChildren()) {
                         if (ds.child("id").getValue().equals(user.getUid())) {
                             User user1 = ds.getValue(User.class);
-                            Glide.with(getActivity().getApplicationContext()).load(user1.getImgurl()).into(prof_image);
+                            Glide.with(getActivity().getApplicationContext()).load(user1.getImgUrl()).into(prof_image);
                             mEditUserName.setText(ds.child(UNAME).getValue(String.class));
                             //TODO insert if selected //mEditCourseOfStudy.setText((ds.child(COURSE).getValue(String.class) == null) ? ("") : ds.child(COURSE).getValue(String.class));
                             mEditPostalCode.setText(ds.child(POSTCODE).getValue(String.class));
@@ -171,12 +173,7 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
                 applyChanges();
             }
         });
-        prof_image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CropImage.activity().setAspectRatio(1,1).setCropShape(CropImageView.CropShape.OVAL).start(getActivity());
-            }
-        });
+        prof_image.setOnClickListener(view -> CropImage.activity().setAspectRatio(1,1).setCropShape(CropImageView.CropShape.OVAL).start(getContext(), this));
         new HtmlParser(this).parse(Manager.Parser.degrees);
         return view;
 
@@ -206,35 +203,28 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
             final StorageReference fileReference = storageReference.child(System.currentTimeMillis()+"."+getFileExtension(mImageUri));
 
             uploadTask = fileReference.putFile(mImageUri);
-            uploadTask.continueWithTask(new Continuation() {
-                @Override
-                public Object then(@NonNull Task task) throws Exception {
-                    if (!task.isSuccessful()){
-                        throw task.getException();
-                    }
-                    return fileReference.getDownloadUrl();
+            uploadTask.continueWithTask((Continuation) task -> {
+                if (!task.isSuccessful()){
+                    throw task.getException();
                 }
+                return fileReference.getDownloadUrl();
+            }).addOnCompleteListener((OnCompleteListener<Uri>) task -> {
+                if (task.isSuccessful())
+                {
+                    Uri downloadUri = task.getResult();
+                    String myUri = downloadUri.toString();
 
-            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                @Override
-                public void onComplete(@NonNull Task <Uri> task) {
-                    if (task.isSuccessful())
-                    {
-                        Uri downloadUri = task.getResult();
-                        String myUri = downloadUri.toString();
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
 
-                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+                    HashMap<String, Object> hashMap = new HashMap<>();
+                    hashMap.put("imgUrl", ""+myUri);
 
-                        HashMap<String, Object> hashMap = new HashMap<>();
-                        hashMap.put("imgurl", ""+myUri);
-
-                        reference.updateChildren(hashMap);
-                        pd.dismiss();
-                    }
-                    else
-                    {
-                        Toast.makeText(getActivity(), "Upload Fehlgeschlagen", Toast.LENGTH_SHORT).show();
-                    }
+                    reference.updateChildren(hashMap);
+                    pd.dismiss();
+                }
+                else
+                {
+                    Toast.makeText(getContext(), "Upload Fehlgeschlagen", Toast.LENGTH_SHORT).show();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -296,85 +286,16 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE)
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE  && resultCode == Activity.RESULT_OK )
         {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             mImageUri = result.getUri();
             uploadImage();
+            Log.wtf("ProfileEditFragment", "Funktioniert" );
         }
         else {
             Toast.makeText(getActivity(), "Etwas ist Schief gelaufen", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void handleUpload(Bitmap bitmap){
-
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-
-
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        //DB Reference
-        final StorageReference reference = FirebaseStorage.getInstance().getReference()
-                .child("ProfileImages")
-                .child("" + ".jpg");
-
-        reference.putBytes(baos.toByteArray())
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                        getDownloadUrl(reference);
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("TAG", "onFailure: ", e.getCause());
-                    }
-                });
-    }
-
-    private void getDownloadUrl(StorageReference reference) {
-
-        reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Log.d("TAG", "onSucess: " + uri);
-                setUserUrl(uri);
-            }
-
-        });
-    }
-
-    public void handleImageClick(View view){
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        //if(intent.resolveActivity(getPackageManager()) != null)
-        {
-            startActivityForResult(intent, TAKE_IMAGE_CODE);
-        }
-    }
-
-    private void setUserUrl(Uri uri){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        UserProfileChangeRequest request = new UserProfileChangeRequest.Builder()
-                .setPhotoUri(uri)
-                .build();
-
-        user.updateProfile(request)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(getActivity(), "Uploades succesfully", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(), "Profile image failed...", Toast.LENGTH_SHORT).show();
-                    }
-                });
     }
 
     @Override
