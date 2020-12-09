@@ -9,16 +9,10 @@ public class User {
     private String id;
     private String username;
     private String imgUrl;
-    private String desc;
-    private String sex;
-    private String age;
     private String semesterId;
     private String degreeId;
     private String semester;
     private String degree;
-    private double latitude;
-    private double longitude;
-    private String location;
     private static User instance;
 
     public static User getInstance() {
@@ -90,43 +84,5 @@ public class User {
         this.imgUrl = imgUrl;
     }
 
-    public Object getLocation() {
-        return location;
-    }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
-
-    public double getLatitude() { return latitude;}
-
-    public void setLatitude(double latitude) { this.latitude = latitude;}
-
-    public double getLongitude() {return longitude;}
-
-    public void setLongitude(double longitude) {this.longitude = longitude;}
 }

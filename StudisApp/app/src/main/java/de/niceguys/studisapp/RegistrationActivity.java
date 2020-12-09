@@ -96,7 +96,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
     // Method which creates a new User in the database
     private void register(final String username, String eMail, String password){
-        auth.createUserWithEmailAndPassword(eMail, password).addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
+        auth.createUserWithEmailAndPassword(eMail, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful())

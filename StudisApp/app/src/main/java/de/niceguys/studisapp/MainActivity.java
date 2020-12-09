@@ -52,21 +52,19 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new LifestyleFragment();
                     break;
                 case R.id.nav_university:
-                    selectedFragment = UniversityFragment.newInstance();
 
                     //TO-DO
-                    /*
-                    if (User.getInstance().getDegree() != null)
+
+                    if (!User.getInstance().getDegree().equals(""))
                     {
                         selectedFragment = UniversityFragment.newInstance();
-
                     }
                     else
                     {
                         openDialog();
                     }
 
-                     */
+
 
                     break;
                 case R.id.nav_profile:
