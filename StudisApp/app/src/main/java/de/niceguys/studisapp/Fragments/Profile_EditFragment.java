@@ -173,7 +173,7 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
                 applyChanges();
             }
         });
-        prof_image.setOnClickListener(view -> CropImage.activity().setAspectRatio(1,1).setCropShape(CropImageView.CropShape.OVAL).start(getContext(), this));
+        prof_image.setOnClickListener(view -> CropImage.activity().setAspectRatio(1,1).setCropShape(CropImageView.CropShape.OVAL).start(getActivity(), this));
         new HtmlParser(this).parse(Manager.Parser.degrees);
         return view;
 

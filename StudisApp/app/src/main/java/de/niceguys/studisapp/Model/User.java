@@ -9,10 +9,10 @@ public class User {
     private String id;
     private String username;
     private String imgUrl;
-    private String semesterId;
-    private String degreeId;
-    private String semester;
-    private String degree;
+    private String semesterId = "";
+    private String degreeId = "";
+    private String semester = "";
+    private String degree = "";
     private static User instance;
 
     public static User getInstance() {

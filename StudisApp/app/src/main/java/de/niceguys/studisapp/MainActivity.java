@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -38,15 +39,7 @@ public class MainActivity extends AppCompatActivity {
         Manager.getInstance().setContext(this);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new LifestyleFragment()).commit();
-    }
-
-    //switch Case Listener which switch to the framgment which is selected by the user
-    BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_lifestyle:
                     selectedFragment = new LifestyleFragment();
@@ -61,10 +54,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else
                     {
+                        runOnUiThread(()->bottomNavigationView.setSelectedItemId(R.id.nav_lifestyle));
                         openDialog();
                     }
-
-
 
                     break;
                 case R.id.nav_profile:
@@ -79,10 +71,16 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
             }
             return true;
-        }};
+        });
+
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new LifestyleFragment()).commit();
+    }
+
     public void openDialog()
     {
         UniversitySemesterDialog universitySemesterDialog = new UniversitySemesterDialog();
         universitySemesterDialog.show(getSupportFragmentManager(), "UniversityStudinegang");
     }
+
 }
