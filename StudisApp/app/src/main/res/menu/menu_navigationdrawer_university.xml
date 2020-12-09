@@ -17,4 +17,7 @@
         android:id="@+id/menu_university_events"
         android:icon="@drawable/icon_events"
         android:title="@string/universityEvents" />
+    <item
+        android:id="@+id/menu_university_meals"
+        android:title="@string/meals" />
 </menu>

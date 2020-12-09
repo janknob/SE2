@@ -299,15 +299,17 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
     }
 
     @Override
-    public void parsed(Map<String, String> values, String mode) {
+    public void parsed(Map<String, ?> values, String mode) {
+
+        Map<String, String> value = (Map<String, String>) values;
 
         if (mode.equals("degrees")) {
 
-            fillDegrees(values);
+            fillDegrees(value);
 
         } else if (mode.equals("semester")) {
 
-            fillSemester(values);
+            fillSemester(value);
 
         }
 

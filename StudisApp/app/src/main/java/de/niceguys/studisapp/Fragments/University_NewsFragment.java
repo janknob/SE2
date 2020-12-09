@@ -78,13 +78,15 @@ public class University_NewsFragment extends Fragment implements Interface_Parse
     }
 
 
-    public void parsed(Map<String, String> values, String mode) {
+    public void parsed(Map<String, ?> values, String mode) {
+
+        Map<String, String> value = (Map<String, String>) values;
 
         if (mode.equals("news")) {
 
             SharedPreferences.Editor editor = Manager.getInstance().getData("news").edit();
 
-            for (String s : values.keySet()) editor.putString(s, values.get(s));
+            for (String s : value.keySet()) editor.putString(s, value.get(s));
 
             editor.apply();
             alertDialog.dismiss();

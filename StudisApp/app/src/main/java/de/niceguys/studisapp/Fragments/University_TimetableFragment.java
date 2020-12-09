@@ -382,11 +382,13 @@ public class University_TimetableFragment extends Fragment implements Interface_
 
     }
 
-    public void parsed(Map<String, String> values, String mode) {
+    public void parsed(Map<String, ?> values, String mode) {
+
+        Map<String, String> value = (Map<String, String>) values;
 
         if (mode.equals("sheduleChanges")) {
 
-            applySheduleChanges(values);
+            applySheduleChanges(value);
 
         } else {
 
@@ -404,15 +406,15 @@ public class University_TimetableFragment extends Fragment implements Interface_
                 if (!c.isShown()) {
 
                     String edited = c.saveCourse().replace("|false", "|true");
-                    for (String string : values.values()) {
+                    for (String string : value.values()) {
 
                         if (string.equals(edited)) {
 
                             String key = "";
 
-                            for (String string2 : values.keySet()) {
+                            for (String string2 : value.keySet()) {
 
-                                if (Objects.equals(values.get(string2), edited)) {
+                                if (Objects.equals(value.get(string2), edited)) {
 
                                     key = string2;
                                     break;
@@ -431,13 +433,13 @@ public class University_TimetableFragment extends Fragment implements Interface_
 
             }
 
-            for (String key : temp.keySet()) values.remove(key);
-            values.putAll(temp);
+            for (String key : temp.keySet()) value.remove(key);
+            value.putAll(temp);
 
             SharedPreferences.Editor editor = sp_courses.edit();
             editor.clear();
 
-            for (String s : values.keySet()) editor.putString(s, values.get(s));
+            for (String s : value.keySet()) editor.putString(s, value.get(s));
 
             editor.apply();
 
