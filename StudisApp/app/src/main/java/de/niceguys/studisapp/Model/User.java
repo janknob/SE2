@@ -12,10 +12,10 @@ public class User {
     private String desc;
     private String sex;
     private String age;
-    private String semesterId;
-    private String degreeId;
-    private String semester;
-    private String degree;
+    private String semesterId = "";
+    private String degreeId = "";
+    private String semester = "";
+    private String degree = "";
     private double latitude;
     private double longitude;
     private String location;

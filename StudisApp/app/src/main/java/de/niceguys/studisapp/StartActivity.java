@@ -36,7 +36,7 @@ public class StartActivity extends AppCompatActivity {
         try {
             VideoView videoView = findViewById(R.id.background_video);
             //setContentView(videoView);
-            Uri path = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.city_background);
+            Uri path = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.vertical_video);
             videoView.setVideoURI(path);
             videoView.requestFocus();
             videoView.start();

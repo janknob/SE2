@@ -81,6 +81,10 @@
     <string name="createUniversityTask">Erstelle eine neue Aufgabe!</string>
     <string name="save">Speichern</string>
     <string name="meals">Speiseplan</string>
+    <string name="mainmeals">Hauptspeisen</string>
+    <string name="extras">Beilagen</string>
+    <string name="deserts">Nachspeise</string>
+    <string name="snacks_salads">Snacks / Salate</string>
 
 
 </resources>

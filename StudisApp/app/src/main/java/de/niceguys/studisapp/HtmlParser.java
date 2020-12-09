@@ -706,7 +706,7 @@ public class HtmlParser implements Interface_Downloader {
 
     private void parseMeals(String html) {
 
-        String date = html.substring(html.indexOf("tx-bwrkspeiseplan__datetime"), html.indexOf("</div>", html.indexOf("tx-bwrkspeiseplan__datetime")));
+        String date = html.substring(html.indexOf("tx-bwrkspeiseplan__datetime")+30, html.indexOf("</div>", html.indexOf("tx-bwrkspeiseplan__datetime")));
 
         Log.w("HTMLPARSER","Working on " + date);
 
@@ -762,7 +762,7 @@ public class HtmlParser implements Interface_Downloader {
                 cost = cost.replace("&euro;", "€");
                 main = main.substring(main.indexOf("</tr>") + 5);
 
-                mainmap.put(description, cost);
+                mainmap.put(description.trim(), cost.trim());
 
             }
 
@@ -778,7 +778,7 @@ public class HtmlParser implements Interface_Downloader {
                 cost = cost.replace("&euro;", "€");
                 extras = extras.substring(extras.indexOf("</tr>") + 5);
 
-                extramap.put(description, cost);
+                extramap.put(description.trim(), cost.trim());
 
             }
 
@@ -794,7 +794,7 @@ public class HtmlParser implements Interface_Downloader {
                 cost = cost.replace("&euro;", "€");
                 desserts = desserts.substring(desserts.indexOf("</tr>") + 5);
 
-                desertmap.put(description, cost);
+                desertmap.put(description.trim(), cost.trim());
 
             }
 
@@ -807,6 +807,9 @@ public class HtmlParser implements Interface_Downloader {
                 } catch (Exception e) {
                     description = salads.substring(salads.indexOf("<td>") + 4, salads.indexOf("</td>"));
                 }
+
+                description = description.replaceAll("(.*)<sup>(.*)</sup>" , "$1");
+
                 salads = salads.substring(salads.indexOf("</td>"));
 
                 salads = salads.substring(salads.indexOf("preise preis_typ1"));
@@ -815,7 +818,7 @@ public class HtmlParser implements Interface_Downloader {
                 cost = cost.replace("&euro;", "€");
                 salads = salads.substring(salads.indexOf("</tr>") + 5);
 
-                saladsmap.put(description, cost);
+                saladsmap.put(description.trim(), cost.trim());
 
             }
 
