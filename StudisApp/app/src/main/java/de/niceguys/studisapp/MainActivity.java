@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
                     //TO-DO
 
-                    if (!User.getInstance().getDegree().equals(""))
+                    if (Manager.getInstance().getData("settings").getBoolean("UniversityStuff_selected", false))
                     {
                         selectedFragment = UniversityFragment.newInstance();
                     }
