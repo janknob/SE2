@@ -58,6 +58,7 @@ import de.niceguys.studisapp.HtmlParser;
 import de.niceguys.studisapp.Interfaces.Interface_Parser;
 import de.niceguys.studisapp.MainActivity;
 import de.niceguys.studisapp.Manager;
+import de.niceguys.studisapp.Model.CurrentUser;
 import de.niceguys.studisapp.Model.User;
 import de.niceguys.studisapp.R;
 
@@ -265,7 +266,7 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
         userRef.child(USERID).child(SEMID).setValue(newSemesterId);
         userRef.child(USERID).child(UNI).setValue(newUniversity);
 
-        User temp = User.getInstance();
+        CurrentUser temp = CurrentUser.getInstance();
         temp.setSemesterId(newSemesterId);
         temp.setDegreeId(newCourseOfStudyId);
         temp.setDegree(newCourseOfStudy);

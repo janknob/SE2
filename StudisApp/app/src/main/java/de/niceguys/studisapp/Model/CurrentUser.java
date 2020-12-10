@@ -4,7 +4,7 @@ import android.util.Log;
 
 import de.niceguys.studisapp.Manager;
 
-public class User {
+public class CurrentUser {
 
     private String id;
     private String username;
@@ -13,17 +13,17 @@ public class User {
     private String degreeId = "";
     private String semester = "";
     private String degree = "";
-    private static User instance;
+    private static CurrentUser instance;
 
-    public static User getInstance() {
+    public static CurrentUser getInstance() {
 
         if (instance == null)
-            instance = new User();
+            instance = new CurrentUser();
 
         return instance;
 
     }
-    private User() {
+    private CurrentUser() {
     }
 
     public String getSemester() {
@@ -31,6 +31,9 @@ public class User {
     }
 
     public void setSemester(String semester) {
+        if (!semester.equals(""))
+            Manager.getInstance().getData("settings").edit().putBoolean("UniversityStuff_selected", true).apply();
+        Log.wtf("USER-Semester", semester);
         this.semester = semester;
     }
 

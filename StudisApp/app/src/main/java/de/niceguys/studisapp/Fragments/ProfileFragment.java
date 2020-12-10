@@ -29,6 +29,7 @@ import java.util.Objects;
 import de.niceguys.studisapp.LoginActivity;
 import de.niceguys.studisapp.MainActivity;
 import de.niceguys.studisapp.Manager;
+import de.niceguys.studisapp.Model.User;
 import de.niceguys.studisapp.R;
 import de.niceguys.studisapp.StartActivity;
 
@@ -81,6 +82,7 @@ public class ProfileFragment extends Fragment {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                User.clear();
                 Manager.getInstance().getData("settings").edit().clear().apply();
                 Manager.getInstance().getData("course").edit().clear().apply();
                 FirebaseAuth.getInstance().signOut();

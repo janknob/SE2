@@ -20,6 +20,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.lang.ref.WeakReference;
 
+import de.niceguys.studisapp.Model.CurrentUser;
 import de.niceguys.studisapp.Model.User;
 
 public class Manager {
@@ -61,7 +62,7 @@ public class Manager {
 
         //DataSnapshot ds = getUser();
         //return ds.child("courseOfStudyId").getValue(String.class);
-        return User.getInstance().getDegreeId();
+        return CurrentUser.getInstance().getDegreeId();
 
     }
 
@@ -70,14 +71,14 @@ public class Manager {
         //DataSnapshot ds = getUser();
         //return ds.child("courseOfStudy").getValue(String.class);
 
-        return User.getInstance().getDegree();
+        return CurrentUser.getInstance().getDegree();
     }
 
     public String getSemesterId() {
 
         //DataSnapshot ds = getUser();
         //return ds.child("semesterId").getValue(String.class);
-        return User.getInstance().getSemesterId();
+        return CurrentUser.getInstance().getSemesterId();
 
     }
 
@@ -85,7 +86,7 @@ public class Manager {
 
         //DataSnapshot ds = getUser();
         //return ds.child("semester").getValue(String.class);
-        return User.getInstance().getSemester();
+        return CurrentUser.getInstance().getSemester();
     }
 
 }

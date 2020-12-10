@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import de.niceguys.studisapp.Model.CurrentUser;
 import de.niceguys.studisapp.Model.User;
 
 
@@ -54,11 +55,14 @@ public class StartActivity extends AppCompatActivity {
                         try {
 
                             for (DataSnapshot ds : snapshot.getChildren()) {
+
+                                String temp2 = user.getUid();
+
                                 if (ds.child("id").getValue().equals(user.getUid())) {
 
                                     System.out.println(ds.child("username").getValue(String.class));
 
-                                    User temp = User.getInstance();
+                                    CurrentUser temp = CurrentUser.getInstance();
                                     temp.setSemester(ds.child("semester").getValue(String.class));
                                     temp.setSemesterId(ds.child("semesterId").getValue(String.class));
                                     temp.setDegreeId(ds.child("courseOfStudyId").getValue(String.class));
