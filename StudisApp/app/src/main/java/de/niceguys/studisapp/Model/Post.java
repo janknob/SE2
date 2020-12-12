@@ -5,8 +5,9 @@ public class Post
     private String postText;
     private String postid;
     private String publisher;
+    private String category;
 
-    public Post (String postid, String postText, String publisher)
+    public Post (String postid, String postText, String publisher, String category)
     {
         this.postid = postid;
         this.postText = postText;
@@ -39,5 +40,13 @@ public class Post
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

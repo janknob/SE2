@@ -46,6 +46,7 @@ public class LifestyleFragment extends Fragment {
     private Lifestyle_TimelineFragment tutoringFragment;
     private Lifestyle_TimelineFragment apartmentFragment;
 
+
     DatabaseReference reference;
 
 
@@ -86,7 +87,7 @@ public class LifestyleFragment extends Fragment {
 
                 case R.id.menu_lifestyle_events:
 
-                    reference = FirebaseDatabase.getInstance().getReference("Posts").child("Events");
+                    //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Events");
 
                     //Change fragment
                     if (eventFragment == null) {
@@ -98,12 +99,13 @@ public class LifestyleFragment extends Fragment {
 
                     Log.w("LifestyleFragment", "Events selected");
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    eventFragment.setReference(reference);
+                    eventFragment.setCategory("Events");
                     if (discountsFragment != null && discountsFragment.isAdded()) ft.hide(discountsFragment);
                     if (specialsFragment != null && specialsFragment.isAdded()) ft.hide(specialsFragment);
                     if (jobsFragment != null && jobsFragment.isAdded()) ft.hide(jobsFragment);
                     if (tutoringFragment != null && tutoringFragment.isAdded()) ft.hide(tutoringFragment);
                     if (apartmentFragment != null && apartmentFragment.isAdded()) ft.hide(apartmentFragment);
+                    ft.hide(timelineFragment);
                     ft.show(eventFragment);
                     ft.commit();
                     tb.setTitle(getResources().getString(R.string.events));
@@ -114,7 +116,7 @@ public class LifestyleFragment extends Fragment {
 
                 case R.id.menu_lifestyle_discounts:
 
-                    reference = FirebaseDatabase.getInstance().getReference("Posts").child("Discounts");
+                    //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Discounts");
 
                     if (discountsFragment == null) {
                         discountsFragment = Lifestyle_TimelineFragment.newInstance();
@@ -124,13 +126,13 @@ public class LifestyleFragment extends Fragment {
                     }
 
                     FragmentTransaction ft3 = getFragmentManager().beginTransaction();
-                    discountsFragment.setReference(reference);
+                    discountsFragment.setCategory("Discounts");
                     if (eventFragment != null && eventFragment.isAdded()) ft3.hide(eventFragment);
                     if (specialsFragment != null && specialsFragment.isAdded()) ft3.hide(specialsFragment);
                     if (jobsFragment != null && jobsFragment.isAdded()) ft3.hide(jobsFragment);
                     if (tutoringFragment != null && tutoringFragment.isAdded()) ft3.hide(tutoringFragment);
                     if (apartmentFragment != null && apartmentFragment.isAdded()) ft3.hide(apartmentFragment);
-                    ft3.hide(eventFragment);
+                    ft3.hide(timelineFragment);
                     ft3.show(discountsFragment);
                     ft3.commit();
                     tb.setTitle(getResources().getString(R.string.discounts));
@@ -139,7 +141,7 @@ public class LifestyleFragment extends Fragment {
 
                 case R.id.menu_lifestyle_specials:
 
-                    reference = FirebaseDatabase.getInstance().getReference("Posts").child("Specials");
+                    //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Specials");
 
                     if (specialsFragment == null) {
                         specialsFragment = Lifestyle_TimelineFragment.newInstance();
@@ -149,13 +151,13 @@ public class LifestyleFragment extends Fragment {
                     }
 
                     FragmentTransaction ft4 = getFragmentManager().beginTransaction();
-                    specialsFragment.setReference(reference);
+                    specialsFragment.setCategory("Specials");
                     if (eventFragment != null && eventFragment.isAdded()) ft4.hide(eventFragment);
                     if (discountsFragment != null && discountsFragment.isAdded()) ft4.hide(discountsFragment);
                     if (jobsFragment != null && jobsFragment.isAdded()) ft4.hide(jobsFragment);
                     if (tutoringFragment != null && tutoringFragment.isAdded()) ft4.hide(tutoringFragment);
                     if (apartmentFragment != null && apartmentFragment.isAdded()) ft4.hide(apartmentFragment);
-                    ft4.hide(eventFragment);
+                    ft4.hide(timelineFragment);
                     ft4.show(specialsFragment);
                     ft4.commit();
                     tb.setTitle(getResources().getString(R.string.specials));
@@ -163,7 +165,7 @@ public class LifestyleFragment extends Fragment {
 
                 case R.id.menu_lifestyle_jobs:
 
-                    reference = FirebaseDatabase.getInstance().getReference("Posts").child("Jobs");
+                    //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Jobs");
 
                     if (jobsFragment == null) {
                         jobsFragment = Lifestyle_TimelineFragment.newInstance();
@@ -173,13 +175,13 @@ public class LifestyleFragment extends Fragment {
                     }
 
                     FragmentTransaction ft5 = getFragmentManager().beginTransaction();
-                    jobsFragment.setReference(reference);
+                    jobsFragment.setCategory("Jobs");
                     if (eventFragment != null && eventFragment.isAdded()) ft5.hide(eventFragment);
                     if (discountsFragment != null && discountsFragment.isAdded()) ft5.hide(discountsFragment);
                     if (specialsFragment != null && specialsFragment.isAdded()) ft5.hide(specialsFragment);
                     if (tutoringFragment != null && tutoringFragment.isAdded()) ft5.hide(tutoringFragment);
                     if (apartmentFragment != null && apartmentFragment.isAdded()) ft5.hide(apartmentFragment);
-                    ft5.hide(eventFragment);
+                    ft5.hide(timelineFragment);
                     ft5.show(jobsFragment);
                     ft5.commit();
                     tb.setTitle(getResources().getString(R.string.jobs));
@@ -187,7 +189,7 @@ public class LifestyleFragment extends Fragment {
 
                 case R.id.menu_lifestyle_tutoring:
 
-                    reference = FirebaseDatabase.getInstance().getReference("Posts").child("Tutoring");
+                    //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Tutoring");
 
                     if (tutoringFragment == null) {
                         tutoringFragment = Lifestyle_TimelineFragment.newInstance();
@@ -197,13 +199,13 @@ public class LifestyleFragment extends Fragment {
                     }
 
                     FragmentTransaction ft6 = getFragmentManager().beginTransaction();
-                    tutoringFragment.setReference(reference);
+                    tutoringFragment.setCategory("Tutoring");
                     if (eventFragment != null && eventFragment.isAdded()) ft6.hide(eventFragment);
                     if (discountsFragment != null && discountsFragment.isAdded()) ft6.hide(discountsFragment);
                     if (specialsFragment != null && specialsFragment.isAdded()) ft6.hide(specialsFragment);
                     if (jobsFragment != null && jobsFragment.isAdded()) ft6.hide(jobsFragment);
                     if (apartmentFragment != null && apartmentFragment.isAdded()) ft6.hide(apartmentFragment);
-                    ft6.hide(eventFragment);
+                    ft6.hide(timelineFragment);
                     ft6.show(tutoringFragment);
                     ft6.commit();
                     tb.setTitle(getResources().getString(R.string.tutoring));
@@ -211,7 +213,7 @@ public class LifestyleFragment extends Fragment {
 
                 case R.id.menu_lifestyle_apartments:
 
-                    reference = FirebaseDatabase.getInstance().getReference("Posts").child("Apartments");
+                    //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Apartments");
 
                     if (apartmentFragment == null) {
                         apartmentFragment = Lifestyle_TimelineFragment.newInstance();
@@ -221,13 +223,14 @@ public class LifestyleFragment extends Fragment {
                     }
 
                     FragmentTransaction ft7 = getFragmentManager().beginTransaction();
-                    apartmentFragment.setReference(reference);
+                    apartmentFragment.setCategory("Apartments");
                     if (eventFragment != null && eventFragment.isAdded()) ft7.hide(eventFragment);
+                    //if (eventFragment != null && eventFragment.isAdded()) ft7.hide(eventFragment);
                     if (discountsFragment != null && discountsFragment.isAdded()) ft7.hide(discountsFragment);
                     if (specialsFragment != null && specialsFragment.isAdded()) ft7.hide(specialsFragment);
                     if (jobsFragment != null && jobsFragment.isAdded()) ft7.hide(jobsFragment);
                     if (tutoringFragment != null && tutoringFragment.isAdded()) ft7.hide(tutoringFragment);
-                    ft7.hide(eventFragment);
+                    ft7.hide(timelineFragment);
                     ft7.show(apartmentFragment);
                     ft7.commit();
                     tb.setTitle(getResources().getString(R.string.apartments));
@@ -239,12 +242,12 @@ public class LifestyleFragment extends Fragment {
             return false;
         });
 
-        reference = FirebaseDatabase.getInstance().getReference("Posts").child("Events");
-        eventFragment = Lifestyle_TimelineFragment.newInstance();
-        eventFragment.setReference(reference);
+        //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Events");
+        timelineFragment = Lifestyle_TimelineFragment.newInstance();
+        timelineFragment.setCategory("Timeline");
 
         FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-        ft.add(R.id.fl_lifestyle_fragmentContainer, eventFragment);
+        ft.add(R.id.fl_lifestyle_fragmentContainer, timelineFragment);
         ft.commit();
 
 

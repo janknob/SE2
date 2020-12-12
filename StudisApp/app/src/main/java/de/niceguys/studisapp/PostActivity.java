@@ -30,6 +30,7 @@ public class PostActivity extends AppCompatActivity {
     EditText post_text;
     StorageReference storageReferencere;
     DatabaseReference reference;
+    String category;
 
 
     @Override
@@ -52,22 +53,28 @@ public class PostActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        reference = FirebaseDatabase.getInstance().getReference("Posts").child("Events");
+                        //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Events");
+                        category = "Events";
                         break;
                     case 1:
-                        reference = FirebaseDatabase.getInstance().getReference("Posts").child("Discounts");
+                        //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Discounts");
+                        category = "Discounts";
                         break;
                     case 2:
-                        reference = FirebaseDatabase.getInstance().getReference("Posts").child("Specials");
+                        //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Specials");
+                        category = "Specials";
                         break;
                     case 3:
-                        reference = FirebaseDatabase.getInstance().getReference("Posts").child("Jobs");
+                        //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Jobs");
+                        category = "Jobs";
                         break;
                     case 4:
-                        reference = FirebaseDatabase.getInstance().getReference("Posts").child("Tutoring");
+                        //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Tutoring");
+                        category = "Tutoring";
                         break;
                     case 5:
-                        reference = FirebaseDatabase.getInstance().getReference("Posts").child("Apartments");
+                        //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Apartments");
+                        category = "Apartments";
                         break;
                 }
             }
@@ -104,7 +111,7 @@ public class PostActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    uploadPost(str_post_text, reference);
+                    uploadPost(str_post_text, category);
                     progressDialog.dismiss();
                     startActivity(new Intent(PostActivity.this, MainActivity.class));
                     finish();
@@ -113,11 +120,12 @@ public class PostActivity extends AppCompatActivity {
         });
     }
 
-    private void uploadPost(String postText, DatabaseReference reference) {
-
+    private void uploadPost(String postText, String category) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
         String postid = reference.push().getKey();
 
         HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("category", category);
         hashMap.put("postid", postid);
         hashMap.put("postText", postText);
         hashMap.put("publisher", FirebaseAuth.getInstance().getCurrentUser().getUid());

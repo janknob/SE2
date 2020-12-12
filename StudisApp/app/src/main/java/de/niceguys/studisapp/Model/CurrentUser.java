@@ -43,6 +43,7 @@ public class CurrentUser {
 
     }
 
+
     public String getDegree() {
         return degree;
     }

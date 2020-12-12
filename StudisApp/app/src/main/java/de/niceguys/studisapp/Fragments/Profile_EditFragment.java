@@ -392,7 +392,7 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
 
                             degree_id = s;                                                           //JA                                               //SAME  -> nichts
                                                                                                 //mal gespeichert?                              //gespeichertes vs ausgewähltes
-                            if (Manager.getInstance().getData("settings").getBoolean("UniversityStuff_selected", false) && User.getInstance().getDegree().equals(degree))
+                            if (Manager.getInstance().getData("settings").getBoolean("UniversityStuff_selected", false) && CurrentUser.getInstance().getDegree().equals(degree))
                                 System.out.println("yolo");
 
                             else Manager.getInstance().getData("settings").edit().putBoolean("UniversityStuff_selected", false).apply();

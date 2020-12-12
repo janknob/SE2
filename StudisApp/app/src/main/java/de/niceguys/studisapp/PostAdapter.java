@@ -1,15 +1,25 @@
 package de.niceguys.studisapp;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -18,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.List;
 
 import de.niceguys.studisapp.Model.Post;
@@ -49,8 +60,71 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
         Post post = mPost.get(i);
         viewHolder.post_text.setText(mPost.get(i).getPostText());
         viewHolder.username.setText(mPost.get(i).getPublisher());
+        if (mPost.get(i).getCategory().equals("Events"))
+        {
+            viewHolder.category.setText("Events");
+        }
+        else if (mPost.get(i).getCategory().equals("Discounts"))
+        {
+            viewHolder.category.setText("Angebote");
+        }
+        else if (mPost.get(i).getCategory().equals("Specials"))
+        {
+            viewHolder.category.setText("Specials");
+        }
+        else if (mPost.get(i).getCategory().equals("Jobs"))
+        {
+            viewHolder.category.setText("Jobangebote");
+        }
+        else if (mPost.get(i).getCategory().equals("Tutoring"))
+        {
+            viewHolder.category.setText("Nachhilfe");
+        }
+        else
+        {
+            viewHolder.category.setText("Wohnungen");
+        }
+
         publisherInfo(viewHolder.image_profile, viewHolder.username, post.getPublisher());
 
+        viewHolder.more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(mContext, view);
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+                            case R.id.menu_post_edit:
+                                editPost(post.getPostid());
+                                return true;
+                            case R.id.menu_post_delete:
+                                FirebaseDatabase.getInstance().getReference("Posts").child(post.getPostid()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful())
+                                        {
+                                            Toast.makeText(mContext, "Gelöscht!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                                return true;
+                            case R.id.menu_post_report:
+                                Toast.makeText(mContext, "Post wurde gemeldet!", Toast.LENGTH_SHORT).show();
+                            default:
+                                return false;
+                        }
+                    }
+                });
+                popupMenu.inflate(R.menu.post_menu);
+                if (!post.getPublisher().equals(firebaseUser.getUid()))
+                {
+                 popupMenu.getMenu().findItem(R.id.menu_post_edit).setVisible(false);
+                 popupMenu.getMenu().findItem(R.id.menu_post_delete).setVisible(false);
+                }
+                popupMenu.show();
+            }
+        });
     }
     // Returns the number of posts
     @Override
@@ -60,8 +134,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
     // Class for one post item
     public class ViewHolder extends RecyclerView.ViewHolder
     {
-        public ImageView image_profile, like, dislike;
-        public TextView username, post_text, likes;
+        public ImageView image_profile, like, dislike, more;
+        public TextView username, post_text, likes, category;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -72,6 +146,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
             username = itemView.findViewById(R.id.username);
             post_text = itemView.findViewById(R.id.post_text);
             likes = itemView.findViewById(R.id.likes);
+            more = itemView.findViewById(R.id.more);
+            category = itemView.findViewById(R.id.post_category);
 
         }
     }
@@ -90,6 +166,51 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+    private void editPost (String postid) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
+        alertDialog.setTitle("Post Bearbeiten");
+
+        EditText editText = new EditText (mContext);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+
+        editText.setLayoutParams(lp);
+        alertDialog.setView(editText);
+
+        getText(postid, editText);
+
+        alertDialog.setPositiveButton("Bearbeiten", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("postText", editText.getText().toString());
+
+                FirebaseDatabase.getInstance().getReference("Posts").child(postid).updateChildren(hashMap);
+            }
+        });
+        alertDialog.setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        alertDialog.show();
+    }
+
+    private void getText (String postid, EditText editText)
+    {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Posts").child(postid);
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                editText.setText(snapshot.getValue(Post.class).getPostText());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }

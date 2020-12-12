@@ -37,7 +37,7 @@ public class Lifestyle_TimelineFragment extends Fragment {
     private PostAdapter postAdapter;
     private List<Post> postList;
     private FloatingActionButton floatingActionButton;
-    private  DatabaseReference reference;
+    private String category;
     // Method which is called when the Fragment is clicked
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class Lifestyle_TimelineFragment extends Fragment {
                 startActivity(i);
             }
         });
-        readPosts(reference);
+        readPosts(category);
         return view;
     }
     public static Lifestyle_TimelineFragment newInstance() {
@@ -72,21 +72,32 @@ public class Lifestyle_TimelineFragment extends Fragment {
         return fragment;
 
     }
-    public void setReference ( DatabaseReference reference)
+    public void setCategory (String category)
     {
-        this.reference = reference;
+        this.category = category;
     }
-    private void readPosts(DatabaseReference reference)
+
+
+    private void readPosts(String postCategory)
     {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 postList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
                     Post post = snapshot.getValue(Post.class);
+                    if ("Timeline".equals(postCategory))
                     {
                         postList.add(post);
                     }
+                    if (post.getCategory().equals(postCategory))
+                    {
+                        postList.add(post);
+                    }
+
+
                     postAdapter.notifyDataSetChanged();
                 }
             }
