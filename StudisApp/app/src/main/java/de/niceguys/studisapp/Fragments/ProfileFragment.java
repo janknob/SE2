@@ -2,37 +2,27 @@ package de.niceguys.studisapp.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.Objects;
-
-import de.niceguys.studisapp.LoginActivity;
-import de.niceguys.studisapp.MainActivity;
 import de.niceguys.studisapp.Manager;
 import de.niceguys.studisapp.Model.CurrentUser;
-import de.niceguys.studisapp.Model.User;
 import de.niceguys.studisapp.R;
-import de.niceguys.studisapp.StartActivity;
+import de.niceguys.studisapp.StartLoginRegisterActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -80,16 +70,14 @@ public class ProfileFragment extends Fragment {
         tb.setNavigationOnClickListener(view1 -> dL.openDrawer(GravityCompat.START));
 
         nV = view.findViewById(R.id.nav_profile);
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CurrentUser.clear();
-                Manager.getInstance().getData("settings").edit().clear().apply();
-                Manager.getInstance().getData("course").edit().clear().apply();
-                FirebaseAuth.getInstance().signOut();
-                Intent i = new Intent(getActivity(), LoginActivity.class);
-                startActivity(i);
-            }
+        textView.setOnClickListener(view12 -> {
+            CurrentUser.clear();
+            Manager.getInstance().getData("settings").edit().clear().apply();
+            Manager.getInstance().getData("course").edit().clear().apply();
+            FirebaseAuth.getInstance().signOut();
+            Intent i = new Intent(getActivity(), StartLoginRegisterActivity.class);
+            i.putExtra("registration", false);
+            startActivity(i);
         });
         nV.setNavigationItemSelectedListener(item -> {
             assert getFragmentManager() != null;
