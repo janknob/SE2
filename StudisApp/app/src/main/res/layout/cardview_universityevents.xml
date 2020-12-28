@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:padding="10dp"
     app:cardBackgroundColor="@color/cardBackground"
+    android:backgroundTint="@color/glass"
     app:contentPaddingBottom="10dp"
     app:contentPaddingLeft="5dp"
     app:contentPaddingRight="5dp">
@@ -29,7 +30,7 @@
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/colorPrimary" />
+            android:background="@color/purpleMain" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,7 +55,7 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
-                android:background="@color/colorPrimary" />
+                android:background="@color/purpleMain" />
 
             <TextView
                 android:id="@+id/tv_event_date"
@@ -91,7 +92,7 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
-                android:background="@color/colorPrimary" />
+                android:background="@color/purpleMain" />
 
             <TextView
                 android:id="@+id/tv_universityevent_time"
@@ -128,7 +129,7 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
-                android:background="@color/colorPrimary" />
+                android:background="@color/purpleMain" />
 
             <TextView
                 android:id="@+id/tv_universityevent_place"
@@ -165,7 +166,7 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
-                android:background="@color/colorPrimary" />
+                android:background="@color/purpleMain" />
 
             <TextView
                 android:id="@+id/tv_universityevent_room"
