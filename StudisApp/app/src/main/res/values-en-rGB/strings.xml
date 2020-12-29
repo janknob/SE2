@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">StudisApp</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_edit_profile">EditProfile</string>
+    <string-array name="names">
+        <item>Events</item>
+        <item>Discounts</item>
+        <item>Specials</item>
+        <item>Job offers</item>
+        <item>Tutoring/Learning groups</item>
+        <item>Apartments</item>
+    </string-array>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <!-- Strings used for post menu -->
+    <string name="deletePost">Delete</string>
+    <string name="editPost">Edit</string>
+    <string name="reportPost">Report</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="timetable">Timetable</string>
+    <string name="tasks">Tasks</string>
+    <string name="news">News</string>
+    <string name="universityEvents">University events</string>
+    <string name="events">Events</string>
+    <string name="discounts">Discounts</string>
+    <string name="specials">Specials</string>
+    <string name="jobs">Job offers</string>
+    <string name="tutoring">Tutoring/Learning Groups</string>
+    <string name="apartments">Apartments</string>
+    <string name="timeline">Timeline</string>
+    <string name="logout">Logout</string>
+    <string name="profile">Profile</string>
+    <string name="editProfile">Edit profile</string>
+    <string name="settings">Settings</string>
+
+
+    <!--used as templates for downloading htmlpages in universityfragments-->
+
+    <string name="url_fh_website">https://www.hof-university.de</string>
+    <string name="url_timetable">https://www.hof-university.de/studierende/info-service/stundenplaene/?type=1421771406&amp;id=79&amp;tx_stundenplan[controller]=Ajax&amp;tx_stundenplan_stundenplan[studiengang]=%s&amp;tx_stundenplan_stundenplan[semester]=%s</string>
+    <string name="url_news">https://www.hof-university.de/ueber-uns/aktuelles/news.html</string>
+    <string name="url_modulbook_all">https://www.hof-university.de/studierende/info-service/modulhandbuecher?type=1421771407&amp;id=167&amp;controller=Ajax&amp;tx_modulhandbuch_modulhandbuch[cl]=%s&amp;tx_modulhandbuch_modulhandbuch[ye]=%s&amp;tx_modulhandbuch_modulhandbuch[se]=%s</string>
+    <string name="url_person">https://www.hof-university.de/ueber-uns/personen.html</string>
+    <string name="url_maps_template">https://www.bing.com/maps/default.aspx?lvl=10&amp;rtp=pos.%s_%s&amp;style=a</string>
+    <string name="url_timetableChanges_template">https://www.hof-university.de/index.php?type=1421771406&amp;id=166&amp;tx_stundenplan_stundenplan[controller]=Ajax&amp;tx_stundenplan_stundenplan[action]=loadAenderungen&amp;tx_stundenplan_stundenplan[studiengang]=%s&amp;tx_stundenplan_stundenplan[semester]=%s&amp;tx_stundenplan_stundenplan[datum]=%s&amp;1591119624290</string>
+    <string name="url_events">https://www.hof-university.de/ueber-uns/aktuelles/veranstaltungen.html</string>
+    <string name="url_meals">https://www.studentenwerk-oberfranken.de/essen/speiseplaene/hof/%s.html</string>
+
+    <string name="person_not_found">No result found for your search. Use further filters or the free text search.</string>
+    <string name="with">with</string>
+    <string name="shedule_changed_time">"Start at "</string>
+    <string name="shedule_changed_canceld">Cancelled</string>
+    <string name="downloading_information">Downloading required data...</string>
+
+    <string name="time">Time</string>
+    <string name="date">Date</string>
+    <string name="place">Place</string>
+
+    <string name="order_by">Sorted by</string>
+    <string name="title">Title</string>
+    <string name="deadline">Deadline</string>
+    <string name="invert">invert</string>
+    <string name="taskDeleted">task %s deleted.</string>
+    <string name="undo">Undo</string>
+    <string name="newTask">Add new task</string>
+    <string name="desription">description</string>
+    <string name="opt">optional</string>
+    <string name="needed">required</string>
+    <string name="addField">Add field/delete field</string>
+    <string name="finished">finished</string>
+    <string name="warning_no_title">Warning no title!</string>
+    <string name="warning_message2">Please choose a title so the tasks can be distinguished.</string>
+    <string name="warning_ok">OK</string>
+    <string name="warning_cancle_add_task">Discard draft task?</string>
+    <string name="warning_message3">Warning! If you resume to the timetable all task progress will be discarded !</string>
+    <string name="warning_backToShedule">Back to timetable</string>
+    <string name="warning_cancle">Cancel</string>
+    <string name="goToCourse">Go to course</string>
+    <string name="createUniversityTask">Create new task</string>
+    <string name="save">save</string>
+    <string name="meals">Meals</string>
+    <string name="mainmeals">Main meals</string>
+    <string name="extras">extras</string>
+    <string name="deserts">desserts</string>
+    <string name="snacks_salads">Snacks / Salads</string>
+    <string name="username">Username</string>
+    <string name="email">E-Mail</string>
+    <string name="password">Password</string>
+    <string name="registration">Joining StudisApp</string>
+    <string name="login">Login</string>
+    <string name="notRegistered">Not yet registered? Click here!</string>
+    <string name="placeholderText">Content cant be loaded</string>
+
+    <!--Strings used for activity_edit_profile-->
+    <string name="hintUsername">Udo42</string>
+    <string name="degreeCourse">Degree course</string>
+    <string name="hintDegreeCourse">Media computer science</string>
+    <string name="postCode">Postcode</string>
+    <string name="hintPostCode">96369</string>
+    <string name="semester">Semester</string>
+    <string name="hintSemester">4</string>
+    <string name="university">University</string>
+    <string name="hintUniversity">University Hof</string>
+
+
+    <!--Strings used for activity_post-->
+    <string name="post">Posten</string>
+    <string name="hintPostText">Enter your text here...</string>
+
+    <!--Strings used for cardviews-->
+    <string name="tasktitle">TASKTITLE</string>
+    <string name="courseName">Course name</string>
+    <string name="courseTime">Course\Time</string>
+    <string name="professor">Professor</string>
+    <string name="roomKind">Room | Kind</string>
+    <string name="testText">das hier soll ein ganz langer text werden um einen zeilenumbruch hervorzurufen</string>
+    <string name="textView">TextView</string>
+    <string name="room">Room</string>
+
+    <string name="language">Language</string>
+</resources>

@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:paddingBottom="5dp"
-                android:text="Kursname"
+                android:text="@string/courseName"
                 android:textAlignment="center"
                 android:textColor="@color/normalText"
                 android:textSize="18sp" />
@@ -55,7 +55,7 @@
                 android:gravity="center"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:text="Kurs\Zeit"
+                android:text="@string/courseTime"
                 android:textAlignment="center"
                 android:textColor="@color/normalText"
                 android:textSize="18sp" />
@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:text="Professor"
+                android:text="@string/professor"
                 android:textAlignment="center"
                 android:textColor="@color/normalText"
                 android:textSize="18sp" />
@@ -79,7 +79,7 @@
                 android:id="@+id/tv_cardview_shedule_room_kind"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="romm | Kind"
+                android:text="@string/roomKind"
                 android:textAlignment="center"
                 android:textColor="@color/normalText"
                 android:textSize="18sp" />

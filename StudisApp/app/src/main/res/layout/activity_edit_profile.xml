@@ -69,7 +69,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Benutzername"
+                            android:text="@string/username"
                             android:textColor="@color/black"
                             android:textSize="13sp" />
 
@@ -80,7 +80,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_marginTop="10dp"
-                            android:hint="Udo42"/>
+                            android:hint="@string/hintUsername"/>
 
 
                     </LinearLayout>
@@ -93,7 +93,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Studiengang"
+                            android:text="@string/degreeCourse"
                             android:textColor="@color/black"
                             android:textSize="13sp" />
 
@@ -104,7 +104,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_marginTop="10dp"
-                            android:hint="Medieninformatik"/>
+                            android:hint="@string/hintDegreeCourse"/>
 
 
                     </LinearLayout>
@@ -117,7 +117,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Postleitzahl"
+                            android:text="@string/postCode"
                             android:textColor="@color/black"
                             android:textSize="13sp" />
 
@@ -128,7 +128,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_marginTop="10dp"
-                            android:hint="96369"/>
+                            android:hint="@string/hintPostCode"/>
 
 
 
@@ -143,7 +143,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Semester"
+                            android:text="@string/semester"
                             android:textColor="@color/black"
                             android:textSize="13sp" />
 
@@ -154,7 +154,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_marginTop="10dp"
-                            android:hint="4"/>
+                            android:hint="@string/hintSemester"/>
 
 
 
@@ -170,7 +170,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Universität"
+                            android:text="@string/university"
                             android:textColor="@color/black"
                             android:textSize="13sp" />
 
@@ -181,7 +181,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_marginTop="10dp"
-                            android:hint="Hochschule Hof"/>
+                            android:hint="@string/hintUniversity"/>
 
 
 
@@ -200,7 +200,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:background="@drawable/btn_red_round"
-                            android:text="Speichern"/>
+                            android:text="@string/save"/>
 
 
                     </LinearLayout>

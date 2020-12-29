@@ -145,7 +145,7 @@
             android:id="@+id/tv_login_toRegistration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Noch nicht registriert? Dann klick hier!"
+            android:text="@string/notRegistered"
             android:textColor="@color/greyText"
             android:textAlignment="textEnd" />
     </LinearLayout>

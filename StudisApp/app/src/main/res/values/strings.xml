@@ -79,7 +79,7 @@
     <string name="warning_message2">Bitte gebe einen Titel an, damit man die Aufgaben anhand desssen unterscheiden kann.</string>
     <string name="warning_ok">OK</string>
     <string name="warning_cancle_add_task">Aufgabenentwurf verwerfen?</string>
-    <string name="warning_message3">Vorsicht! Wenn du jetzt zum Stundenplan zurückkehrs, geht die Aufgabe mitsamt ihrer Details verloren!</string>
+    <string name="warning_message3">Vorsicht! Wenn du jetzt zum Stundenplan zurückkehrst, geht die Aufgabe mitsamt ihrer Details verloren!</string>
     <string name="warning_backToShedule">Zurück zum Stundenplan</string>
     <string name="warning_cancle">Abbrechen</string>
     <string name="goToCourse">Zum Kurs</string>
@@ -95,6 +95,35 @@
     <string name="password">Passwort</string>
     <string name="registration">Joining StudisApp</string>
     <string name="login">Login</string>
+    <string name="notRegistered">Noch nicht registriert? Dann klick hier!</string>
+    <string name="placeholderText">Konnte nicht geladen werden</string>
 
+    <!--Strings used for activity_edit_profile-->
+    <string name="hintUsername">Udo42</string>
+    <string name="degreeCourse">Studiengang</string>
+    <string name="hintDegreeCourse">Medieninformatik</string>
+    <string name="postCode">Postleitzahl</string>
+    <string name="hintPostCode">96369</string>
+    <string name="semester">Semester</string>
+    <string name="hintSemester">4</string>
+    <string name="university">Universität</string>
+    <string name="hintUniversity">Hochschule Hof</string>
+
+
+    <!--Strings used for activity_post-->
+    <string name="post">Posten</string>
+    <string name="hintPostText">Geben sie hier ihren Text ein...</string>
+
+    <!--Strings used for cardviews-->
+    <string name="tasktitle">TASKTITLE</string>
+    <string name="courseName">Kursname</string>
+    <string name="courseTime">Kurs\Zeit</string>
+    <string name="professor">Professor</string>
+    <string name="roomKind">Room | Kind</string>
+    <string name="testText">das hier soll ein ganz langer text werden um einen zeilenumbruch hervorzurufen</string>
+    <string name="textView">TextView</string>
+    <string name="room">Raum</string>
+
+    <string name="language">Sprache</string>
 
 </resources>
