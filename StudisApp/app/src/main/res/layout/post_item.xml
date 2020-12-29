@@ -60,7 +60,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:padding="10dp">
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
@@ -72,6 +72,7 @@
                 android:id="@+id/dislike"
                 android:src="@drawable/ic_disslike"
                 android:layout_toEndOf="@id/like"
+                android:visibility="invisible"
                 android:layout_marginStart="10dp"
                 android:layout_toRightOf="@id/like"
                 android:layout_marginLeft="10dp" />
@@ -87,6 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/likes"
+            android:layout_marginBottom="10dp"
             android:textStyle="bold"
             android:layout_marginStart="10dp"
             android:textColor="@color/greyText"

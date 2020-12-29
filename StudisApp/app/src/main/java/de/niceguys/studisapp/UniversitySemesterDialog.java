@@ -7,6 +7,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class UniversitySemesterDialog extends AppCompatDialogFragment
 {
     @Override
@@ -16,6 +18,8 @@ public class UniversitySemesterDialog extends AppCompatDialogFragment
         builder.setTitle("Warnung").setMessage("Sie müssen zuerst im Profil einen Studiengang und ein Semester wählen").setPositiveButton("ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                BottomNavigationView bnv = requireActivity().findViewById(R.id.bottom_navigation);
+                bnv.setSelectedItemId(R.id.nav_profile);
 
             }
         });
