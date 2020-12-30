@@ -1,7 +1,5 @@
 package de.niceguys.studisapp;
 
-import android.util.Log;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,6 +11,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
+
 import de.niceguys.studisapp.Interfaces.Interface_Downloader;
 import de.niceguys.studisapp.Interfaces.Interface_Parser;
 
@@ -715,7 +714,7 @@ public class HtmlParser implements Interface_Downloader {
             e.printStackTrace();
 
         }
-        Log.w("HTMLPARSER","Working on " + date);
+        Manager.log("Working on" + date, this);
 
         Map<String, Map<String, String>> returnmap = new HashMap<>();
         Map<String, String> mainmap = new HashMap<>();
@@ -740,22 +739,22 @@ public class HtmlParser implements Interface_Downloader {
             try {
                 main = html.substring(html.indexOf("class=\"tx-bwrkspeiseplan__hauptgerichte"), html.indexOf("class=\"tx-bwrkspeiseplan", html.indexOf("class=\"tx-bwrkspeiseplan__hauptgerichte") + 10));
             } catch (Exception e) {
-                Log.wtf("HTMLParser", "No 'Maintable' for " + date);
+                Manager.log("No 'Maintable' for "+ date, this);
             }
             try {
                 extras = html.substring(html.indexOf("class=\"tx-bwrkspeiseplan__beilagen"), html.indexOf("class=\"tx-bwrkspeiseplan", html.indexOf("class=\"tx-bwrkspeiseplan__beilagen") + 10));
             } catch (Exception e) {
-                Log.wtf("HTMLParser", "No 'extratable' for " + date);
+                Manager.log("No 'extratable' for " + date, this);
             }
             try {
                 desserts = html.substring(html.indexOf("class=\"tx-bwrkspeiseplan__desserts"), html.indexOf("class=\"tx-bwrkspeiseplan", html.indexOf("class=\"tx-bwrkspeiseplan__desserts") + 10));
             } catch (Exception e) {
-                Log.wtf("HTMLParser", "No 'desserttable' for " + date);
+                Manager.log("No 'desserttable' for " + date, this);
             }
             try {
                 salads = html.substring(html.indexOf("class=\"tx-bwrkspeiseplan__salatsuppen"), html.indexOf("class=\"tx-bwrkspeiseplan", html.indexOf("class=\"tx-bwrkspeiseplan__salatsuppen") + 10));
             } catch (Exception e) {
-                Log.wtf("HTMLParser", "No 'saladstable' for " + date);
+                Manager.log("No 'saladtable' for " + date, this);
             }
             while (main.contains("tr class=\"\"")) {
 

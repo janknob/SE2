@@ -9,7 +9,6 @@ import android.content.res.Resources;
 import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -20,11 +19,13 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Space;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -34,11 +35,14 @@ import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+
 import de.niceguys.studisapp.Course;
 import de.niceguys.studisapp.HtmlParser;
 import de.niceguys.studisapp.Interfaces.Interface_Parser;
 import de.niceguys.studisapp.Manager;
 import de.niceguys.studisapp.R;
+import de.niceguys.studisapp.UniversitySemesterDialog;
+
 import static android.view.View.GONE;
 
 public class University_TimetableFragment extends Fragment implements Interface_Parser {
@@ -69,9 +73,20 @@ public class University_TimetableFragment extends Fragment implements Interface_
 
         this.view = view;
         sp_courses = Manager.getInstance().getData("courses");
-        if (Manager.getInstance().getData("settings").getBoolean("downloadShedule", true)) downloadCourses();
-        else showCourses();
 
+        if (Manager.getInstance().getSemesterId().equals("")) {
+
+            UniversitySemesterDialog universitySemesterDialog = new UniversitySemesterDialog();
+            universitySemesterDialog.show(requireActivity().getSupportFragmentManager(), "UniversityStudinegang");
+            universitySemesterDialog.setCancelable(false);
+
+        } else {
+
+            if (Manager.getInstance().getData("settings").getBoolean("downloadShedule", true))
+                downloadCourses();
+            else showCourses();
+
+        }
     }
 
     @SuppressLint("InflateParams")
@@ -85,7 +100,9 @@ public class University_TimetableFragment extends Fragment implements Interface_
         try {
             alertDialog.show();
         } catch (Exception e) {
-            Log.w("UniversityFragment", "Downloadingalert Error: " + e.getCause());
+
+            Manager.log("Downloadingalert Error: " + e.getCause(), this);
+
         }
 
         HtmlParser parser = new HtmlParser(this);
@@ -109,12 +126,8 @@ public class University_TimetableFragment extends Fragment implements Interface_
                 int width = sv.getChildAt(0).getWidth();
 
                 int days = width / deviceWidth;
-                //Log.wtf("scroll ",   "o");
 
                 if (!sheduleScrolling) {
-
-                    //Log.wtf("Scrolled to ", scrollX + ", " + scrollY);
-                    // Log.wtf("DeviceWidth", deviceWidth * 0.5 + "");
 
                     for (int i = 0; i < days; i++) {
 
@@ -160,7 +173,6 @@ public class University_TimetableFragment extends Fragment implements Interface_
 
                             }
 
-                            //Log.wtf("scroll to", i + "");
                             break;
                         }
 
@@ -228,18 +240,12 @@ public class University_TimetableFragment extends Fragment implements Interface_
 
             if (c.isShown()) {
 
-                CardView cv = new CardView(Manager.getInstance().getContext());
-                CardView.inflate(Manager.getInstance().getContext(), R.layout.cardview_timetable, cv);
-                cv.setLayoutParams(new CardView.LayoutParams( (int)(deviceWidth - (deviceWidth*0.1)), CardView.LayoutParams.WRAP_CONTENT));
+                View cv = View.inflate(requireContext(), R.layout.cardview_timetable, null);
+                cv.setLayoutParams(new ViewGroup.LayoutParams( (int)(deviceWidth - (deviceWidth*0.1)), LinearLayout.LayoutParams.WRAP_CONTENT));
                 ((TextView)cv.findViewById(R.id.tv_cardview_shedule_name)).setText(c.getCourseName());
                 ((TextView)cv.findViewById(R.id.tv_cardview_shedule_time)).setText(c.getTimeFormatted());
                 ((TextView)cv.findViewById(R.id.tv_cardview_shedule_prof)).setText(String.format("%s %s", Manager.getInstance().getContext().getResources().getString(R.string.with),c.getProfessor()));
                 ((TextView)cv.findViewById(R.id.tv_cardview_shedule_room_kind)).setText(String.format("%s | %s", c.getRoomNumber(), c.getKind()));
-
-                cv.setRight(40);
-                cv.setCardElevation(20);
-                cv.setRadius(20);
-
 
                 Calendar calendar = Calendar.getInstance();
                 int daycount = calendar.get(Calendar.DAY_OF_WEEK);
@@ -470,9 +476,6 @@ public class University_TimetableFragment extends Fragment implements Interface_
 
     private void applySheduleChanges(Map<String, String> values) {
 
-        //Log.wtf("SheduleChange::", values.values().toString());
-
-
         for (String s : values.values()) {
 
             String[] info = s.split("\\|"); //0 = degree, 1 = coursename,  2 = prof, 3 = canceled, 4 = replace;
@@ -496,7 +499,6 @@ public class University_TimetableFragment extends Fragment implements Interface_
             try {
                 Date temp = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN).parse(date);
                 String dayOfWeek = new SimpleDateFormat("EEEE", Locale.GERMANY).format(Objects.requireNonNull(temp));
-                //Log.wtf("day of changed Shedule:", dayOfWeek);
 
                 while (!buildFinished){
                     try{

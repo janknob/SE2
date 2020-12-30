@@ -1,17 +1,15 @@
 package de.niceguys.studisapp.Fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,9 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
-import de.niceguys.studisapp.EditProfileActivity;
 import de.niceguys.studisapp.Model.User;
 import de.niceguys.studisapp.R;
 
@@ -81,7 +76,7 @@ public class Profile_MainFragment extends Fragment {
                         tvPostalCode.setText(ds.child(POSTCODE).getValue(String.class));
                         tvSemester.setText(ds.child(SEM).getValue(String.class));
                         tvUniversity.setText(ds.child(UNI).getValue(String.class));
-                        Glide.with(getContext()).load(user1.getImgUrl()).into(image);
+                        Glide.with(requireActivity()).load(user1.getImgUrl()).into(image);
                     }
                 }
 
