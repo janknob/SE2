@@ -2,9 +2,11 @@ package de.niceguys.studisapp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.util.Log;
 
 import java.lang.ref.WeakReference;
+import java.util.Locale;
 
 import de.niceguys.studisapp.Model.CurrentUser;
 
@@ -12,6 +14,22 @@ public class Manager {
 
     private static Manager instance;
     private WeakReference<Context> context;
+
+    public void setLocale(Context app) {
+
+        SharedPreferences sp_settings = getData("settings");
+
+        String language = sp_settings.getString("language", "de");
+
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+        Configuration configuration = new Configuration();
+        configuration.setLocale(locale);
+        app.getResources().getConfiguration().setLocale(locale);
+        //requireContext() = requireContext().createConfigurationContext(configuration);
+        app.getResources().updateConfiguration(context.get().getResources().getConfiguration(), context.get().getResources().getDisplayMetrics());
+
+    }
 
     public enum Parser {degrees, semester, courses, news, modulbook, person, scheduleChanges, event, meals}
 

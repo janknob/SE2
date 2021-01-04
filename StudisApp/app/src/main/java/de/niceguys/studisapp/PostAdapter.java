@@ -61,6 +61,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
         Post post = mPost.get(i);
         viewHolder.post_text.setText(mPost.get(i).getPostText());
         viewHolder.username.setText(mPost.get(i).getPublisher());
+        //TODO Hard Code shit
         if (mPost.get(i).getCategory().equals("Events"))
         {
             viewHolder.category.setText("Events");
@@ -69,9 +70,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
         {
             viewHolder.category.setText("Angebote");
         }
-        else if (mPost.get(i).getCategory().equals("Specials"))
+        else if (mPost.get(i).getCategory().equals("Others"))
         {
-            viewHolder.category.setText("Specials");
+            viewHolder.category.setText("Others");
         }
         else if (mPost.get(i).getCategory().equals("Jobs"))
         {

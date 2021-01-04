@@ -1,48 +1,35 @@
 package de.niceguys.studisapp.Fragments;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.preference.ListPreference;
+import androidx.preference.PreferenceFragmentCompat;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import java.util.Locale;
 
-import com.google.firebase.database.DatabaseReference;
-
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Objects;
-
-import de.niceguys.studisapp.Interfaces.Interface_Parser;
+import de.niceguys.studisapp.MainActivity;
 import de.niceguys.studisapp.Manager;
 import de.niceguys.studisapp.R;
-import de.niceguys.studisapp.HtmlParser;
-
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Profile_SettingsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Profile_SettingsFragment extends Fragment implements Interface_Parser {
+public class Profile_SettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private View view;
-    private DatabaseReference userRef;
-    private String degree, degree_id, semester, semester_id;
+    private Profile_SettingsFragment settingsFragment;
+    private Switch aSwitch;
 
-
-   // public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             //Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_profile__settings, container, false);
-
-    //}
     public static Profile_SettingsFragment newInstance() {
 
         Profile_SettingsFragment fragment = new Profile_SettingsFragment();
@@ -58,11 +45,81 @@ public class Profile_SettingsFragment extends Fragment implements Interface_Pars
 
         this.view = view;
 
-        HtmlParser parser = new HtmlParser(this);
-        parser.parse(Manager.Parser.degrees);
+        Manager.log("Show the layout", this);
+
+
+
+    }
+    @Override
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        setPreferencesFromResource(R.xml.root_preferences, rootKey);
+
+        Manager.log("I am hearing...", this);
+
+        ListPreference listPreference = findPreference("language");
+        listPreference.setOnPreferenceChangeListener((preference, newValue) -> {
+
+            if (newValue.equals("german"))
+            {
+                selectLanguage("de");
+                update();
+            }
+            if (newValue.equals("english"))
+            {
+                selectLanguage("en");
+                update();
+            }
+            return true;
+        });
+    }
+
+    private void selectLanguage (String language)
+    {
+        Manager.log("First: " + language);
+        Manager.getInstance().getData("settings").edit().putString("language", language).commit();
+
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+
+        getActivity().getResources().getConfiguration().locale= locale;
+
+        requireContext().getResources().updateConfiguration(getActivity().getResources().getConfiguration(), getResources().getDisplayMetrics());
+
+
+
+        //TODO Add great userexperience -> get back here after restart
+
+        Intent intent = new Intent(requireContext(), MainActivity.class);
+        // intent.putExtras get here
+        startActivity(intent);
+        requireActivity().finish();
+
+    }
+    private void update ()
+    {
+       newInstance();
+    }
+    @Override
+    public void onConfigurationChanged (Configuration newConfig) {
+
+        super.onConfigurationChanged(newConfig);
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
 
     }
 
+    @Override
+    public void onPause() {
+        getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
+        super.onPause();
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+    }
 }
 
 

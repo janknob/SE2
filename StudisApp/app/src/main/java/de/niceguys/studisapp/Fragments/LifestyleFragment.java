@@ -1,29 +1,21 @@
 package de.niceguys.studisapp.Fragments;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Objects;
 
 import de.niceguys.studisapp.R;
 
@@ -41,7 +33,7 @@ public class LifestyleFragment extends Fragment {
     private Lifestyle_TimelineFragment timelineFragment;
     private Lifestyle_TimelineFragment eventFragment;
     private Lifestyle_TimelineFragment discountsFragment;
-    private Lifestyle_TimelineFragment specialsFragment;
+    private Lifestyle_TimelineFragment othersFragment;
     private Lifestyle_TimelineFragment jobsFragment;
     private Lifestyle_TimelineFragment tutoringFragment;
     private Lifestyle_TimelineFragment apartmentFragment;
@@ -82,18 +74,18 @@ public class LifestyleFragment extends Fragment {
 
         nV = view.findViewById(R.id.nV_lifestyle);
         nV.setNavigationItemSelectedListener(item -> {
-            assert getFragmentManager() != null;
+            assert requireActivity().getSupportFragmentManager() != null;
             switch (item.getItemId()) {
 
                 case R.id.menu_lifestyle_timeline:
 
 
-                    FragmentTransaction ft8 = getFragmentManager().beginTransaction();
+                    FragmentTransaction ft8 = requireActivity().getSupportFragmentManager().beginTransaction();
                     timelineFragment.setCategory("Timeline");
                     if (eventFragment != null && eventFragment.isAdded()) ft8.hide(eventFragment);
                     if (apartmentFragment != null && apartmentFragment.isAdded()) ft8.hide(apartmentFragment);
                     if (discountsFragment != null && discountsFragment.isAdded()) ft8.hide(discountsFragment);
-                    if (specialsFragment != null && specialsFragment.isAdded()) ft8.hide(specialsFragment);
+                    if (othersFragment != null && othersFragment.isAdded()) ft8.hide(othersFragment);
                     if (jobsFragment != null && jobsFragment.isAdded()) ft8.hide(jobsFragment);
                     if (tutoringFragment != null && tutoringFragment.isAdded()) ft8.hide(tutoringFragment);
                     ft8.remove(timelineFragment);
@@ -112,16 +104,16 @@ public class LifestyleFragment extends Fragment {
                     //Change fragment
                     if (eventFragment == null) {
                         eventFragment = Lifestyle_TimelineFragment.newInstance();
-                        FragmentTransaction ft2 = getFragmentManager().beginTransaction();
+                        FragmentTransaction ft2 = requireActivity().getSupportFragmentManager().beginTransaction();
                         ft2.add(R.id.fl_lifestyle_fragmentContainer, eventFragment);
                         ft2.commit();
                     }
 
                     Log.w("LifestyleFragment", "Events selected");
-                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    FragmentTransaction ft = requireActivity().getSupportFragmentManager().beginTransaction();
                     eventFragment.setCategory("Events");
                     if (discountsFragment != null && discountsFragment.isAdded()) ft.hide(discountsFragment);
-                    if (specialsFragment != null && specialsFragment.isAdded()) ft.hide(specialsFragment);
+                    if (othersFragment != null && othersFragment.isAdded()) ft.hide(othersFragment);
                     if (jobsFragment != null && jobsFragment.isAdded()) ft.hide(jobsFragment);
                     if (tutoringFragment != null && tutoringFragment.isAdded()) ft.hide(tutoringFragment);
                     if (apartmentFragment != null && apartmentFragment.isAdded()) ft.hide(apartmentFragment);
@@ -140,15 +132,15 @@ public class LifestyleFragment extends Fragment {
 
                     if (discountsFragment == null) {
                         discountsFragment = Lifestyle_TimelineFragment.newInstance();
-                        FragmentTransaction ft2 = getFragmentManager().beginTransaction();
+                        FragmentTransaction ft2 = requireActivity().getSupportFragmentManager().beginTransaction();
                         ft2.add(R.id.fl_lifestyle_fragmentContainer, discountsFragment);
                         ft2.commit();
                     }
 
-                    FragmentTransaction ft3 = getFragmentManager().beginTransaction();
+                    FragmentTransaction ft3 = requireActivity().getSupportFragmentManager().beginTransaction();
                     discountsFragment.setCategory("Discounts");
                     if (eventFragment != null && eventFragment.isAdded()) ft3.hide(eventFragment);
-                    if (specialsFragment != null && specialsFragment.isAdded()) ft3.hide(specialsFragment);
+                    if (othersFragment != null && othersFragment.isAdded()) ft3.hide(othersFragment);
                     if (jobsFragment != null && jobsFragment.isAdded()) ft3.hide(jobsFragment);
                     if (tutoringFragment != null && tutoringFragment.isAdded()) ft3.hide(tutoringFragment);
                     if (apartmentFragment != null && apartmentFragment.isAdded()) ft3.hide(apartmentFragment);
@@ -159,29 +151,6 @@ public class LifestyleFragment extends Fragment {
 
                     break;
 
-                case R.id.menu_lifestyle_specials:
-
-                    //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Specials");
-
-                    if (specialsFragment == null) {
-                        specialsFragment = Lifestyle_TimelineFragment.newInstance();
-                        FragmentTransaction ft2 = getFragmentManager().beginTransaction();
-                        ft2.add(R.id.fl_lifestyle_fragmentContainer, specialsFragment);
-                        ft2.commit();
-                    }
-
-                    FragmentTransaction ft4 = getFragmentManager().beginTransaction();
-                    specialsFragment.setCategory("Specials");
-                    if (eventFragment != null && eventFragment.isAdded()) ft4.hide(eventFragment);
-                    if (discountsFragment != null && discountsFragment.isAdded()) ft4.hide(discountsFragment);
-                    if (jobsFragment != null && jobsFragment.isAdded()) ft4.hide(jobsFragment);
-                    if (tutoringFragment != null && tutoringFragment.isAdded()) ft4.hide(tutoringFragment);
-                    if (apartmentFragment != null && apartmentFragment.isAdded()) ft4.hide(apartmentFragment);
-                    ft4.hide(timelineFragment);
-                    ft4.show(specialsFragment);
-                    ft4.commit();
-                    tb.setTitle(getResources().getString(R.string.specials));
-                    break;
 
                 case R.id.menu_lifestyle_jobs:
 
@@ -189,16 +158,16 @@ public class LifestyleFragment extends Fragment {
 
                     if (jobsFragment == null) {
                         jobsFragment = Lifestyle_TimelineFragment.newInstance();
-                        FragmentTransaction ft2 = getFragmentManager().beginTransaction();
+                        FragmentTransaction ft2 = requireActivity().getSupportFragmentManager().beginTransaction();
                         ft2.add(R.id.fl_lifestyle_fragmentContainer, jobsFragment);
                         ft2.commit();
                     }
 
-                    FragmentTransaction ft5 = getFragmentManager().beginTransaction();
+                    FragmentTransaction ft5 = requireActivity().getSupportFragmentManager().beginTransaction();
                     jobsFragment.setCategory("Jobs");
                     if (eventFragment != null && eventFragment.isAdded()) ft5.hide(eventFragment);
                     if (discountsFragment != null && discountsFragment.isAdded()) ft5.hide(discountsFragment);
-                    if (specialsFragment != null && specialsFragment.isAdded()) ft5.hide(specialsFragment);
+                    if (othersFragment != null && othersFragment.isAdded()) ft5.hide(othersFragment);
                     if (tutoringFragment != null && tutoringFragment.isAdded()) ft5.hide(tutoringFragment);
                     if (apartmentFragment != null && apartmentFragment.isAdded()) ft5.hide(apartmentFragment);
                     ft5.hide(timelineFragment);
@@ -213,16 +182,16 @@ public class LifestyleFragment extends Fragment {
 
                     if (tutoringFragment == null) {
                         tutoringFragment = Lifestyle_TimelineFragment.newInstance();
-                        FragmentTransaction ft2 = getFragmentManager().beginTransaction();
+                        FragmentTransaction ft2 = requireActivity().getSupportFragmentManager().beginTransaction();
                         ft2.add(R.id.fl_lifestyle_fragmentContainer, tutoringFragment);
                         ft2.commit();
                     }
 
-                    FragmentTransaction ft6 = getFragmentManager().beginTransaction();
+                    FragmentTransaction ft6 = requireActivity().getSupportFragmentManager().beginTransaction();
                     tutoringFragment.setCategory("Tutoring");
                     if (eventFragment != null && eventFragment.isAdded()) ft6.hide(eventFragment);
                     if (discountsFragment != null && discountsFragment.isAdded()) ft6.hide(discountsFragment);
-                    if (specialsFragment != null && specialsFragment.isAdded()) ft6.hide(specialsFragment);
+                    if (othersFragment != null && othersFragment.isAdded()) ft6.hide(othersFragment);
                     if (jobsFragment != null && jobsFragment.isAdded()) ft6.hide(jobsFragment);
                     if (apartmentFragment != null && apartmentFragment.isAdded()) ft6.hide(apartmentFragment);
                     ft6.hide(timelineFragment);
@@ -237,23 +206,47 @@ public class LifestyleFragment extends Fragment {
 
                     if (apartmentFragment == null) {
                         apartmentFragment = Lifestyle_TimelineFragment.newInstance();
-                        FragmentTransaction ft2 = getFragmentManager().beginTransaction();
+                        FragmentTransaction ft2 = requireActivity().getSupportFragmentManager().beginTransaction();
                         ft2.add(R.id.fl_lifestyle_fragmentContainer, apartmentFragment);
                         ft2.commit();
                     }
 
-                    FragmentTransaction ft7 = getFragmentManager().beginTransaction();
+                    FragmentTransaction ft7 = requireActivity().getSupportFragmentManager().beginTransaction();
                     apartmentFragment.setCategory("Apartments");
                     if (eventFragment != null && eventFragment.isAdded()) ft7.hide(eventFragment);
                     //if (eventFragment != null && eventFragment.isAdded()) ft7.hide(eventFragment);
                     if (discountsFragment != null && discountsFragment.isAdded()) ft7.hide(discountsFragment);
-                    if (specialsFragment != null && specialsFragment.isAdded()) ft7.hide(specialsFragment);
+                    if (othersFragment != null && othersFragment.isAdded()) ft7.hide(othersFragment);
                     if (jobsFragment != null && jobsFragment.isAdded()) ft7.hide(jobsFragment);
                     if (tutoringFragment != null && tutoringFragment.isAdded()) ft7.hide(tutoringFragment);
                     ft7.hide(timelineFragment);
                     ft7.show(apartmentFragment);
                     ft7.commit();
                     tb.setTitle(getResources().getString(R.string.apartments));
+                    break;
+
+                case R.id.menu_lifestyle_others:
+
+                    //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Specials");
+
+                    if (othersFragment == null) {
+                        othersFragment = Lifestyle_TimelineFragment.newInstance();
+                        FragmentTransaction ft2 = requireActivity().getSupportFragmentManager().beginTransaction();
+                        ft2.add(R.id.fl_lifestyle_fragmentContainer, othersFragment);
+                        ft2.commit();
+                    }
+
+                    FragmentTransaction ft4 = requireActivity().getSupportFragmentManager().beginTransaction();
+                    othersFragment.setCategory("Others");
+                    if (eventFragment != null && eventFragment.isAdded()) ft4.hide(eventFragment);
+                    if (discountsFragment != null && discountsFragment.isAdded()) ft4.hide(discountsFragment);
+                    if (jobsFragment != null && jobsFragment.isAdded()) ft4.hide(jobsFragment);
+                    if (tutoringFragment != null && tutoringFragment.isAdded()) ft4.hide(tutoringFragment);
+                    if (apartmentFragment != null && apartmentFragment.isAdded()) ft4.hide(apartmentFragment);
+                    ft4.hide(timelineFragment);
+                    ft4.show(othersFragment);
+                    ft4.commit();
+                    tb.setTitle(getResources().getString(R.string.others));
                     break;
 
             }

@@ -1,22 +1,20 @@
 package de.niceguys.studisapp;
 
-import androidx.annotation.NonNull;
+import android.content.res.Configuration;
+import android.os.Build;
+import android.os.Bundle;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.graphics.PorterDuff;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-
-import com.google.android.material.bottomnavigation.BottomNavigationMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
+import java.util.List;
+import java.util.Locale;
 
 import de.niceguys.studisapp.Fragments.LifestyleFragment;
 import de.niceguys.studisapp.Fragments.ProfileFragment;
@@ -29,15 +27,42 @@ public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference userRef = database.getReference("Users");
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // set the view with XML file acitvity_main which contains the bottom navigation bar
-        setContentView(R.layout.activity_main);
 
         Manager.getInstance().setContext(this);
 
+        //Manager.getInstance().setLocale(this);
+
+        setContentView(R.layout.activity_main);
+
+        if (savedInstanceState != null) {
+            savedInstanceState.clear();
+
+            FragmentTransaction ftToKill = getSupportFragmentManager().beginTransaction();
+
+
+            List<Fragment> fragmentList = getSupportFragmentManager().getFragments();
+
+            for (Fragment toClear : fragmentList) {
+
+                ftToKill.remove(toClear);
+
+            }
+
+
+
+            ftToKill.commit();
+
+        }
+
+
+
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_lifestyle:
@@ -83,4 +108,18 @@ public class MainActivity extends AppCompatActivity {
         universitySemesterDialog.setCancelable(false);
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Locale locale = new Locale(Manager.getInstance().getData("settings").getString("language", "de"));
+        Locale.setDefault(locale);
+        Manager.log(Locale.getDefault() + "");
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
+
+    }
 }

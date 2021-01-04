@@ -1,27 +1,20 @@
 package de.niceguys.studisapp.Fragments;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.Objects;
 
 import de.niceguys.studisapp.Manager;
 import de.niceguys.studisapp.R;
@@ -71,7 +64,7 @@ public class UniversityFragment extends Fragment {
 
         nV = view.findViewById(R.id.nV_university);
         nV.setNavigationItemSelectedListener(item -> {
-            assert getFragmentManager() != null;
+            assert requireActivity().getSupportFragmentManager() != null;
             switch (item.getItemId()) {
 
                 case R.id.menu_university_timetable:
@@ -79,7 +72,7 @@ public class UniversityFragment extends Fragment {
                     //Change fragment
                     Log.w("UniversityFragment", "Timetable selected");
                     Manager.getInstance().getData("settings").edit().putBoolean("downloadShedule", true).apply();
-                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    FragmentTransaction ft = requireActivity().getSupportFragmentManager().beginTransaction();
                     if (newsFragment != null && newsFragment.isAdded()) ft.hide(newsFragment);
                     if (eventsFragment != null && eventsFragment.isAdded()) ft.hide(eventsFragment);
                     if (tasksFragment != null && tasksFragment.isAdded()) ft.hide(tasksFragment);
@@ -97,13 +90,13 @@ public class UniversityFragment extends Fragment {
 
                     if (newsFragment == null) {
                         newsFragment = University_NewsFragment.newInstance();
-                        FragmentTransaction ft2 = getFragmentManager().beginTransaction();
+                        FragmentTransaction ft2 = requireActivity().getSupportFragmentManager().beginTransaction();
                         ft2.add(R.id.fl_university_fragmentContainer, newsFragment);
                         ft2.commit();
                     }
 
 
-                    FragmentTransaction ft3 = getFragmentManager().beginTransaction();
+                    FragmentTransaction ft3 = requireActivity().getSupportFragmentManager().beginTransaction();
                     if (mealsFragment != null && mealsFragment.isAdded()) ft3.hide(mealsFragment);
                     if (eventsFragment != null && eventsFragment.isAdded()) ft3.hide(eventsFragment);
                     if (tasksFragment != null && tasksFragment.isAdded()) ft3.hide(tasksFragment);
@@ -118,12 +111,12 @@ public class UniversityFragment extends Fragment {
 
                     if (eventsFragment == null) {
                         eventsFragment = University_EventsFragment.newInstance();
-                        FragmentTransaction ft2 = getFragmentManager().beginTransaction();
+                        FragmentTransaction ft2 = requireActivity().getSupportFragmentManager().beginTransaction();
                         ft2.add(R.id.fl_university_fragmentContainer, eventsFragment);
                         ft2.commit();
                     }
 
-                    FragmentTransaction ft4 = getFragmentManager().beginTransaction();
+                    FragmentTransaction ft4 = requireActivity().getSupportFragmentManager().beginTransaction();
 
                     if (newsFragment != null && newsFragment.isAdded()) ft4.hide(newsFragment);
                     if (tasksFragment != null && tasksFragment.isAdded()) ft4.hide(tasksFragment);
@@ -139,12 +132,12 @@ public class UniversityFragment extends Fragment {
 
                     if (tasksFragment == null) {
                         tasksFragment = University_TasksFragment.newInstance();
-                        FragmentTransaction ft2 = getFragmentManager().beginTransaction();
+                        FragmentTransaction ft2 = requireActivity().getSupportFragmentManager().beginTransaction();
                         ft2.add(R.id.fl_university_fragmentContainer, tasksFragment);
                         ft2.commit();
                     }
 
-                    FragmentTransaction ft5 = getFragmentManager().beginTransaction();
+                    FragmentTransaction ft5 = requireActivity().getSupportFragmentManager().beginTransaction();
                     if (newsFragment != null && newsFragment.isAdded()) ft5.hide(newsFragment);
                     if (eventsFragment != null && eventsFragment.isAdded()) ft5.hide(eventsFragment);
                     if (mealsFragment != null && mealsFragment.isAdded()) ft5.hide(mealsFragment);
@@ -160,12 +153,12 @@ public class UniversityFragment extends Fragment {
 
                     if (mealsFragment == null) {
                         mealsFragment = University_MealsFragment.newInstance();
-                        FragmentTransaction ft2 = getFragmentManager().beginTransaction();
+                        FragmentTransaction ft2 = requireActivity().getSupportFragmentManager().beginTransaction();
                         ft2.add(R.id.fl_university_fragmentContainer, mealsFragment);
                         ft2.commit();
                     }
 
-                    FragmentTransaction ft6 = getFragmentManager().beginTransaction();
+                    FragmentTransaction ft6 = requireActivity().getSupportFragmentManager().beginTransaction();
                     if (newsFragment != null && newsFragment.isAdded()) ft6.hide(newsFragment);
                     if (eventsFragment != null && eventsFragment.isAdded()) ft6.hide(eventsFragment);
                     if (tasksFragment != null && tasksFragment.isAdded()) ft6.hide(tasksFragment);

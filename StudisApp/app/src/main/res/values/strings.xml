@@ -6,10 +6,10 @@
     <string-array name="names">
         <item>Events</item>
         <item>Angebote</item>
-        <item>Specials</item>
         <item>Jobangebote</item>
         <item>Nachhilfe/Lerngruppen</item>
         <item>Wohnungen</item>
+        <item>Sonstiges</item>
     </string-array>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -30,16 +30,22 @@
     <string name="universityEvents">Veranstaltungen</string>
     <string name="events">Events</string>
     <string name="discounts">Angebote</string>
-    <string name="specials">Specials</string>
+    <string name="others">Sonstiges</string>
     <string name="jobs">Jobangebote</string>
     <string name="tutoring">Nachhilfe/Lerngruppen</string>
     <string name="apartments">Wohnungen</string>
-    <string name="timeline">Timeline</string>
+    <string name="timeline">WAS IST DEN MIT KARSTEN LOS</string>
     <string name="logout">Logout</string>
     <string name="profile">Profil</string>
     <string name="editProfile">Profil bearbeiten</string>
     <string name="settings">Einstellungen</string>
 
+    <!--used as settings -->
+    <string name="german">Deutsch</string>
+    <string name="english">Englisch</string>
+    <string name="select_language">Sprache auswählen</string>
+    <string name="appearance">Erscheinungsbild</string>
+    <string name="toggle_darkmode">Darkmode</string>
 
     <!--used as templates for downloading htmlpages in universityfragments-->
 
@@ -128,5 +134,6 @@
     <string name="room">Raum</string>
 
     <string name="language">Sprache</string>
+    <!-- Preference Titles -->
 
 </resources>
