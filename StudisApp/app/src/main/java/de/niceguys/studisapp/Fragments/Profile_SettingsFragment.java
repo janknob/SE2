@@ -74,9 +74,16 @@ public class Profile_SettingsFragment extends PreferenceFragmentCompat implement
         });
 
         SwitchPreferenceCompat darkmodeSwitch = findPreference("darkmode");
+
+        boolean isChecked = false;
+        isChecked = darkmodeSwitch.isChecked();
+
+
+
+
         darkmodeSwitch.setOnPreferenceChangeListener((preference, newValue) -> {
 
-            if ((boolean)newValue) {
+            if ((boolean) newValue) {
 
                 Manager.getInstance().getData("settings").edit().putString("appTheme", "Dunkel").commit();
 
@@ -85,14 +92,26 @@ public class Profile_SettingsFragment extends PreferenceFragmentCompat implement
                 Manager.getInstance().getData("settings").edit().putString("appTheme", "Hell").commit();
 
             }
+            new Thread(this::restart).start();
+            return true;
 
-            Intent intent = new Intent(requireContext(), MainActivity.class);
-            // intent.putExtras get here
-            startActivity(intent);
-            requireActivity().finish();
-
-            return false;
         });
+
+    }
+
+
+    private void restart() {
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Intent intent = new Intent(requireContext(), MainActivity.class);
+        // intent.putExtras get here
+        startActivity(intent);
+        requireActivity().finish();
+
 
     }
 

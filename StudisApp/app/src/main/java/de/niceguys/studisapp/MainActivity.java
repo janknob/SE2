@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         // set the view with XML file acitvity_main which contains the bottom navigation bar
 
         Manager.getInstance().setContext(this);
-
+        setLocale();
         switch (getSharedPreferences("settings", MODE_PRIVATE).getString("appTheme", "System")) {
 
             case "Hell":
@@ -118,9 +118,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+    protected void setLocale() {
 
         Locale locale = new Locale(Manager.getInstance().getData("settings").getString("language", "de"));
         Locale.setDefault(locale);
