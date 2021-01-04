@@ -4,8 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
-    app:cardBackgroundColor="@color/cardBackground"
-    android:backgroundTint="@color/glass"
     app:contentPaddingBottom="10dp"
     app:contentPaddingLeft="5dp"
     app:contentPaddingRight="5dp">
@@ -13,6 +11,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/layout_bg"
+        android:padding="10dp"
         android:orientation="vertical">
 
         <TextView

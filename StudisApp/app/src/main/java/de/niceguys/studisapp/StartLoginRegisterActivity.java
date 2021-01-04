@@ -263,10 +263,19 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
                             System.out.println(ds.child("username").getValue(String.class));
 
                             CurrentUser temp = CurrentUser.getInstance();
-                            temp.setSemester(ds.child("semester").getValue(String.class));
-                            temp.setSemesterId(ds.child("semesterId").getValue(String.class));
-                            temp.setDegreeId(ds.child("courseOfStudyId").getValue(String.class));
-                            temp.setDegree(ds.child("courseOfStudy").getValue(String.class));
+
+                            String deg = ds.child("courseOfStudy").getValue(String.class);
+                            String degId = ds.child("courseOfStudyId").getValue(String.class);
+                            String sem = ds.child("semester").getValue(String.class);
+                            String semId = ds.child("semesterId").getValue(String.class);
+                            if (sem != null)
+                                temp.setSemester(sem);
+                            if (semId != null)
+                                temp.setSemesterId(semId);
+                            if (degId != null)
+                                temp.setDegreeId(degId);
+                            if (deg != null)
+                                temp.setDegree(deg);
                             System.out.println("RDY");
                         }
                     }

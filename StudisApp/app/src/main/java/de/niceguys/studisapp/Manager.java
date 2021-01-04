@@ -2,6 +2,7 @@ package de.niceguys.studisapp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import java.lang.ref.WeakReference;
 
@@ -12,13 +13,9 @@ public class Manager {
     private static Manager instance;
     private WeakReference<Context> context;
 
-    public enum Parser {
-        degrees, semester, courses, news, modulbook, person, scheduleChanges, event, meals
-    }
+    public enum Parser {degrees, semester, courses, news, modulbook, person, scheduleChanges, event, meals}
 
-    private Manager() {
-
-    }
+    private Manager() { }
 
     public static Manager getInstance() {
 
@@ -28,49 +25,32 @@ public class Manager {
 
     }
 
-    public SharedPreferences getData(String name) {
+    public SharedPreferences getData(String name) {return context.get().getSharedPreferences(name, Context.MODE_PRIVATE );}
 
-        return context.get().getSharedPreferences(name, Context.MODE_PRIVATE );
+    public void setContext(Context context) {this.context = new WeakReference<>(context);}
 
-    }
+    public Context getContext() {return context.get();}
 
-    public void setContext(Context context) {
-        this.context = new WeakReference<Context>(context);
-    }
+    public String getCourseId() {return CurrentUser.getInstance().getDegreeId();}
 
-    public Context getContext() {
-        return context.get();
-    }
+    public String getCourse() {return CurrentUser.getInstance().getDegree();}
 
-    public String getCourseId() {
+    public String getSemesterId() {return CurrentUser.getInstance().getSemesterId();}
 
-        //DataSnapshot ds = getUser();
-        //return ds.child("courseOfStudyId").getValue(String.class);
-        return CurrentUser.getInstance().getDegreeId();
+    public String getSemester() {return CurrentUser.getInstance().getSemester();}
 
-    }
+    public static void log(String toLog, Object...args) {
 
-    public String getCourse() {
+        if (args.length == 1)
 
-        //DataSnapshot ds = getUser();
-        //return ds.child("courseOfStudy").getValue(String.class);
+            if (args[0] instanceof String)
+                Log.println(Log.ASSERT, args[0].toString(), toLog);
+            else
+                Log.println(Log.ASSERT, args[0].getClass().getSimpleName(), toLog);
 
-        return CurrentUser.getInstance().getDegree();
-    }
+        else
+            Log.println(Log.ASSERT, "_", toLog);
 
-    public String getSemesterId() {
-
-        //DataSnapshot ds = getUser();
-        //return ds.child("semesterId").getValue(String.class);
-        return CurrentUser.getInstance().getSemesterId();
-
-    }
-
-    public String getSemester() {
-
-        //DataSnapshot ds = getUser();
-        //return ds.child("semester").getValue(String.class);
-        return CurrentUser.getInstance().getSemester();
     }
 
 }

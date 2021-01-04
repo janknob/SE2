@@ -15,6 +15,7 @@
     android:paddingBottom="20dp"
     app:cardBackgroundColor="@color/cardBackground"
 
+    app:cardCornerRadius="5dp"
     app:contentPaddingBottom="5dp"
     app:contentPaddingLeft="5dp"
     app:contentPaddingRight="5dp"
@@ -24,7 +25,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardBackgroundColor="@color/cardBackground"
-        app:cardCornerRadius="5dp">
+        app:cardCornerRadius="5dp"
+        app:cardElevation="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"

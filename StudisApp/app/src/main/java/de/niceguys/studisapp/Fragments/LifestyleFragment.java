@@ -85,6 +85,26 @@ public class LifestyleFragment extends Fragment {
             assert getFragmentManager() != null;
             switch (item.getItemId()) {
 
+                case R.id.menu_lifestyle_timeline:
+
+
+                    FragmentTransaction ft8 = getFragmentManager().beginTransaction();
+                    timelineFragment.setCategory("Timeline");
+                    if (eventFragment != null && eventFragment.isAdded()) ft8.hide(eventFragment);
+                    if (apartmentFragment != null && apartmentFragment.isAdded()) ft8.hide(apartmentFragment);
+                    if (discountsFragment != null && discountsFragment.isAdded()) ft8.hide(discountsFragment);
+                    if (specialsFragment != null && specialsFragment.isAdded()) ft8.hide(specialsFragment);
+                    if (jobsFragment != null && jobsFragment.isAdded()) ft8.hide(jobsFragment);
+                    if (tutoringFragment != null && tutoringFragment.isAdded()) ft8.hide(tutoringFragment);
+                    ft8.remove(timelineFragment);
+                    timelineFragment = Lifestyle_TimelineFragment.newInstance();
+                    ft8.add(R.id.fl_lifestyle_fragmentContainer, timelineFragment);
+                    timelineFragment.setCategory("Timeline");
+                    ft8.show(timelineFragment);
+                    ft8.commit();
+                    tb.setTitle(getResources().getString(R.string.timeline));
+                    break;
+
                 case R.id.menu_lifestyle_events:
 
                     //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Events");

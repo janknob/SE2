@@ -1,7 +1,5 @@
 package de.niceguys.studisapp.Model;
 
-import android.util.Log;
-
 import de.niceguys.studisapp.Manager;
 
 public class CurrentUser {
@@ -31,10 +29,12 @@ public class CurrentUser {
     }
 
     public void setSemester(String semester) {
+
         if (!semester.equals(""))
             Manager.getInstance().getData("settings").edit().putBoolean("UniversityStuff_selected", true).apply();
-        Log.wtf("USER-Semester", semester);
+        Manager.log("Usersemester: "+ semester, this);
         this.semester = semester;
+
     }
 
     public static void clear() {

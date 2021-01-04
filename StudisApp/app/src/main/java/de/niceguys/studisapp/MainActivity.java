@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else
                     {
-                        runOnUiThread(()->bottomNavigationView.setSelectedItemId(R.id.nav_lifestyle));
+                        selectedFragment = new ProfileFragment();
                         openDialog();
                     }
 
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
     {
         UniversitySemesterDialog universitySemesterDialog = new UniversitySemesterDialog();
         universitySemesterDialog.show(getSupportFragmentManager(), "UniversityStudinegang");
+        universitySemesterDialog.setCancelable(false);
     }
 
 }
