@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -35,7 +36,15 @@ public class MainActivity extends AppCompatActivity {
 
         Manager.getInstance().setContext(this);
 
-        //Manager.getInstance().setLocale(this);
+        switch (getSharedPreferences("settings", MODE_PRIVATE).getString("appTheme", "System")) {
+
+            case "Hell":
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                break;
+            case "Dunkel":
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                break;
+        }
 
         setContentView(R.layout.activity_main);
 

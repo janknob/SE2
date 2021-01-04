@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.SwitchPreferenceCompat;
 
 import java.util.Locale;
 
@@ -71,6 +72,28 @@ public class Profile_SettingsFragment extends PreferenceFragmentCompat implement
             }
             return true;
         });
+
+        SwitchPreferenceCompat darkmodeSwitch = findPreference("darkmode");
+        darkmodeSwitch.setOnPreferenceChangeListener((preference, newValue) -> {
+
+            if ((boolean)newValue) {
+
+                Manager.getInstance().getData("settings").edit().putString("appTheme", "Dunkel").commit();
+
+            } else {
+
+                Manager.getInstance().getData("settings").edit().putString("appTheme", "Hell").commit();
+
+            }
+
+            Intent intent = new Intent(requireContext(), MainActivity.class);
+            // intent.putExtras get here
+            startActivity(intent);
+            requireActivity().finish();
+
+            return false;
+        });
+
     }
 
     private void selectLanguage (String language)
