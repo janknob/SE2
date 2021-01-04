@@ -49,10 +49,8 @@
     <color name="greyMain">#1c1c1c</color>
     <color name="whiteMain">#ffffff</color>
 
-    <!--secondary colors -->
-    <color name="orangeSec">#bc7737</color>
-    <color name="greenSec">#91b040</color>
-    <color name="yellowSec">#cdbf40</color>
+    <!--colors for lightmode -->
+    <color name="background">#ffffff</color>
 
 
 </resources>
