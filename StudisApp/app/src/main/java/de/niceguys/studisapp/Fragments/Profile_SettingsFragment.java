@@ -1,30 +1,23 @@
 package de.niceguys.studisapp.Fragments;
 
-import android.app.Application;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import android.view.View;
-import android.widget.Switch;
-
-import com.google.firebase.database.DatabaseReference;
-import de.niceguys.studisapp.R;
-
-
-import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.ListPreference;
-import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
-import androidx.preference.SwitchPreference;
-import androidx.preference.SwitchPreferenceCompat;
 
 import java.util.Locale;
+
+import de.niceguys.studisapp.MainActivity;
+import de.niceguys.studisapp.Manager;
+import de.niceguys.studisapp.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,43 +45,54 @@ public class Profile_SettingsFragment extends PreferenceFragmentCompat implement
 
         this.view = view;
 
+        Manager.log("Show the layout", this);
+
 
 
     }
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
-        ListPreference listPreference = (ListPreference) findPreference("language");
-        listPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                CharSequence currText = listPreference.getEntry();
-                String currValue = listPreference.getValue();
-                if (currValue.equals("german"))
-                {
-                    selectLanguage("de");
-                    update();
-                }
-                if (currValue.equals("english"))
-                {
-                    selectLanguage("en-rGB");
-                    update();
-                }
-                return true;
+
+        Manager.log("I am hearing...", this);
+
+        ListPreference listPreference = findPreference("language");
+        listPreference.setOnPreferenceChangeListener((preference, newValue) -> {
+
+            if (newValue.equals("german"))
+            {
+                selectLanguage("de");
+                update();
             }
+            if (newValue.equals("english"))
+            {
+                selectLanguage("en");
+                update();
+            }
+            return true;
         });
     }
 
     private void selectLanguage (String language)
     {
+        Manager.log("First: " + language);
+        Manager.getInstance().getData("settings").edit().putString("language", language).commit();
+
         Locale locale = new Locale(language);
         Locale.setDefault(locale);
-        Configuration configuration = new Configuration();
-        configuration.locale = locale;
-        //requireContext() = requireContext().createConfigurationContext(configuration);
-        //getResources().updateConfiguration(configuration, getResources().getDisplayMetrics());
-        onConfigurationChanged(configuration);
-        requireActivity().recreate();
+
+        getActivity().getResources().getConfiguration().locale= locale;
+
+        requireContext().getResources().updateConfiguration(getActivity().getResources().getConfiguration(), getResources().getDisplayMetrics());
+
+
+
+        //TODO Add great userexperience -> get back here after restart
+
+        Intent intent = new Intent(requireContext(), MainActivity.class);
+        // intent.putExtras get here
+        startActivity(intent);
+        requireActivity().finish();
 
     }
     private void update ()

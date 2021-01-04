@@ -80,7 +80,7 @@ public class ProfileFragment extends Fragment {
             startActivity(i);
         });
         nV.setNavigationItemSelectedListener(item -> {
-            assert getFragmentManager() != null;
+            assert requireActivity().getSupportFragmentManager() != null;
             switch (item.getItemId()) {
 
                 case R.id.menu_profile_main:
@@ -88,8 +88,9 @@ public class ProfileFragment extends Fragment {
 
                     //Change fragment
                     Log.w("ProfileFragment", "Profile selected");
-                    FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    if (editFragment != null && editFragment.isAdded()) ft.hide(editFragment);
+                    
+                    FragmentTransaction ft = requireActivity().getSupportFragmentManager().beginTransaction();
+                    if (settingsFragment != null && settingsFragment.isAdded()) ft.hide(settingsFragment);
                     if (editFragment != null && editFragment.isAdded()) ft.hide(editFragment);
                     ft.show(mainFragment);
                     ft.commit();
@@ -102,13 +103,13 @@ public class ProfileFragment extends Fragment {
 
                     if (editFragment == null) {
                         editFragment = Profile_EditFragment.newInstance();
-                        FragmentTransaction ft2 = getFragmentManager().beginTransaction();
+                        FragmentTransaction ft2 = requireActivity().getSupportFragmentManager().beginTransaction();
                         ft2.add(R.id.fl_profile_fragmentContainer, editFragment);
                         ft2.commit();
                     }
 
 
-                    FragmentTransaction ft3 = getFragmentManager().beginTransaction();
+                    FragmentTransaction ft3 = requireActivity().getSupportFragmentManager().beginTransaction();
                     if (settingsFragment != null && settingsFragment.isAdded()) ft3.hide(settingsFragment);
                     if (mainFragment != null && mainFragment.isAdded()) ft3.hide(mainFragment);
                     ft3.hide(mainFragment);
@@ -124,16 +125,15 @@ public class ProfileFragment extends Fragment {
 
                     if (settingsFragment == null) {
                         settingsFragment = Profile_SettingsFragment.newInstance();
-                        FragmentTransaction ft2 = getFragmentManager().beginTransaction();
+                        FragmentTransaction ft2 = requireActivity().getSupportFragmentManager().beginTransaction();
                         ft2.add(R.id.fl_profile_fragmentContainer, settingsFragment);
                         ft2.commit();
                     }
 
 
-                    FragmentTransaction ft4 = getFragmentManager().beginTransaction();
+                    FragmentTransaction ft4 = requireActivity().getSupportFragmentManager().beginTransaction();
                     if (mainFragment != null && mainFragment.isAdded()) ft4.hide(mainFragment);
                     if (editFragment != null && editFragment.isAdded()) ft4.hide(editFragment);
-                    ft4.hide(mainFragment);
                     ft4.show(settingsFragment);
                     ft4.commit();
                     tb.setTitle(getResources().getString(R.string.settings));
