@@ -13,10 +13,7 @@
         android:id="@+id/menu_lifestyle_discounts"
         android:icon="@drawable/icon_tasks"
         android:title="@string/discounts" />
-    <item
-        android:id="@+id/menu_lifestyle_specials"
-        android:icon="@drawable/icon_news"
-        android:title="@string/specials" />
+
     <item
         android:id="@+id/menu_lifestyle_jobs"
         android:icon="@drawable/icon_events"
@@ -29,4 +26,8 @@
         android:id="@+id/menu_lifestyle_apartments"
         android:icon="@drawable/icon_events"
         android:title="@string/apartments" />
+    <item
+    android:id="@+id/menu_lifestyle_others"
+    android:icon="@drawable/icon_news"
+    android:title="@string/others" />
 </menu>

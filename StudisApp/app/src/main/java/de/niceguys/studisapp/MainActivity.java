@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         // set the view with XML file acitvity_main which contains the bottom navigation bar
         setContentView(R.layout.activity_main);
 
+
         Manager.getInstance().setContext(this);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     if (Manager.getInstance().getData("settings").getBoolean("UniversityStuff_selected", false))
                     {
                         selectedFragment = UniversityFragment.newInstance();
+                        recreate();
                     }
                     else
                     {

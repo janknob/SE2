@@ -6,10 +6,10 @@
     <string-array name="names">
         <item>Events</item>
         <item>Discounts</item>
-        <item>Specials</item>
         <item>Job offers</item>
         <item>Tutoring/Learning groups</item>
         <item>Apartments</item>
+        <item>Others</item>
     </string-array>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -30,7 +30,7 @@
     <string name="universityEvents">University events</string>
     <string name="events">Events</string>
     <string name="discounts">Discounts</string>
-    <string name="specials">Specials</string>
+    <string name="others">Others</string>
     <string name="jobs">Job offers</string>
     <string name="tutoring">Tutoring/Learning Groups</string>
     <string name="apartments">Apartments</string>
@@ -40,6 +40,12 @@
     <string name="editProfile">Edit profile</string>
     <string name="settings">Settings</string>
 
+    <!--used as settings -->
+    <string name="german">German</string>
+    <string name="english">English</string>
+    <string name="select_language">Select Language</string>
+    <string name="appearance">Erscheinungsbild</string>
+    <string name="toggle_darkmode">Darkmode</string>
 
     <!--used as templates for downloading htmlpages in universityfragments-->
 
