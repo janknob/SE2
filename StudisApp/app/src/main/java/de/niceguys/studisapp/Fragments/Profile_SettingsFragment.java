@@ -37,12 +37,12 @@ public class Profile_SettingsFragment extends Fragment implements Interface_Pars
     private String degree, degree_id, semester, semester_id;
 
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+   // public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             //Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile__settings, container, false);
+        //return inflater.inflate(R.layout.fragment_profile__settings, container, false);
 
-    }
+    //}
     public static Profile_SettingsFragment newInstance() {
 
         Profile_SettingsFragment fragment = new Profile_SettingsFragment();

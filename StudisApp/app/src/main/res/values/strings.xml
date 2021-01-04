@@ -90,8 +90,7 @@
     <string name="extras">Beilagen</string>
     <string name="deserts">Nachspeise</string>
     <string name="snacks_salads">Snacks / Salate</string>
-    <string name="registration">Joining StudisApp</string>
-    <string name="login">Login</string>
+
 
     <!--profile-->
     <string name="username">Benutzername</string>
