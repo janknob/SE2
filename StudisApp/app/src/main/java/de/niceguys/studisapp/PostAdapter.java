@@ -64,27 +64,27 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
         //TODO Hard Code shit
         if (mPost.get(i).getCategory().equals("Events"))
         {
-            viewHolder.category.setText("Events");
+            viewHolder.category.setText(mContext.getResources().getString(R.string.events));
         }
         else if (mPost.get(i).getCategory().equals("Discounts"))
         {
-            viewHolder.category.setText("Angebote");
+            viewHolder.category.setText(mContext.getResources().getString(R.string.discounts));
         }
         else if (mPost.get(i).getCategory().equals("Others"))
         {
-            viewHolder.category.setText("Others");
+            viewHolder.category.setText(mContext.getResources().getString(R.string.others));
         }
         else if (mPost.get(i).getCategory().equals("Jobs"))
         {
-            viewHolder.category.setText("Jobangebote");
+            viewHolder.category.setText(mContext.getResources().getString(R.string.jobs));
         }
         else if (mPost.get(i).getCategory().equals("Tutoring"))
         {
-            viewHolder.category.setText("Nachhilfe");
+            viewHolder.category.setText(mContext.getResources().getString(R.string.tutoring));
         }
         else
         {
-            viewHolder.category.setText("Wohnungen");
+            viewHolder.category.setText(mContext.getResources().getString(R.string.apartments));
         }
 
         publisherInfo(viewHolder.image_profile, viewHolder.username, post.getPublisher());
@@ -121,13 +121,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful())
                                         {
-                                            Toast.makeText(mContext, "Gelöscht!", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(mContext, mContext.getResources().getString(R.string.deleted), Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
                                 return true;
                             case R.id.menu_post_report:
-                                Toast.makeText(mContext, "Post wurde gemeldet!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(mContext, mContext.getResources().getString(R.string.reportPostMessage), Toast.LENGTH_SHORT).show();
                             default:
                                 return false;
                         }
@@ -203,7 +203,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                likes.setText(snapshot.getChildrenCount()+" 'Gefällt mir' Angaben ");
+                likes.setText(snapshot.getChildrenCount()+ " " + mContext.getResources().getString(R.string.likes));
             }
 
             @Override
@@ -232,7 +232,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
     }
     private void editPost (String postid) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
-        alertDialog.setTitle("Post Bearbeiten");
+        alertDialog.setTitle(mContext.getResources().getString(R.string.editPost));
 
         EditText editText = new EditText (mContext);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
@@ -242,7 +242,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
 
         getText(postid, editText);
 
-        alertDialog.setPositiveButton("Bearbeiten", new DialogInterface.OnClickListener() {
+        alertDialog.setPositiveButton(mContext.getResources().getString(R.string.confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 HashMap<String, Object> hashMap = new HashMap<>();
@@ -251,7 +251,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
                 FirebaseDatabase.getInstance().getReference("Posts").child(postid).updateChildren(hashMap);
             }
         });
-        alertDialog.setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
+        alertDialog.setNegativeButton(mContext.getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();

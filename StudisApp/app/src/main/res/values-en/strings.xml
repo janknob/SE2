@@ -19,7 +19,7 @@
 
     <!-- Strings used for post menu -->
     <string name="deletePost">Delete</string>
-    <string name="editPost">Edit</string>
+    <string name="editPost">Edit post</string>
     <string name="reportPost">Report</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
@@ -34,7 +34,7 @@
     <string name="jobs">Job offers</string>
     <string name="tutoring">Tutoring/Learning Groups</string>
     <string name="apartments">Apartments</string>
-    <string name="timeline">FICK DICH TRANSLATION</string>
+    <string name="timeline">Timeline</string>
     <string name="logout">Logout</string>
     <string name="profile">Profile</string>
     <string name="editProfile">Edit profile</string>
@@ -106,9 +106,9 @@
 
     <!--Strings used for activity_edit_profile-->
     <string name="hintUsername">Udo42</string>
-    <string name="degreeCourse">Degree course</string>
+    <string name="degreeCourse">Course of study</string>
     <string name="hintDegreeCourse">Media computer science</string>
-    <string name="postCode">Postcode</string>
+    <string name="postCode">Postal code</string>
     <string name="hintPostCode">96369</string>
     <string name="semester">Semester</string>
     <string name="hintSemester">4</string>
@@ -117,7 +117,7 @@
 
 
     <!--Strings used for activity_post-->
-    <string name="post">Posten</string>
+    <string name="post">Post</string>
     <string name="hintPostText">Enter your text here...</string>
 
     <!--Strings used for cardviews-->
@@ -131,4 +131,20 @@
     <string name="room">Room</string>
 
     <string name="language">Language</string>
+    <string name="likes">Likes</string>
+    <string name="alreadyRegistered">Already Registered? Click here to login.</string>
+    <string name="cancel">Cancel</string>
+    <string name="edit">Edit</string>
+    <string name="reportPostMessage">Post has been reported!</string>
+    <string name="deleted">Deleted!</string>
+    <string name="confirm">Confirm</string>
+    <string name="warning">Warning</string>
+    <string name="selectCourseOfStudyFirst">You must first select a course of study and a semester in the profile!</string>
+    <string name="pleaseWait">Please wait...</string>
+    <string name="fillFields">All fields must be filled in!</string>
+    <string name="minPassword">The password must have at least 6 characters!</string>
+    <string name="wrongPwOrMail">Sorry, you can not register with this email or password!</string>
+    <string name="failedLogin">Login failed!</string>
+    <string name="changesSaved">Changes were accepted</string>
+    <string name="upploadSuccess">Upload succesfully</string>
 </resources>

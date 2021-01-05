@@ -15,7 +15,7 @@ public class UniversitySemesterDialog extends AppCompatDialogFragment
     public Dialog onCreateDialog (Bundle savedInstanceState)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Warnung").setMessage("Sie müssen zuerst im Profil einen Studiengang und ein Semester wählen").setPositiveButton("ok", new DialogInterface.OnClickListener() {
+        builder.setTitle(getResources().getString(R.string.warning)).setMessage(getResources().getString(R.string.selectCourseOfStudyFirst)).setPositiveButton("ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 BottomNavigationView bnv = requireActivity().findViewById(R.id.bottom_navigation);

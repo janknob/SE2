@@ -298,7 +298,7 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
     private void register() {
 
         pd = new ProgressDialog(this);
-        pd.setMessage("Bitte warten Sie....");
+        pd.setMessage(getResources().getString(R.string.pleaseWait));
         pd.show();
 
         String str_username = et_reg_username.getText().toString();
@@ -307,12 +307,12 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
 
         if (TextUtils.isEmpty(str_username) || TextUtils.isEmpty(str_eMail) || TextUtils.isEmpty(str_password))
         {
-            Toast.makeText(this, "Alle Felder müssen ausgefüllt sein!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.fillFields), Toast.LENGTH_SHORT).show();
             pd.dismiss();
         }
         else if (str_password.length() < 6)
         {
-            Toast.makeText(this, "Das Passwort muss mindestenst 6 Zeichen lang sein!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.minPassword), Toast.LENGTH_SHORT).show();
             pd.dismiss();
         }
         else
@@ -359,7 +359,7 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
             else {
 
                 pd.dismiss();
-                Toast.makeText(this, "Sie können sich leider nicht mit dieser Email oder Passwort registrieren", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getResources().getString(R.string.wrongPwOrMail), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -369,7 +369,7 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
     private void login() {
 
         pd = new ProgressDialog(this);
-        pd.setMessage("Bitte warten Sie....");
+        pd.setMessage(getResources().getString(R.string.pleaseWait));
         pd.show();
 
         String str_email = et_log_email.getText().toString();
@@ -377,7 +377,7 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
 
         if (TextUtils.isEmpty(str_email) || TextUtils.isEmpty(str_password)) {
 
-            Toast.makeText(this, "Alle Felder müssen ausgefüllt sein!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.fillFields), Toast.LENGTH_SHORT).show();
             pd.dismiss();
 
         } else {
@@ -404,7 +404,7 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
                 } else {
 
                     pd.dismiss();
-                    Toast.makeText(this, "Anmeldung fehlgeschlagen", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getResources().getString(R.string.failedLogin), Toast.LENGTH_SHORT).show();
 
                 }
             });

@@ -139,7 +139,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
         //sending confirmation toast
         Context context = getApplicationContext();
-        CharSequence text = "Änderungen wurden übernommen";
+        CharSequence text = getResources().getString(R.string.changesSaved);
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(context, text, duration);
@@ -218,7 +218,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(EditProfileActivity.this, "Uploades succesfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditProfileActivity.this, "Upload succesfully", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

@@ -91,7 +91,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
-            android:text="Bereits registriert? Dann klick hier zum Login!"
+            android:text="@string/alreadyRegistered"
             android:textColor="@color/greyText"
             android:textAlignment="viewEnd" />
 

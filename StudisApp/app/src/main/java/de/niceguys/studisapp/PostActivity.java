@@ -58,7 +58,7 @@ public class PostActivity extends AppCompatActivity {
                         break;
                     case 1:
                         //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Discounts");
-                        category = "Discounts";
+                        category = "@string";
                         break;
                     case 2:
                         //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Specials");

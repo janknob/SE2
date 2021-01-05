@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.preference.ListPreference;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreferenceCompat;
 
@@ -80,7 +81,6 @@ public class Profile_SettingsFragment extends PreferenceFragmentCompat implement
 
 
 
-
         darkmodeSwitch.setOnPreferenceChangeListener((preference, newValue) -> {
 
             if ((boolean) newValue) {
@@ -96,6 +96,8 @@ public class Profile_SettingsFragment extends PreferenceFragmentCompat implement
             return true;
 
         });
+
+
 
     }
 
