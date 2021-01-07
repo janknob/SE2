@@ -117,6 +117,7 @@
     <string name="hintSemester">4</string>
     <string name="university">Universität</string>
     <string name="hintUniversity">Hochschule Hof</string>
+    <string name="postalCodeFalse">Geben Sie eine korrekte Postleitzahl ein</string>
 
 
     <!--Strings used for activity_post-->

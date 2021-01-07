@@ -225,7 +225,12 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
 
         newUsername = mEditUserName.getText().toString();
 
-        newPostalCode = mEditPostalCode.getText().toString();
+        //postal code validation
+        if(mEditPostalCode.getText().toString().length() == 5) {
+            newPostalCode = mEditPostalCode.getText().toString();
+        }else{
+            Toast.makeText(getContext(), "@string/postalCodeWrong", Toast.LENGTH_SHORT).show();
+        }
 
         newUniversity = mEditUniversity.getText().toString();
 

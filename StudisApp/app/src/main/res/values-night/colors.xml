@@ -44,13 +44,13 @@
     <color name="pinkMain">#b03dca</color>
     <color name="purpleMain">#8d46e7</color>
     <color name="blueMain">#6263fc</color>
-    <color name="greyText">#a3a3a3</color>
+    <color name="greyText">#CDCDCD</color>
     <color name="greyHintText">#777777</color>
     <color name="greyMain">#1c1c1c</color>
     <color name="whiteMain">#ffffff</color>
 
     <!--colors for nightmode -->
-    <color name="background">#000000</color>
+    <color name="background">#151414</color>
 
 
 

@@ -114,6 +114,7 @@
     <string name="hintSemester">4</string>
     <string name="university">University</string>
     <string name="hintUniversity">University Hof</string>
+    <string name="postalCodeFalse">Type in a correct postal code</string>
 
 
     <!--Strings used for activity_post-->
