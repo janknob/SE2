@@ -112,11 +112,11 @@
     <string name="degreeCourse">Studiengang</string>
     <string name="hintDegreeCourse">Medieninformatik</string>
     <string name="postCode">Postleitzahl</string>
-    <string name="hintPostCode">96369</string>
+    <string name="hintPostCode">Geben Sie hier Ihre Postleitzahl ein.</string>
     <string name="semester">Semester</string>
     <string name="hintSemester">4</string>
     <string name="university">Universität</string>
-    <string name="hintUniversity">Hochschule Hof</string>
+    <string name="hintUniversity">Geben Sie hier Ihre Hochschule ein.</string>
     <string name="postalCodeFalse">Geben Sie eine korrekte Postleitzahl ein</string>
 
 
@@ -151,6 +151,15 @@
     <string name="failedLogin">Anmeldung fehlgeschlagen!</string>
     <string name="changesSaved">Änderungen wurden übernommen</string>
     <string name="upploadSuccess">Upload erfolgreich</string>
+    <string name="willBeUploaded">Wird hochgeladen.</string>
+    <string name="uploadFailed">Upload fehlgeschlagen!</string>
+    <string name="noImageSelected">Kein Bild ausgewählt!</string>
+    <string name="somethingWentWrong">Etwas ist schief gelaufen.</string>
+    <string name="englishLang">Die App Sprache wurde auf Englisch gestellt.</string>
+    <string name="germanLang">Die App Sprache wurde auf Deutsch gestellt.</string>
+    <string name="themeDark">Der Dark Mode wurde aktiviert.</string>
+    <string name="themeBright">Der Light Mode wurde aktiviert.</string>
+    <string name="createPost">Post wird erstellt.</string>
     <!-- Preference Titles -->
 
 </resources>

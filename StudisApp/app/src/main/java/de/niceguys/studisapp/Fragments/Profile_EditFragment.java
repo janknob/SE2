@@ -50,11 +50,6 @@ import de.niceguys.studisapp.Model.CurrentUser;
 import de.niceguys.studisapp.Model.User;
 import de.niceguys.studisapp.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Profile_EditFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Profile_EditFragment extends Fragment implements Interface_Parser {
 
     private View view;
@@ -178,7 +173,7 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
     // Method for uploading the image from the app to the database storage
     private void uploadImage(){
         final ProgressDialog pd = new ProgressDialog(getActivity());
-        pd.setMessage("Wird hochgeladen");
+        pd.setMessage(getResources().getString(R.string.willBeUploaded));
         pd.show();
 
         if (mImageUri != null){
@@ -206,7 +201,7 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
                 }
                 else
                 {
-                    Toast.makeText(getContext(), "Upload Fehlgeschlagen", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getResources().getString(R.string.uploadFailed), Toast.LENGTH_SHORT).show();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -215,7 +210,7 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
                 }
             });
         } else {
-            Toast.makeText(getActivity(), "Kein Bild ausgewählt", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getResources().getString(R.string.noImageSelected), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -226,11 +221,17 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
         newUsername = mEditUserName.getText().toString();
 
         //postal code validation
-        if(mEditPostalCode.getText().toString().length() == 5) {
+        if(mEditPostalCode.getText().toString().length() == 5)
+        {
             newPostalCode = mEditPostalCode.getText().toString();
-        }else{
-            Toast.makeText(getContext(), "@string/postalCodeWrong", Toast.LENGTH_SHORT).show();
         }
+        else
+            if (!mEditPostalCode.getText().toString().isEmpty())
+            {
+                Toast.makeText(getContext(), getResources().getString(R.string.postalCodeFalse), Toast.LENGTH_SHORT).show();
+                mEditPostalCode.getText().clear();
+            }
+
 
         newUniversity = mEditUniversity.getText().toString();
 
@@ -266,7 +267,7 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
 
         //sending confirmation toast
 
-        CharSequence text = "Änderungen wurden übernommen";
+        CharSequence text = getResources().getString(R.string.changesSaved);
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(getActivity(), text, duration);
@@ -289,7 +290,7 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
             Manager.log("Funktioniert", this);
         }
         else {
-            Toast.makeText(getActivity(), "Etwas ist Schief gelaufen", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getResources().getString(R.string.somethingWentWrong), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -366,7 +367,7 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
                 mSpinnerSemester.setSelection(temp.indexOf(selected_Semester));
 
             } catch (Exception e) {
-                ;
+
             }
 
 

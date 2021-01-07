@@ -14,6 +14,7 @@ public class UniversitySemesterDialog extends AppCompatDialogFragment
     @Override
     public Dialog onCreateDialog (Bundle savedInstanceState)
     {
+        // shows a dialog for a new user without selected course of study
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(getResources().getString(R.string.warning)).setMessage(getResources().getString(R.string.selectCourseOfStudyFirst)).setPositiveButton("ok", new DialogInterface.OnClickListener() {
             @Override

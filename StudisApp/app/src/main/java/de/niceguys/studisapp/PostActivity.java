@@ -25,6 +25,7 @@ import java.util.HashMap;
 
 public class PostActivity extends AppCompatActivity {
 
+    // initialize
     ImageView btn_close;
     Button btn_post;
     EditText post_text;
@@ -47,7 +48,7 @@ public class PostActivity extends AppCompatActivity {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
 
-
+        // spinner for selecting the category for a post
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
@@ -81,6 +82,7 @@ public class PostActivity extends AppCompatActivity {
 
         storageReferencere = FirebaseStorage.getInstance().getReference("posts");
 
+        // close the post activity
         btn_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,12 +91,13 @@ public class PostActivity extends AppCompatActivity {
             }
         });
 
+        // close the Post activity and uploads the Post to the DB
         btn_post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
                 ProgressDialog progressDialog = new ProgressDialog(PostActivity.this);
-                progressDialog.setMessage("Post wird erstellt");
+                progressDialog.setMessage(getResources().getString(R.string.createPost));
                 progressDialog.show();
 
                 String str_post_text = post_text.getText().toString();
@@ -114,6 +117,7 @@ public class PostActivity extends AppCompatActivity {
         });
     }
 
+    // uploads the post to the DB
     private void uploadPost(String postText, String category) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
         String postid = reference.push().getKey();

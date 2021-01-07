@@ -4,15 +4,16 @@ import de.niceguys.studisapp.Manager;
 
 public class CurrentUser {
 
+    // initialize Attributes
     private String id;
     private String username;
-    private String imgUrl;
     private String semesterId = "";
     private String degreeId = "";
     private String semester = "";
     private String degree = "";
     private static CurrentUser instance;
 
+    // constructor
     public static CurrentUser getInstance() {
 
         if (instance == null)
@@ -44,6 +45,7 @@ public class CurrentUser {
     }
 
 
+    // getter and setter
     public String getDegree() {
         return degree;
     }

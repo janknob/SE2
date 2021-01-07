@@ -75,7 +75,7 @@ public class Profile_MainFragment extends Fragment {
                         tvPostalCode.setText(ds.child(POSTCODE).getValue(String.class));
                         tvSemester.setText(ds.child(SEM).getValue(String.class));
                         tvUniversity.setText(ds.child(UNI).getValue(String.class));
-                        Glide.with(requireActivity()).load(user1.getImgUrl()).into(image);
+                        Glide.with(getActivity()).load(user1.getImgUrl()).into(image);
                     }
                 }
 
@@ -90,6 +90,7 @@ public class Profile_MainFragment extends Fragment {
 
         return view;
     }
+    // creates Instance when the fragment is called
     public static Profile_MainFragment newInstance() {
 
         Profile_MainFragment fragment = new Profile_MainFragment();

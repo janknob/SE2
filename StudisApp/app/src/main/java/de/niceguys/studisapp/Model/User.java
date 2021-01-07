@@ -1,15 +1,13 @@
 package de.niceguys.studisapp.Model;
 
-import android.util.Log;
-
-import de.niceguys.studisapp.Manager;
-
 public class User {
 
+    // initialize
     private String id;
     private String username;
     private String imgUrl;
 
+    // constructor
     public User (String id, String username, String imgUrl)
     {
         this.id = id;
@@ -18,11 +16,10 @@ public class User {
 
     }
 
-
-
     private User() {
     }
 
+    // getter and setter
     public String getId() {
         return id;
     }

@@ -2,11 +2,13 @@ package de.niceguys.studisapp.Model;
 
 public class Post
 {
+    // initialize
     private String postText;
     private String postid;
     private String publisher;
     private String category;
 
+    // constructor
     public Post (String postid, String postText, String publisher, String category)
     {
         this.postid = postid;
@@ -18,6 +20,7 @@ public class Post
 
     }
 
+    // getter and setter
     public String getPostid() {
         return postid;
     }

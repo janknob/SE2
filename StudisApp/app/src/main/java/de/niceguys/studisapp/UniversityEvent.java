@@ -2,6 +2,7 @@ package de.niceguys.studisapp;
 
 public class UniversityEvent {
 
+    // initialize
     private final String name;
     private final String date;
     private final String time_start;
@@ -9,6 +10,7 @@ public class UniversityEvent {
     private String description;
     private final String place;
 
+    // getter and setter
     public String getRoom() {
         return room;
     }
@@ -39,6 +41,7 @@ public class UniversityEvent {
         return place;
     }
 
+    // constructor
     public UniversityEvent(String values) {
 
         String[] info = values.split("\\|");
@@ -51,7 +54,5 @@ public class UniversityEvent {
         try {
             description = info[6];
         } catch (Exception ignored) { }
-
     }
-
 }

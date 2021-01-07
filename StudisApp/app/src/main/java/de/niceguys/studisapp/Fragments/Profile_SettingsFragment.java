@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,6 +29,8 @@ import de.niceguys.studisapp.R;
 public class Profile_SettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private View view;
+
+    // creates a new Instance of the fragment when the fragment is called
     public static Profile_SettingsFragment newInstance() {
 
         Profile_SettingsFragment fragment = new Profile_SettingsFragment();
@@ -52,38 +55,40 @@ public class Profile_SettingsFragment extends PreferenceFragmentCompat implement
 
         Manager.log("I am hearing...", this);
 
+        // list selection for language
         ListPreference listPreference = findPreference("language");
         listPreference.setOnPreferenceChangeListener((preference, newValue) -> {
-
             if (newValue.equals("german"))
             {
                 selectLanguage("de");
                 update();
+                Toast.makeText(getActivity(), getResources().getString(R.string.germanLang), Toast.LENGTH_SHORT).show();
             }
             if (newValue.equals("english"))
             {
                 selectLanguage("en");
                 update();
+                Toast.makeText(getActivity(), getResources().getString(R.string.englishLang), Toast.LENGTH_SHORT).show();
             }
             return true;
         });
 
+        // switch for darkmode
         SwitchPreferenceCompat darkmodeSwitch = findPreference("darkmode");
-
-        boolean isChecked = false;
-        isChecked = darkmodeSwitch.isChecked();
-
-
-
         darkmodeSwitch.setOnPreferenceChangeListener((preference, newValue) -> {
 
+            // dark theme
             if ((boolean) newValue) {
 
                 Manager.getInstance().getData("settings").edit().putString("appTheme", "Dunkel").commit();
+                Toast.makeText(getActivity(), getResources().getString(R.string.themeDark), Toast.LENGTH_SHORT).show();
 
-            } else {
+            }
+            // light theme
+            else {
 
                 Manager.getInstance().getData("settings").edit().putString("appTheme", "Hell").commit();
+                Toast.makeText(getActivity(), getResources().getString(R.string.themeBright), Toast.LENGTH_SHORT).show();
 
             }
             new Thread(this::restart).start();
@@ -92,7 +97,7 @@ public class Profile_SettingsFragment extends PreferenceFragmentCompat implement
         });
     }
 
-
+    // restarts the main activity to apply the setting changes
     private void restart() {
 
         try {
@@ -105,9 +110,9 @@ public class Profile_SettingsFragment extends PreferenceFragmentCompat implement
         startActivity(intent);
         requireActivity().finish();
 
-
     }
 
+    // gives the main activity the selected language
     private void selectLanguage (String language)
     {
         Manager.log("First: " + language);
@@ -117,10 +122,7 @@ public class Profile_SettingsFragment extends PreferenceFragmentCompat implement
         Locale.setDefault(locale);
 
         getActivity().getResources().getConfiguration().locale= locale;
-
         requireContext().getResources().updateConfiguration(getActivity().getResources().getConfiguration(), getResources().getDisplayMetrics());
-
-
 
         //TODO Add great userexperience -> get back here after restart
 
@@ -130,6 +132,7 @@ public class Profile_SettingsFragment extends PreferenceFragmentCompat implement
         requireActivity().finish();
 
     }
+
     private void update ()
     {
        newInstance();

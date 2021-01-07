@@ -3,6 +3,7 @@ package de.niceguys.studisapp;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,13 +36,15 @@ public class MainActivity extends AppCompatActivity {
         setLocale();
         Manager.log("3", this);
 
-
+        // switch-case for the themes
         switch (getSharedPreferences("settings", MODE_PRIVATE).getString("appTheme", "Hell")) {
 
             case "Hell":
+
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 break;
             case "Dunkel":
+
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 break;
 
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         Manager.log("4", this);
 
-
+        // clears duplicate fragments
         if (savedInstanceState != null) {
             savedInstanceState.clear();
 
@@ -75,15 +78,18 @@ public class MainActivity extends AppCompatActivity {
         Manager.log("5", this);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+
+            // switch case for the fragments in the bottom nav bar
             switch (item.getItemId()) {
+
+                // lifestyle fragment
                 case R.id.nav_lifestyle:
                     selectedFragment = new LifestyleFragment();
                     break;
-                case R.id.nav_university:
 
-                    //TO-DO
+                // university fragment
+                case R.id.nav_university:
 
                     if (Manager.getInstance().getData("settings").getBoolean("UniversityStuff_selected", false))
                     {
@@ -94,12 +100,10 @@ public class MainActivity extends AppCompatActivity {
                         selectedFragment = new ProfileFragment();
                         openDialog();
                     }
-
                     break;
+
+                    // profile fragment
                 case R.id.nav_profile:
-                    //SharedPreferences.Editor editor = getSharedPreferences("PREFS", MODE_PRIVATE).edit();
-                    //editor.putString("profileid", FirebaseAuth.getInstance().getCurrentUser().getUid());
-                    //editor.apply();
                     selectedFragment = new ProfileFragment();
                     break;
             }
@@ -111,12 +115,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Manager.log("6", this);
-
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new LifestyleFragment()).commit();
-
         Manager.log("7 - OnCreate finished", this);
     }
 
+    // method for the dialog window when course of study is missing
     public void openDialog()
     {
         UniversitySemesterDialog universitySemesterDialog = new UniversitySemesterDialog();
@@ -124,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         universitySemesterDialog.setCancelable(false);
     }
 
-
+    // sets the locale
     protected void setLocale() {
 
         Locale locale = new Locale(Manager.getInstance().getData("settings").getString("language", "de"));

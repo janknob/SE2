@@ -41,6 +41,7 @@ public class Lifestyle_TimelineFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        // set attributes
         View view = inflater.inflate(R.layout.fragment_lifestyle__timeline, container, false);
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -53,6 +54,7 @@ public class Lifestyle_TimelineFragment extends Fragment {
         recyclerView.setAdapter(postAdapter);
         floatingActionButton = view.findViewById(R.id.btn_new_tweet);
 
+        // Button for new Posts
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,6 +65,7 @@ public class Lifestyle_TimelineFragment extends Fragment {
         readPosts(category);
         return view;
     }
+    // creates new Fragment Instance when the fragment is called
     public static Lifestyle_TimelineFragment newInstance() {
 
         Lifestyle_TimelineFragment fragment = new Lifestyle_TimelineFragment();
@@ -71,12 +74,13 @@ public class Lifestyle_TimelineFragment extends Fragment {
         return fragment;
 
     }
+    // set the Category for the post
     public void setCategory (String category)
     {
         this.category = category;
     }
 
-
+    // reads all the Post in the Database
     private void readPosts(String postCategory)
     {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
@@ -105,6 +109,5 @@ public class Lifestyle_TimelineFragment extends Fragment {
             {
             }
         });
-
     }
 }

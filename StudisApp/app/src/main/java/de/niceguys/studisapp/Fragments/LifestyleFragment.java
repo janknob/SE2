@@ -38,6 +38,7 @@ public class LifestyleFragment extends Fragment {
     private Lifestyle_TimelineFragment tutoringFragment;
     private Lifestyle_TimelineFragment apartmentFragment;
 
+    // creates a new Instance when the Fragment is called
     public static LifestyleFragment newInstance() {
         LifestyleFragment fragment = new LifestyleFragment();
         Bundle args = new Bundle();
@@ -69,10 +70,11 @@ public class LifestyleFragment extends Fragment {
         nV = view.findViewById(R.id.nV_lifestyle);
         nV.setNavigationItemSelectedListener(item -> {
             assert requireActivity().getSupportFragmentManager() != null;
+            // switch-Case for the burger menu
             switch (item.getItemId()) {
 
+                // timeline fragment
                 case R.id.menu_lifestyle_timeline:
-
 
                     FragmentTransaction ft8 = requireActivity().getSupportFragmentManager().beginTransaction();
                     timelineFragment.setCategory("Timeline");
@@ -91,6 +93,7 @@ public class LifestyleFragment extends Fragment {
                     tb.setTitle(getResources().getString(R.string.timeline));
                     break;
 
+                    // event fragment
                 case R.id.menu_lifestyle_events:
 
                     if (eventFragment == null) {
@@ -99,7 +102,6 @@ public class LifestyleFragment extends Fragment {
                         ft2.add(R.id.fl_lifestyle_fragmentContainer, eventFragment);
                         ft2.commit();
                     }
-
                     Log.w("LifestyleFragment", "Events selected");
                     FragmentTransaction ft = requireActivity().getSupportFragmentManager().beginTransaction();
                     eventFragment.setCategory("Events");
@@ -112,11 +114,9 @@ public class LifestyleFragment extends Fragment {
                     ft.show(eventFragment);
                     ft.commit();
                     tb.setTitle(getResources().getString(R.string.events));
-
-
-
                     break;
 
+                    // discount fragment
                 case R.id.menu_lifestyle_discounts:
 
                     if (discountsFragment == null) {
@@ -125,7 +125,6 @@ public class LifestyleFragment extends Fragment {
                         ft2.add(R.id.fl_lifestyle_fragmentContainer, discountsFragment);
                         ft2.commit();
                     }
-
                     FragmentTransaction ft3 = requireActivity().getSupportFragmentManager().beginTransaction();
                     discountsFragment.setCategory("Discounts");
                     if (eventFragment != null && eventFragment.isAdded()) ft3.hide(eventFragment);
@@ -137,10 +136,9 @@ public class LifestyleFragment extends Fragment {
                     ft3.show(discountsFragment);
                     ft3.commit();
                     tb.setTitle(getResources().getString(R.string.discounts));
-
                     break;
 
-
+                    // job fragment
                 case R.id.menu_lifestyle_jobs:
 
                     if (jobsFragment == null) {
@@ -149,7 +147,6 @@ public class LifestyleFragment extends Fragment {
                         ft2.add(R.id.fl_lifestyle_fragmentContainer, jobsFragment);
                         ft2.commit();
                     }
-
                     FragmentTransaction ft5 = requireActivity().getSupportFragmentManager().beginTransaction();
                     jobsFragment.setCategory("Jobs");
                     if (eventFragment != null && eventFragment.isAdded()) ft5.hide(eventFragment);
@@ -163,6 +160,7 @@ public class LifestyleFragment extends Fragment {
                     tb.setTitle(getResources().getString(R.string.jobs));
                     break;
 
+                    // tutoring frament
                 case R.id.menu_lifestyle_tutoring:
 
                     if (tutoringFragment == null) {
@@ -185,6 +183,7 @@ public class LifestyleFragment extends Fragment {
                     tb.setTitle(getResources().getString(R.string.tutoring));
                     break;
 
+                    // apartment fragment
                 case R.id.menu_lifestyle_apartments:
 
                     if (apartmentFragment == null) {
@@ -208,6 +207,7 @@ public class LifestyleFragment extends Fragment {
                     tb.setTitle(getResources().getString(R.string.apartments));
                     break;
 
+                    // others fragment
                 case R.id.menu_lifestyle_others:
 
                     if (othersFragment == null) {
@@ -216,7 +216,6 @@ public class LifestyleFragment extends Fragment {
                         ft2.add(R.id.fl_lifestyle_fragmentContainer, othersFragment);
                         ft2.commit();
                     }
-
                     FragmentTransaction ft4 = requireActivity().getSupportFragmentManager().beginTransaction();
                     othersFragment.setCategory("Others");
                     if (eventFragment != null && eventFragment.isAdded()) ft4.hide(eventFragment);
@@ -236,9 +235,9 @@ public class LifestyleFragment extends Fragment {
             return false;
         });
 
+        // default timeline fragment
         timelineFragment = Lifestyle_TimelineFragment.newInstance();
         timelineFragment.setCategory("Timeline");
-
         FragmentTransaction ft = getParentFragmentManager().beginTransaction();
         ft.add(R.id.fl_lifestyle_fragmentContainer, timelineFragment);
         ft.commit();

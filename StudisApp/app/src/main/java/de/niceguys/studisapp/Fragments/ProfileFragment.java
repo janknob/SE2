@@ -66,12 +66,11 @@ public class ProfileFragment extends Fragment {
         dL = view.findViewById(R.id.dL_profile);
         tb = view.findViewById(R.id.tb_profile);
         textView = view.findViewById(R.id.logout);
-
         tb.setNavigationOnClickListener(view1 -> dL.openDrawer(GravityCompat.START));
-
         nV = view.findViewById(R.id.nav_profile);
 
 
+        // gets all the data
         textView.setOnClickListener(view12 -> {
             CurrentUser.clear();
             String lang = Manager.getInstance().getData("settings").getString("language", "de");
@@ -87,25 +86,23 @@ public class ProfileFragment extends Fragment {
 
         nV.setNavigationItemSelectedListener(item -> {
             assert requireActivity().getSupportFragmentManager() != null;
+            // switch case for burger menu
             switch (item.getItemId()) {
 
+                // main fragment
                 case R.id.menu_profile_main:
 
-
-                    //Change fragment
                     Log.w("ProfileFragment", "Profile selected");
-                    
                     FragmentTransaction ft = requireActivity().getSupportFragmentManager().beginTransaction();
                     if (settingsFragment != null && settingsFragment.isAdded()) ft.hide(settingsFragment);
                     if (editFragment != null && editFragment.isAdded()) ft.hide(editFragment);
                     ft.show(mainFragment);
                     ft.commit();
                     tb.setTitle(getResources().getString(R.string.profile));
-
                     break;
 
+                    // edit profile fragment
                 case R.id.menu_profile_editProfile:
-
 
                     if (editFragment == null) {
                         editFragment = Profile_EditFragment.newInstance();
@@ -113,8 +110,6 @@ public class ProfileFragment extends Fragment {
                         ft2.add(R.id.fl_profile_fragmentContainer, editFragment);
                         ft2.commit();
                     }
-
-
                     FragmentTransaction ft3 = requireActivity().getSupportFragmentManager().beginTransaction();
                     if (settingsFragment != null && settingsFragment.isAdded()) ft3.hide(settingsFragment);
                     if (mainFragment != null && mainFragment.isAdded()) ft3.hide(mainFragment);
@@ -122,11 +117,9 @@ public class ProfileFragment extends Fragment {
                     ft3.show(editFragment);
                     ft3.commit();
                     tb.setTitle(getResources().getString(R.string.editProfile));
-
-
-
                     break;
 
+                    // settings framgent
                 case R.id.menu_profile_settings:
 
                     if (settingsFragment == null) {
@@ -135,21 +128,19 @@ public class ProfileFragment extends Fragment {
                         ft2.add(R.id.fl_profile_fragmentContainer, settingsFragment);
                         ft2.commit();
                     }
-
-
                     FragmentTransaction ft4 = requireActivity().getSupportFragmentManager().beginTransaction();
                     if (mainFragment != null && mainFragment.isAdded()) ft4.hide(mainFragment);
                     if (editFragment != null && editFragment.isAdded()) ft4.hide(editFragment);
                     ft4.show(settingsFragment);
                     ft4.commit();
                     tb.setTitle(getResources().getString(R.string.settings));
-
                     break;
             }
             dL.closeDrawer(GravityCompat.START);
             return false;
         });
 
+        // default fragment
         mainFragment = Profile_MainFragment.newInstance();
         FragmentTransaction ft = getParentFragmentManager().beginTransaction();
         ft.add(R.id.fl_profile_fragmentContainer, mainFragment);

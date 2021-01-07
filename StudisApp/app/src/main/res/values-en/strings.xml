@@ -44,7 +44,7 @@
     <string name="german">German</string>
     <string name="english">English</string>
     <string name="select_language">Select Language</string>
-    <string name="appearance">Erscheinungsbild</string>
+    <string name="appearance">Appearance</string>
     <string name="toggle_darkmode">Darkmode</string>
 
     <!--used as templates for downloading htmlpages in universityfragments-->
@@ -109,11 +109,11 @@
     <string name="degreeCourse">Course of study</string>
     <string name="hintDegreeCourse">Media computer science</string>
     <string name="postCode">Postal code</string>
-    <string name="hintPostCode">96369</string>
+    <string name="hintPostCode">Enter your postal code here.</string>
     <string name="semester">Semester</string>
     <string name="hintSemester">4</string>
     <string name="university">University</string>
-    <string name="hintUniversity">University Hof</string>
+    <string name="hintUniversity">Enter your university here.</string>
     <string name="postalCodeFalse">Type in a correct postal code</string>
 
 
@@ -148,4 +148,13 @@
     <string name="failedLogin">Login failed!</string>
     <string name="changesSaved">Changes were accepted</string>
     <string name="upploadSuccess">Upload succesfully</string>
+    <string name="willBeUploaded">Will be uploaded.</string>
+    <string name="uploadFailed">Upload failed!</string>
+    <string name="noImageSelected">No image selected!</string>
+    <string name="somethingWentWrong">Something went wrong.</string>
+    <string name="englishLang">The app language was set to English.</string>
+    <string name="germanLang">The app language was set to German.</string>
+    <string name="themeDark">The dark mode has been activated.</string>
+    <string name="themeBright">The light mode has been activated.</string>
+    <string name="createPost">Post is created.</string>
 </resources>

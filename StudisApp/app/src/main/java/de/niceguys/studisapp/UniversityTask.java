@@ -2,9 +2,11 @@ package de.niceguys.studisapp;
 
 public class UniversityTask {
 
+    // initialize
     private final String title;
     private boolean isFinished;
 
+    // constructor
     public UniversityTask(String title){
 
         this.title = title.substring(0,title.indexOf("|"));
@@ -12,6 +14,7 @@ public class UniversityTask {
 
     }
 
+    // getter and setter
     public String getTitle() {
 
         return title;
@@ -29,6 +32,5 @@ public class UniversityTask {
         isFinished = state;
 
     }
-
 }
 

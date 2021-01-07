@@ -96,11 +96,12 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
 
     }
 
+    // switch between login and registration formular
     private void toggleFormular() {
 
         if (registration) {
 
-            new Thread(this::hideRegistraion).start();
+            new Thread(this::hideRegistration).start();
             new Thread(this::showLogin).start();
             registration = false;
 
@@ -111,7 +112,6 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
             registration = true;
 
         }
-
     }
 
     /**
@@ -143,7 +143,6 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
         }
 
         showFormulars();
-
     }
 
     private void showFormulars() {
@@ -157,9 +156,9 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
             showLogin();
 
         }
-
     }
 
+    // show registration formular when login is hidden
     private void showRegistration() {
 
         System.out.println("Show Registration");
@@ -185,10 +184,10 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
             animatorAlpha.start();
 
         });
-
     }
 
-    private void hideRegistraion() {
+    // hide Registration when login is displayed
+    private void hideRegistration() {
 
         System.out.println("Hide Registration");
 
@@ -213,6 +212,7 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
 
     }
 
+    // show login method when registration is hidden
     private void showLogin() {
 
         System.out.println("Show Login");
@@ -241,6 +241,7 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
 
     }
 
+    // hide login method when registration is displayed
     private void hideLogin() {
 
         System.out.println("Hide Login");
@@ -269,7 +270,6 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
             loginFormular.setEnabled(false);
 
         });
-
     }
 
     private void getUserFromDatabase() {
@@ -318,13 +318,11 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-
         });
-
     }
 
+    // register Method
     private void register() {
-
         pd = new ProgressDialog(this);
         pd.setMessage(getResources().getString(R.string.pleaseWait));
         pd.show();
@@ -347,9 +345,9 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
         {
             registerUser(str_username, str_eMail, str_password);
         }
-
     }
 
+    // upload the new User to the DB
     private void registerUser(final String username, String eMail, String password) {
 
         auth.createUserWithEmailAndPassword(eMail, password).addOnCompleteListener(this, task -> {
@@ -391,9 +389,9 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
+    // login Method
     private void login() {
 
         pd = new ProgressDialog(this);
@@ -436,12 +434,7 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
 
                 }
             });
-
         }
-
     }
-
-
-
 }
 

@@ -53,7 +53,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
 
         return new ViewHolder(view);
     }
-    // Method for displaying the postText, username and image
+    // Method for displaying the postText, username, image and category
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -89,6 +89,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
         publisherInfo(viewHolder.image_profile, viewHolder.username, post.getPublisher());
         isLiked(post.getPostid(), viewHolder.like);
         nrLikes(viewHolder.likes, post.getPostid());
+        // number of likes
         viewHolder.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,6 +104,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
             }
         });
 
+        // popup menu for report, edit and delete
         viewHolder.more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -147,6 +149,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
     public int getItemCount() {
         return mPost.size();
     }
+
     // Class for one post item
     public class ViewHolder extends RecyclerView.ViewHolder
     {
@@ -167,6 +170,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
 
         }
     }
+
     // Method for liking posts
     private void isLiked (String postid, ImageView imageView)
     {
@@ -211,6 +215,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
             }
         });
     }
+
     // Method for Saving the publisherInfo in the Model User Class from database
     private void publisherInfo (final ImageView image_profile, final TextView username, String userid )
     {
@@ -229,6 +234,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
             }
         });
     }
+
+    // editing your own Post
     private void editPost (String postid) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
         alertDialog.setTitle(mContext.getResources().getString(R.string.editPost));
@@ -259,6 +266,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
         alertDialog.show();
     }
 
+    // get the Text of the post
     private void getText (String postid, EditText editText)
     {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Posts").child(postid);

@@ -2,11 +2,13 @@ package de.niceguys.studisapp;
 
 public class UniversityNews {
 
+    // initialize
     private final String title;
     private final String normalText;
     private final String descriptiontext;
     private final String imageUrl;
 
+    // constructor
     public UniversityNews(String title, String normalText, String descriptiontext, String imageUrl) {
 
         this.title = title;
@@ -31,6 +33,7 @@ public class UniversityNews {
 
     }
 
+    // getter and setter
     public String getTitle() {
 
         return title;
