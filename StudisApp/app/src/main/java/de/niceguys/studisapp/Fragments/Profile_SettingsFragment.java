@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.preference.ListPreference;
-import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreferenceCompat;
 
@@ -29,9 +28,6 @@ import de.niceguys.studisapp.R;
 public class Profile_SettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private View view;
-    private Profile_SettingsFragment settingsFragment;
-    private Switch aSwitch;
-
     public static Profile_SettingsFragment newInstance() {
 
         Profile_SettingsFragment fragment = new Profile_SettingsFragment();
@@ -48,10 +44,8 @@ public class Profile_SettingsFragment extends PreferenceFragmentCompat implement
         this.view = view;
 
         Manager.log("Show the layout", this);
-
-
-
     }
+
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
@@ -96,9 +90,6 @@ public class Profile_SettingsFragment extends PreferenceFragmentCompat implement
             return true;
 
         });
-
-
-
     }
 
 

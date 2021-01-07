@@ -36,7 +36,9 @@
                 android:id="@+id/ll_meals_main"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical">
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView8"
@@ -51,7 +53,9 @@
                 android:id="@+id/ll_meals_extras"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical">
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView9"
@@ -66,7 +70,9 @@
                 android:id="@+id/ll_meals_deserts"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical">
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView10"
@@ -81,7 +87,9 @@
                 android:id="@+id/ll_meals_snacks_salads"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical">
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

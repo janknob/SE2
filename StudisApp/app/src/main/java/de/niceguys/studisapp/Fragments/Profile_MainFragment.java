@@ -28,7 +28,6 @@ public class Profile_MainFragment extends Fragment {
 
     private TextView tvUserName, tvCourseOfStudy, tvPostalCode, tvSemester, tvUniversity;
     private ImageView image;
-    Button btn_editProfile;
     View view;
     private DatabaseReference userRef;
     private FirebaseDatabase database;

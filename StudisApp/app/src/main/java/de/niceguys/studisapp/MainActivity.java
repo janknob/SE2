@@ -11,8 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 import java.util.Locale;
@@ -25,18 +23,20 @@ public class MainActivity extends AppCompatActivity {
 
     Fragment selectedFragment = null;
     BottomNavigationView bottomNavigationView;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference userRef = database.getReference("Users");
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // set the view with XML file acitvity_main which contains the bottom navigation bar
-
+        Manager.log("1", this);
         Manager.getInstance().setContext(this);
+        Manager.log("2", this);
         setLocale();
-        switch (getSharedPreferences("settings", MODE_PRIVATE).getString("appTheme", "System")) {
+        Manager.log("3", this);
+
+
+        switch (getSharedPreferences("settings", MODE_PRIVATE).getString("appTheme", "Hell")) {
 
             case "Hell":
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -44,9 +44,13 @@ public class MainActivity extends AppCompatActivity {
             case "Dunkel":
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 break;
-        }
 
+        }
+        setTheme(R.style.Theme_StudisApp);
         setContentView(R.layout.activity_main);
+
+        Manager.log("4", this);
+
 
         if (savedInstanceState != null) {
             savedInstanceState.clear();
@@ -68,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-
+        Manager.log("5", this);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -106,8 +110,11 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
+        Manager.log("6", this);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new LifestyleFragment()).commit();
+
+        Manager.log("7 - OnCreate finished", this);
     }
 
     public void openDialog()

@@ -1,5 +1,7 @@
 package de.niceguys.studisapp;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -32,7 +34,6 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
     private LinearLayout loginFormular;
     private LinearLayout registrationFormular;
     private boolean registration = true;
-    private boolean registrationShown = true;
     private ProgressDialog pd;
     private EditText et_reg_username, et_reg_email, et_reg_password, et_log_email, et_log_password;
     FirebaseAuth auth;
@@ -97,17 +98,17 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
 
     private void toggleFormular() {
 
-        if (registrationShown) {
+        if (registration) {
 
             new Thread(this::hideRegistraion).start();
             new Thread(this::showLogin).start();
-            registrationShown = false;
+            registration = false;
 
         } else {
 
             new Thread(this::hideLogin).start();
             new Thread(this::showRegistration).start();
-            registrationShown = true;
+            registration = true;
 
         }
 
@@ -123,6 +124,7 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
 
             startActivity(new Intent(this, MainActivity.class));
             this.finish();
+
         } else {
             moveLogo();
         }
@@ -161,6 +163,10 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
     private void showRegistration() {
 
         System.out.println("Show Registration");
+        for (int i = 0; i < registrationFormular.getChildCount(); i++) {
+            int finalI = i;
+            runOnUiThread(()->registrationFormular.getChildAt(finalI).setEnabled(true));
+        }
 
         runOnUiThread(()->{
             registrationFormular.setEnabled(true);
@@ -186,6 +192,11 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
 
         System.out.println("Hide Registration");
 
+        for (int i = 0; i < registrationFormular.getChildCount(); i++) {
+            int finalI = i;
+            runOnUiThread(()->registrationFormular.getChildAt(finalI).setEnabled(false));
+        }
+
         ObjectAnimator animatorTranslation = ObjectAnimator.ofFloat(registrationFormular, "TranslationX", 400f);
         animatorTranslation.setDuration(1000);
         ObjectAnimator animatorAlpha = ObjectAnimator.ofFloat(registrationFormular, "alpha", 0);
@@ -205,8 +216,14 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
     private void showLogin() {
 
         System.out.println("Show Login");
-        loginFormular.setVisibility(View.VISIBLE);
+        for (int i = 0; i < loginFormular.getChildCount(); i++) {
+            int finalI = i;
+            runOnUiThread(()->loginFormular.getChildAt(finalI).setEnabled(true));
+        }
+
+
         runOnUiThread(()->{
+            loginFormular.setVisibility(View.VISIBLE);
             loginFormular.setEnabled(true);
             loginFormular.setTranslationX(-800);
         });
@@ -227,11 +244,22 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
     private void hideLogin() {
 
         System.out.println("Hide Login");
+        for (int i = 0; i < loginFormular.getChildCount(); i++) {
+            int finalI = i;
+            runOnUiThread(()->loginFormular.getChildAt(finalI).setEnabled(false));
+        }
 
         ObjectAnimator animatorTranslation = ObjectAnimator.ofFloat(loginFormular, "TranslationX", 400f);
         animatorTranslation.setDuration(1000);
         ObjectAnimator animatorAlpha = ObjectAnimator.ofFloat(loginFormular, "alpha", 0);
         animatorAlpha.setDuration(1000);
+        animatorAlpha.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                loginFormular.setVisibility(View.GONE);
+            }
+        });
         runOnUiThread( () -> {
 
             animatorTranslation.start();

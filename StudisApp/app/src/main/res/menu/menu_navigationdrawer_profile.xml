@@ -3,14 +3,14 @@
 
     <item
         android:id="@+id/menu_profile_main"
-        android:icon="@drawable/icon_timetable"
+        android:icon="@drawable/ic_user__main"
         android:title="@string/profile" />
     <item
         android:id="@+id/menu_profile_editProfile"
-        android:icon="@drawable/icon_tasks"
+        android:icon="@drawable/ic_user_edit"
         android:title="@string/editProfile" />
     <item
         android:id="@+id/menu_profile_settings"
-        android:icon="@drawable/icon_news"
+        android:icon="@drawable/ic_setting"
         android:title="@string/settings" />
 </menu>

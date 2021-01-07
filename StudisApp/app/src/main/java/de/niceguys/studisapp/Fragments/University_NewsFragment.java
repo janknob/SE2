@@ -179,7 +179,5 @@ public class University_NewsFragment extends Fragment implements Interface_Parse
             srl.setRefreshing(false);
 
         });
-
     }
-
 }
