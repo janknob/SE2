@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.StudisApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.StudisApp" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -19,9 +19,6 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.StudisApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.StudisApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
     <style name="dialogMenu" parent="Widget.AppCompat.ButtonBar.AlertDialog">
         <item name="android:textColorPrimary">@color/normalText</item>
         <item name="textColorAlertDialogListItem">@color/normalText</item>
@@ -30,4 +27,5 @@
         <item name="android:checkboxStyle">@color/normalText</item>
         <item name="android:background">@color/cardBackground</item>
     </style>
+
 </resources>

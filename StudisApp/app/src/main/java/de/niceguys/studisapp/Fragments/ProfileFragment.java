@@ -70,15 +70,21 @@ public class ProfileFragment extends Fragment {
         tb.setNavigationOnClickListener(view1 -> dL.openDrawer(GravityCompat.START));
 
         nV = view.findViewById(R.id.nav_profile);
+
+
         textView.setOnClickListener(view12 -> {
             CurrentUser.clear();
+            String lang = Manager.getInstance().getData("settings").getString("language", "de");
             Manager.getInstance().getData("settings").edit().clear().apply();
+            Manager.getInstance().getData("settings").edit().putString("language", lang).apply();
             Manager.getInstance().getData("course").edit().clear().apply();
             FirebaseAuth.getInstance().signOut();
             Intent i = new Intent(getActivity(), StartLoginRegisterActivity.class);
             i.putExtra("registration", false);
             startActivity(i);
         });
+
+
         nV.setNavigationItemSelectedListener(item -> {
             assert requireActivity().getSupportFragmentManager() != null;
             switch (item.getItemId()) {
