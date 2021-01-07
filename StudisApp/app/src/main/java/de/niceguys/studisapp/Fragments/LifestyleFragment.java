@@ -38,12 +38,6 @@ public class LifestyleFragment extends Fragment {
     private Lifestyle_TimelineFragment tutoringFragment;
     private Lifestyle_TimelineFragment apartmentFragment;
 
-
-    DatabaseReference reference;
-
-
-
-
     public static LifestyleFragment newInstance() {
         LifestyleFragment fragment = new LifestyleFragment();
         Bundle args = new Bundle();
@@ -99,9 +93,6 @@ public class LifestyleFragment extends Fragment {
 
                 case R.id.menu_lifestyle_events:
 
-                    //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Events");
-
-                    //Change fragment
                     if (eventFragment == null) {
                         eventFragment = Lifestyle_TimelineFragment.newInstance();
                         FragmentTransaction ft2 = requireActivity().getSupportFragmentManager().beginTransaction();
@@ -128,8 +119,6 @@ public class LifestyleFragment extends Fragment {
 
                 case R.id.menu_lifestyle_discounts:
 
-                    //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Discounts");
-
                     if (discountsFragment == null) {
                         discountsFragment = Lifestyle_TimelineFragment.newInstance();
                         FragmentTransaction ft2 = requireActivity().getSupportFragmentManager().beginTransaction();
@@ -154,8 +143,6 @@ public class LifestyleFragment extends Fragment {
 
                 case R.id.menu_lifestyle_jobs:
 
-                    //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Jobs");
-
                     if (jobsFragment == null) {
                         jobsFragment = Lifestyle_TimelineFragment.newInstance();
                         FragmentTransaction ft2 = requireActivity().getSupportFragmentManager().beginTransaction();
@@ -177,8 +164,6 @@ public class LifestyleFragment extends Fragment {
                     break;
 
                 case R.id.menu_lifestyle_tutoring:
-
-                    //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Tutoring");
 
                     if (tutoringFragment == null) {
                         tutoringFragment = Lifestyle_TimelineFragment.newInstance();
@@ -202,8 +187,6 @@ public class LifestyleFragment extends Fragment {
 
                 case R.id.menu_lifestyle_apartments:
 
-                    //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Apartments");
-
                     if (apartmentFragment == null) {
                         apartmentFragment = Lifestyle_TimelineFragment.newInstance();
                         FragmentTransaction ft2 = requireActivity().getSupportFragmentManager().beginTransaction();
@@ -226,8 +209,6 @@ public class LifestyleFragment extends Fragment {
                     break;
 
                 case R.id.menu_lifestyle_others:
-
-                    //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Specials");
 
                     if (othersFragment == null) {
                         othersFragment = Lifestyle_TimelineFragment.newInstance();
@@ -255,38 +236,13 @@ public class LifestyleFragment extends Fragment {
             return false;
         });
 
-        //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Events");
         timelineFragment = Lifestyle_TimelineFragment.newInstance();
         timelineFragment.setCategory("Timeline");
 
         FragmentTransaction ft = getParentFragmentManager().beginTransaction();
         ft.add(R.id.fl_lifestyle_fragmentContainer, timelineFragment);
         ft.commit();
-
-
-
-
-
     }
-
-    //@Override
-    //public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//
-    //    switch (item.getItemId()) {
-//
-    //        case R.id.menu_university_timetable:
-    //            Log.w("UniversityFragment", "Menu item Clicked!");
-    //            break;
-//
-    //    }
-//
-    //    requireActivity().runOnUiThread(() -> dL.closeDrawer(GravityCompat.START));
-//
-    //    return super.onOptionsItemSelected(item);
-//
-    //}
-
-
 }
 
 

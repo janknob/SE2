@@ -53,27 +53,21 @@ public class PostActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Events");
                         category = "Events";
                         break;
                     case 1:
-                        //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Discounts");
-                        category = "@string";
+                        category = "Discounts";
                         break;
                     case 2:
-                        //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Specials");
                         category = "Jobs";
                         break;
                     case 3:
-                        //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Jobs");
                         category = "Tutoring";
                         break;
                     case 4:
-                        //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Tutoring");
                         category = "Apartments";
                         break;
                     case 5:
-                        //reference = FirebaseDatabase.getInstance().getReference("Posts").child("Apartments");
                         category = "Others";
                         break;
                 }
@@ -106,7 +100,7 @@ public class PostActivity extends AppCompatActivity {
                 String str_post_text = post_text.getText().toString();
 
                 if (TextUtils.isEmpty(str_post_text)) {
-                    Toast.makeText(PostActivity.this, "Sie müssen einen Text eingeben!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PostActivity.this, getResources().getString(R.string.fillFields), Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
                 }
                 else

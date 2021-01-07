@@ -83,14 +83,4 @@ public class CurrentUser {
     public void setUsername(String username) {
         this.username = username;
     }
-
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
-
-
 }

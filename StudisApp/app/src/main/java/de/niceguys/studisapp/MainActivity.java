@@ -11,8 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 import java.util.Locale;
@@ -25,8 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     Fragment selectedFragment = null;
     BottomNavigationView bottomNavigationView;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference userRef = database.getReference("Users");
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override

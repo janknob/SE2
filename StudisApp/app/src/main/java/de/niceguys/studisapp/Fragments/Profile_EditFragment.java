@@ -142,7 +142,7 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
                     }
 
                 } catch (Exception e) {
-                    //
+
                 }
 
             }
@@ -300,9 +300,7 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
         } else if (mode.equals("semester")) {
 
             fillSemester(value);
-
         }
-
     }
 
     private void fillSemester(Map<String, String> values) {

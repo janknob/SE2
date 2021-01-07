@@ -146,10 +146,6 @@ public class University_EventsFragment extends Fragment implements Interface_Par
 
             ll_eventContainer.addView(sp);
 
-
         }
-
     }
-
-
 }
