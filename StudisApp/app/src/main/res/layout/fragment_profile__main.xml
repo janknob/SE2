@@ -46,38 +46,35 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15sp"
                 android:fontFamily="sans-serif-light"
-                android:textColor="@color/design_default_color_primary"
+                android:textColor="@color/text_inverted"
                 android:textSize="32sp" />
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/linlay1">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
+                android:orientation="vertical"
+                tools:ignore="UselessParent">
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingBottom="10dp">
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/degreeCourse"
-                        android:textColor="@color/black"
+                        android:textColor="@color/text"
                         android:textSize="13sp" />
 
                     <TextView
@@ -86,39 +83,9 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
                         android:paddingTop="10dp"
-                        android:text="@string/placeholderText"
-                        android:textColor="#000000"
+                        android:text="@string/notGiven"
+                        android:textColor="@color/text"
                         android:textSize="18sp" />
-
-
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/postCode"
-                        android:paddingTop="30dp"
-                        android:textColor="@color/black"
-                        android:textSize="13sp" />
-
-                    <TextView
-                        android:id="@+id/tv_postalcode"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:inputType="number|numberPassword|phone"
-                        android:paddingTop="10dp"
-                        android:text="@string/placeholderText"
-                        android:textColor="#000000"
-                        android:textSize="18sp" />
-
 
 
                 </LinearLayout>
@@ -127,14 +94,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:paddingBottom="15dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:paddingTop="20dp"
                         android:text="@string/semester"
-                        android:paddingTop="30dp"
-                        android:textColor="@color/black"
+                        android:textColor="@color/text"
                         android:textSize="13sp" />
 
                     <TextView
@@ -143,10 +111,35 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
                         android:paddingTop="10dp"
-                        android:text="@string/placeholderText"
-                        android:textColor="#000000"
+                        android:text="@string/notGiven"
+                        android:textColor="@color/text"
                         android:textSize="18sp" />
 
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="30dp"
+                        android:text="@string/postCode"
+                        android:textColor="@color/text"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tv_postalcode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingTop="10dp"
+                        android:text="@string/notGiven"
+                        android:textColor="@color/text"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
@@ -160,9 +153,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/university"
                         android:paddingTop="30dp"
-                        android:textColor="@color/black"
+                        android:text="@string/university"
+                        android:textColor="@color/text"
                         android:textSize="13sp" />
 
                     <TextView
@@ -171,8 +164,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
                         android:paddingTop="10dp"
-                        android:text="@string/placeholderText"
-                        android:textColor="#000000"
+                        android:text="@string/notGiven"
+                        android:textColor="@color/text"
                         android:textSize="18sp" />
 
 

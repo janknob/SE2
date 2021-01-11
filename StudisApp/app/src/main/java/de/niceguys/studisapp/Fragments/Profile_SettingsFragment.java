@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,8 +16,8 @@ import androidx.preference.SwitchPreferenceCompat;
 
 import java.util.Locale;
 
-import de.niceguys.studisapp.MainActivity;
-import de.niceguys.studisapp.Manager;
+import de.niceguys.studisapp.Activities.MainActivity;
+import de.niceguys.studisapp.Model.Manager;
 import de.niceguys.studisapp.R;
 
 /**
@@ -49,6 +48,8 @@ public class Profile_SettingsFragment extends PreferenceFragmentCompat implement
         Manager.log("Show the layout", this);
     }
 
+
+
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
@@ -57,6 +58,7 @@ public class Profile_SettingsFragment extends PreferenceFragmentCompat implement
 
         // list selection for language
         ListPreference listPreference = findPreference("language");
+
         listPreference.setOnPreferenceChangeListener((preference, newValue) -> {
             if (newValue.equals("german"))
             {
@@ -107,8 +109,9 @@ public class Profile_SettingsFragment extends PreferenceFragmentCompat implement
         }
         Intent intent = new Intent(requireContext(), MainActivity.class);
         // intent.putExtras get here
-        startActivity(intent);
+
         requireActivity().finish();
+        startActivity(intent);
 
     }
 

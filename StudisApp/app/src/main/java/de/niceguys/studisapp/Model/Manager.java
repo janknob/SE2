@@ -1,4 +1,4 @@
-package de.niceguys.studisapp;
+package de.niceguys.studisapp.Model;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,8 +7,6 @@ import android.util.Log;
 
 import java.lang.ref.WeakReference;
 import java.util.Locale;
-
-import de.niceguys.studisapp.Model.CurrentUser;
 
 public class Manager {
 

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
+    app:cardBackgroundColor="@color/cardviews_university_background"
     app:contentPaddingBottom="10dp"
     app:contentPaddingLeft="5dp"
     app:contentPaddingRight="5dp">
@@ -11,9 +12,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/layout_bg"
-        android:padding="10dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/tv_eventName"
@@ -23,14 +23,14 @@
             android:paddingEnd="10dp"
             android:text="@string/testText"
             android:textAlignment="center"
-            android:textColor="@color/normalText"
+            android:textColor="@color/text"
             android:textSize="20sp" />
 
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/purpleMain" />
+            android:background="@color/cardviews_university_devider" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                 android:layout_weight="0"
                 android:paddingTop="10dp"
                 android:text="@string/date"
-                android:textColor="@color/normalText"
+                android:textColor="@color/text"
                 android:textSize="16sp" />
 
             <View
@@ -55,7 +55,7 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
-                android:background="@color/purpleMain" />
+                android:background="@color/cardviews_university_devider" />
 
             <TextView
                 android:id="@+id/tv_event_date"
@@ -65,7 +65,7 @@
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/textView"
-                android:textColor="@color/normalText"
+                android:textColor="@color/text"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -84,7 +84,7 @@
                 android:layout_weight="0"
                 android:paddingTop="10dp"
                 android:text="@string/time"
-                android:textColor="@color/normalText"
+                android:textColor="@color/text"
                 android:textSize="16sp" />
 
             <View
@@ -92,7 +92,7 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
-                android:background="@color/purpleMain" />
+                android:background="@color/cardviews_university_devider" />
 
             <TextView
                 android:id="@+id/tv_universityevent_time"
@@ -102,7 +102,7 @@
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/textView"
-                android:textColor="@color/normalText"
+                android:textColor="@color/text"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -121,7 +121,7 @@
                 android:layout_weight="0"
                 android:paddingTop="10dp"
                 android:text="@string/place"
-                android:textColor="@color/normalText"
+                android:textColor="@color/text"
                 android:textSize="16sp" />
 
             <View
@@ -129,7 +129,7 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
-                android:background="@color/purpleMain" />
+                android:background="@color/cardviews_university_devider" />
 
             <TextView
                 android:id="@+id/tv_universityevent_place"
@@ -139,7 +139,7 @@
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/textView"
-                android:textColor="@color/normalText"
+                android:textColor="@color/text"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -158,7 +158,7 @@
                 android:layout_weight="0"
                 android:paddingTop="10dp"
                 android:text="@string/room"
-                android:textColor="@color/normalText"
+                android:textColor="@color/text"
                 android:textSize="16sp" />
 
             <View
@@ -166,7 +166,7 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
-                android:background="@color/purpleMain" />
+                android:background="@color/cardviews_university_devider" />
 
             <TextView
                 android:id="@+id/tv_universityevent_room"
@@ -176,7 +176,7 @@
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/textView"
-                android:textColor="@color/normalText"
+                android:textColor="@color/text"
                 android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>

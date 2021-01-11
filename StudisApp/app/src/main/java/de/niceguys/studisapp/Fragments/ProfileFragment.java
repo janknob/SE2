@@ -19,10 +19,10 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-import de.niceguys.studisapp.Manager;
+import de.niceguys.studisapp.Model.Manager;
 import de.niceguys.studisapp.Model.CurrentUser;
 import de.niceguys.studisapp.R;
-import de.niceguys.studisapp.StartLoginRegisterActivity;
+import de.niceguys.studisapp.Activities.StartLoginRegisterActivity;
 
 /**
  * A simple {@link Fragment} subclass.

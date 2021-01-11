@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
 
@@ -8,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/dialogBackground"
+        android:background="@color/downloader_background"
         android:gravity="center" >
 
         <TextView
@@ -16,7 +18,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:text="@string/downloading_information"
-            android:textColor="@color/normalText"
+            android:textColor="@color/text"
             android:textAlignment="center" />
 
         <TextView
@@ -24,14 +26,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:textColor="@color/normalText"
+            android:textColor="@color/text"
             android:textAlignment="center" />
 
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:foregroundTint="@color/colorPrimary"
-            android:layout_gravity="center" />
+            android:foregroundTint="@color/downloader_progressbar"
+            android:layout_gravity="center"
+            tools:targetApi="lollipop" />
 
     </LinearLayout>
 

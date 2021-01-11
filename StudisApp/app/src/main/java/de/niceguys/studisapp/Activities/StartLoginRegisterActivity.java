@@ -1,4 +1,4 @@
-package de.niceguys.studisapp;
+package de.niceguys.studisapp.Activities;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -15,8 +15,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,8 +26,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import java.util.HashMap;
+import java.util.Objects;
+
 import de.niceguys.studisapp.Model.CurrentUser;
+import de.niceguys.studisapp.Model.Manager;
+import de.niceguys.studisapp.R;
 
 public class StartLoginRegisterActivity extends AppCompatActivity {
 
@@ -286,7 +293,8 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
 
                     for (DataSnapshot ds : snapshot.getChildren()) {
 
-                        if (ds.child("id").getValue().equals(user.getUid())) {
+                        assert user != null;
+                        if (Objects.equals(ds.child("id").getValue(), user.getUid())) {
 
                             System.out.println(ds.child("username").getValue(String.class));
 
@@ -354,6 +362,7 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
             if (task.isSuccessful())
             {
                 FirebaseUser firebaseUser = auth.getCurrentUser();
+                assert firebaseUser != null;
                 String userid = firebaseUser.getUid();
 
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(userid);
@@ -411,13 +420,29 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
             auth.signInWithEmailAndPassword(str_email, str_password).addOnCompleteListener(this, task -> {
                 if(task.isSuccessful()) {
 
-                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getCurrentUser().getUid());
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(Objects.requireNonNull(auth.getCurrentUser()).getUid());
                     reference.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             pd.dismiss();
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+                            CurrentUser temp = CurrentUser.getInstance();
+
+                            String deg = snapshot.child("courseOfStudy").getValue(String.class);
+                            String degId = snapshot.child("courseOfStudyId").getValue(String.class);
+                            String sem = snapshot.child("semester").getValue(String.class);
+                            String semId = snapshot.child("semesterId").getValue(String.class);
+                            if (sem != null)
+                                temp.setSemester(sem);
+                            if (semId != null)
+                                temp.setSemesterId(semId);
+                            if (degId != null)
+                                temp.setDegreeId(degId);
+                            if (deg != null)
+                                temp.setDegree(deg);
+
                             startActivity(intent);
                             finish();
                         }

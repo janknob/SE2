@@ -66,14 +66,14 @@
         android:layout_weight="0"
         android:clickable="true"
         android:elevation="10dp"
-        android:foreground="@drawable/ic_new_post"
-        android:foregroundTint="@color/normalText"
+        android:focusable="true"
+        android:foregroundTint="@color/text"
         android:scaleType="fitXY"
         android:scaleX="1"
         android:scaleY="1"
-        app:backgroundTint="@color/blueMain"
+        android:src="@drawable/ic_new_post"
+        app:backgroundTint="@color/fab"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:focusable="true" />
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

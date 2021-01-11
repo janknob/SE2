@@ -25,11 +25,11 @@ import com.koushikdutta.ion.Ion;
 
 import java.util.Map;
 
-import de.niceguys.studisapp.HtmlParser;
+import de.niceguys.studisapp.Model.HtmlParser;
 import de.niceguys.studisapp.Interfaces.Interface_Parser;
-import de.niceguys.studisapp.Manager;
+import de.niceguys.studisapp.Model.Manager;
 import de.niceguys.studisapp.R;
-import de.niceguys.studisapp.UniversityNews;
+import de.niceguys.studisapp.Model.UniversityNews;
 
 public class University_NewsFragment extends Fragment implements Interface_Parser {
 
@@ -127,7 +127,7 @@ public class University_NewsFragment extends Fragment implements Interface_Parse
 
             TextView tv = new TextView(view.getContext());
             tv.setText(n.getTitle());
-            tv.setTextColor(ContextCompat.getColor(Manager.getInstance().getContext(), R.color.normalText));
+            tv.setTextColor(ContextCompat.getColor(Manager.getInstance().getContext(), R.color.text));
             tv.setTextSize(18);
             tv.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
             tv.setGravity(Gravity.CENTER_VERTICAL);
@@ -156,7 +156,7 @@ public class University_NewsFragment extends Fragment implements Interface_Parse
             sp3.setMinimumHeight(25);
             View v = new View(view.getContext());
 
-            v.setBackgroundColor(ContextCompat.getColor(Manager.getInstance().getContext(), R.color.colorPrimary));
+            v.setBackgroundColor(ContextCompat.getColor(Manager.getInstance().getContext(), R.color.cardviews_university_devider));
 
             if (notfirst) {
 

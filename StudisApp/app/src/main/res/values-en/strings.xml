@@ -157,4 +157,5 @@
     <string name="themeDark">The dark mode has been activated.</string>
     <string name="themeBright">The light mode has been activated.</string>
     <string name="createPost">Post is created.</string>
+    <string name="notGiven">not given</string>
 </resources>

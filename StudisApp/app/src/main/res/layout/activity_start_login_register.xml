@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:keepScreenOn="true"
-    tools:context=".StartLoginRegisterActivity">
+    tools:context=".Activities.StartLoginRegisterActivity">
 
     <VideoView
         android:id="@+id/vv_startLoginRegister"
@@ -25,7 +25,7 @@
         android:fontFamily="@font/architects_daughter"
         android:text="@string/app_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        android:textColor="@color/purpleMain"
+        android:textColor="@color/text_logo"
         android:textSize="60sp"
         android:textStyle="bold"
         app:autoSizeTextType="uniform"
@@ -41,7 +41,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:alpha="0"
-        android:background="@color/glass"
+        android:background="@color/linearlayout_loginRegister_background"
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -56,9 +56,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/username"
-            android:textColorHint="@color/greyHintText"
-            android:textColor="@color/greyText"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="#AAAAAA"
+            android:textColorHint="@color/text_hint" />
 
         <EditText
             android:id="@+id/et_registration_email"
@@ -66,9 +66,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/email"
-            android:textColorHint="@color/greyHintText"
-            android:textColor="@color/greyText"
-            android:inputType="textShortMessage|textPersonName" />
+            android:inputType="textEmailAddress"
+            android:textColor="#AAAAAA"
+            android:textColorHint="@color/text_hint" />
 
         <EditText
             android:id="@+id/et_registration_password"
@@ -76,15 +76,17 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/password"
-            android:textColorHint="@color/greyHintText"
-            android:textColor="@color/greyText"
-            android:inputType="textPersonName|textPassword" />
+            android:inputType="textPersonName|textPassword"
+            android:textColor="#AAAAAA"
+            android:textColorHint="@color/text_hint" />
 
         <Button
             android:id="@+id/btn_registration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/registration"
+            android:textColor="@color/text_inverted"
+            app:backgroundTint="@color/button_loginRegister_background"
             app:cornerRadius="20dp" />
 
         <TextView
@@ -93,7 +95,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
             android:text="@string/alreadyRegistered"
-            android:textColor="@color/greyText"
+            android:textColor="@color/text_hint"
             android:textAlignment="viewEnd" />
 
     </LinearLayout>
@@ -104,7 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@color/glass"
+        android:background="@color/linearlayout_loginRegister_background"
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -119,9 +121,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/email"
-            android:textColorHint="@color/greyHintText"
-            android:textColor="@color/greyText"
-            android:inputType="textPersonName" />
+            android:inputType="textEmailAddress"
+            android:textColor="#AAAAAA"
+            android:textColorHint="@color/text_hint" />
 
         <EditText
             android:id="@+id/et_login_password"
@@ -129,16 +131,18 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/password"
-            android:textColorHint="@color/greyHintText"
-            android:textColor="@color/greyText"
-            android:inputType="textPersonName|textPassword" />
+            android:inputType="textPersonName|textPassword"
+            android:textColor="#AAAAAA"
+            android:textColorHint="@color/text_hint" />
 
         <Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/login"
-            android:textColorHint="@color/greyHintText"
+            android:textColor="@color/text_inverted"
+            android:textColorHint="@color/text_hint"
+            app:backgroundTint="@color/button_loginRegister_background"
             app:cornerRadius="20dp" />
 
         <TextView
@@ -146,7 +150,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/notRegistered"
-            android:textColor="@color/greyText"
-            android:textAlignment="textEnd" />
+            android:textAlignment="textEnd"
+            android:textColor="@color/text_hint" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

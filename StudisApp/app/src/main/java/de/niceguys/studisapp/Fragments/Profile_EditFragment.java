@@ -43,9 +43,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import de.niceguys.studisapp.HtmlParser;
+import de.niceguys.studisapp.Model.HtmlParser;
 import de.niceguys.studisapp.Interfaces.Interface_Parser;
-import de.niceguys.studisapp.Manager;
+import de.niceguys.studisapp.Model.Manager;
 import de.niceguys.studisapp.Model.CurrentUser;
 import de.niceguys.studisapp.Model.User;
 import de.niceguys.studisapp.R;
@@ -312,7 +312,7 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
     private void fillSemester(Map<String, String> values) {
 
         ArrayList<String> temp = new ArrayList<>(values.values());
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, temp);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(requireContext(), R.layout.spinneritem, temp);
 
         try {
 
@@ -379,7 +379,7 @@ public class Profile_EditFragment extends Fragment implements Interface_Parser {
 
 
         ArrayList<String> temp = new ArrayList<>(values.values());
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, temp);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(requireContext(), R.layout.spinneritem, temp);
         mSpinnerCourseOfStudy.setAdapter(arrayAdapter);
 
         if (Manager.getInstance().getData("settings").getBoolean("UniversityStuff_selected", false)) {

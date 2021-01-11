@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
@@ -36,12 +37,12 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
-import de.niceguys.studisapp.Course;
-import de.niceguys.studisapp.HtmlParser;
+import de.niceguys.studisapp.Model.Course;
+import de.niceguys.studisapp.Model.HtmlParser;
 import de.niceguys.studisapp.Interfaces.Interface_Parser;
-import de.niceguys.studisapp.Manager;
+import de.niceguys.studisapp.Model.Manager;
 import de.niceguys.studisapp.R;
-import de.niceguys.studisapp.UniversitySemesterDialog;
+import de.niceguys.studisapp.Model.UniversitySemesterDialog;
 
 import static android.view.View.GONE;
 
@@ -213,7 +214,7 @@ public class University_TimetableFragment extends Fragment implements Interface_
                 TextView tv = new TextView(Manager.getInstance().getContext());
                 tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                 tv.setText(c.getDay());
-                tv.setTextColor(ContextCompat.getColor(Manager.getInstance().getContext(), R.color.normalText));
+                tv.setTextColor(ContextCompat.getColor(Manager.getInstance().getContext(), R.color.text));
                 tv.setTextSize(26);
                 tv.setPadding(0,0,0,20);
 
@@ -558,14 +559,14 @@ public class University_TimetableFragment extends Fragment implements Interface_
                                 if (!newstartTime.contains(time) && !info[4].equals(";")) {
 
                                     changed += String.format("%s%s\n", Manager.getInstance().getContext().getResources().getString(R.string.shedule_changed_time), newstartTime);
-                                    tv_time.setTextColor(ContextCompat.getColor(Manager.getInstance().getContext(), R.color.cardviewChangeText));
+                                    tv_time.setTextColor(Color.RED);
                                     tv_time.setPaintFlags(tv_time.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
                                 }
                                 if (!roominfo[0].equals(newroom) && !info[4].equals(";")) {
 
                                     changed += String.format("%s | %s\n", newroom, roominfo[1]);
-                                    tv_room_kind.setTextColor(ContextCompat.getColor(Manager.getInstance().getContext(), R.color.cardviewChangeText));
+                                    tv_room_kind.setTextColor(Color.RED);
                                     tv_room_kind.setPaintFlags(tv_room_kind.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
                                 }

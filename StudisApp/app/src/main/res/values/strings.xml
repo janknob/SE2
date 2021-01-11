@@ -160,6 +160,7 @@
     <string name="themeDark">Der Dark Mode wurde aktiviert.</string>
     <string name="themeBright">Der Light Mode wurde aktiviert.</string>
     <string name="createPost">Post wird erstellt.</string>
+    <string name="notGiven">nicht angegeben</string>
     <!-- Preference Titles -->
 
 </resources>

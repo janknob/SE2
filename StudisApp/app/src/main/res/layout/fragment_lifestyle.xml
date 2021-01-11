@@ -12,14 +12,15 @@
         android:id="@+id/tb_lifestyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/toolbar_background"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@android:drawable/ic_menu_sort_by_size"
-        app:title="@string/timeline" />
+        app:title="@string/timeline"
+        app:titleTextColor="@color/text_inverted" />
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/dL_lifestyle"
@@ -41,9 +42,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:background="@color/background"
             android:fitsSystemWindows="true"
-            app:headerLayout="@layout/menu_lifestyle_header"
 
+            app:headerLayout="@layout/menu_lifestyle_header"
+            app:itemIconTint="@color/text"
+            app:itemTextColor="@color/text"
             app:menu="@menu/menu_navigationdrawer_lifestyle" />
     </androidx.drawerlayout.widget.DrawerLayout>
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:color="@color/blueMain"
+    <item android:color="@color/bottomNavigationBackground_itemSelected"
         android:state_checked="true"/>
-    <item android:color="@color/greyMain"/>
+    <item android:color="@color/bottomNavigationBackground_itemUnselected"/>
 
 </selector>

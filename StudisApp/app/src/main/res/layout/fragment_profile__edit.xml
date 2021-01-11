@@ -62,23 +62,25 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:paddingBottom="20dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/username"
-                            android:textColor="@color/black"
+                            android:textColor="@color/text"
                             android:textSize="13sp" />
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_user_ame"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/edit_user_ame"
                             android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
                             android:layout_marginTop="10dp"
-                            android:hint="@string/hintUsername"/>
+                            android:layout_marginRight="10dp"
+                            android:hint="@string/hintUsername"
+                            android:textColor="@color/text" />
 
 
                     </LinearLayout>
@@ -87,47 +89,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:paddingBottom="10dp">
+                        android:paddingBottom="20dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:paddingBottom="5dp"
                             android:text="@string/degreeCourse"
-                            android:textColor="@color/black"
+                            android:textColor="@color/text"
                             android:textSize="13sp" />
 
                         <Spinner
                             android:id="@+id/mSpinnerCourseOfStudy"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:spinnerMode="dialog" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/postCode"
-                            android:inputType="number"
-                            android:textColor="@color/black"
-                            android:textSize="13sp" />
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/edit_postal_code"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="10dp"
-                            android:inputType="number"
-                            android:hint="@string/hintPostCode"/>
-
+                            android:spinnerMode="dialog"
+                            android:theme="@style/dropdown" />
 
 
                     </LinearLayout>
@@ -136,19 +113,50 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:paddingBottom="20dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:paddingBottom="5dp"
                             android:text="@string/semester"
-                            android:textColor="@color/black"
+                            android:textColor="@color/text"
                             android:textSize="13sp" />
 
                         <Spinner
                             android:id="@+id/mSpinnerSemester"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:theme="@style/dropdown" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:text="@string/postCode"
+                            android:textColor="@color/text"
+                            android:textSize="13sp" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_postal_code"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:hint="@string/hintPostCode"
+                            android:inputType="number"
+                            android:textColor="@color/text" />
+
 
 
                     </LinearLayout>
@@ -164,17 +172,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/university"
-                            android:textColor="@color/black"
+                            android:textColor="@color/text"
                             android:textSize="13sp" />
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_university"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/edit_university"
                             android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
                             android:layout_marginTop="10dp"
-                            android:hint="@string/hintUniversity"/>
+                            android:layout_marginRight="10dp"
+                            android:hint="@string/hintUniversity"
+                            android:textColor="@color/text" />
 
 
 

@@ -12,7 +12,7 @@
         android:paddingBottom="10dp"
         android:text="@string/placeholderText"
         android:textAlignment="center"
-        android:textColor="@color/normalText"
+        android:textColor="@color/text"
         android:textSize="30sp" />
 
     <ScrollView
@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/mainmeals"
-                android:textColor="@color/normalText"
+                android:textColor="@color/text"
                 android:textSize="24sp" />
 
             <LinearLayout
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="40dp"
                 android:text="@string/extras"
-                android:textColor="@color/normalText"
+                android:textColor="@color/text"
                 android:textSize="24sp" />
 
             <LinearLayout
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="40dp"
                 android:text="@string/deserts"
-                android:textColor="@color/normalText"
+                android:textColor="@color/text"
                 android:textSize="24sp" />
 
             <LinearLayout
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="40dp"
                 android:text="@string/snacks_salads"
-                android:textColor="@color/normalText"
+                android:textColor="@color/text"
                 android:textSize="24sp" />
 
             <LinearLayout

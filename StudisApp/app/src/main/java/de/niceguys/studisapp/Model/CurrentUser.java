@@ -1,7 +1,5 @@
 package de.niceguys.studisapp.Model;
 
-import de.niceguys.studisapp.Manager;
-
 public class CurrentUser {
 
     // initialize Attributes

@@ -1,6 +1,4 @@
-package de.niceguys.studisapp;
-
-import androidx.appcompat.app.AppCompatActivity;
+package de.niceguys.studisapp.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -15,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -22,15 +22,17 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
+import java.util.Objects;
 
-public class PostActivity extends AppCompatActivity {
+import de.niceguys.studisapp.R;
+
+public class CreatePostActivity extends AppCompatActivity {
 
     // initialize
     ImageView btn_close;
     Button btn_post;
     EditText post_text;
     StorageReference storageReferencere;
-    DatabaseReference reference;
     String category;
 
 
@@ -43,10 +45,18 @@ public class PostActivity extends AppCompatActivity {
         btn_post = findViewById(R.id.btn_post);
         post_text = findViewById(R.id.post_text);
 
-        Spinner spinner = (Spinner) findViewById(R.id.post_spinner);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(PostActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.names));
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner spinner = findViewById(R.id.post_spinner);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.spinneritem, getResources().getStringArray(R.array.names));
+        //arrayAdapter.setDropDownViewResource(R.layout.spinneritemdropdown);
         spinner.setAdapter(arrayAdapter);
+
+        String givenCategory = getIntent().getStringExtra("category");
+        if (!givenCategory.equals(getString(R.string.timeline))) {
+
+            int index = arrayAdapter.getPosition(givenCategory);
+            spinner.setSelection(index);
+
+        }
 
         // spinner for selecting the category for a post
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -83,38 +93,32 @@ public class PostActivity extends AppCompatActivity {
         storageReferencere = FirebaseStorage.getInstance().getReference("posts");
 
         // close the post activity
-        btn_close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(PostActivity.this, MainActivity.class));
-                finish();
-            }
-        });
+        btn_close.setOnClickListener(view -> finish());
 
         // close the Post activity and uploads the Post to the DB
-        btn_post.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                ProgressDialog progressDialog = new ProgressDialog(PostActivity.this);
-                progressDialog.setMessage(getResources().getString(R.string.createPost));
-                progressDialog.show();
+        btn_post.setOnClickListener(view -> {
+            ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage(getResources().getString(R.string.createPost));
+            progressDialog.show();
 
-                String str_post_text = post_text.getText().toString();
+            String str_post_text = post_text.getText().toString();
 
-                if (TextUtils.isEmpty(str_post_text)) {
-                    Toast.makeText(PostActivity.this, getResources().getString(R.string.fillFields), Toast.LENGTH_SHORT).show();
-                    progressDialog.dismiss();
-                }
-                else
-                {
-                    uploadPost(str_post_text, category);
-                    progressDialog.dismiss();
-                    startActivity(new Intent(PostActivity.this, MainActivity.class));
-                    finish();
-                }
+            if (TextUtils.isEmpty(str_post_text)) {
+
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.fillFields), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+
+            } else {
+
+                uploadPost(str_post_text, category);
+                progressDialog.dismiss();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
+
             }
+
         });
+
     }
 
     // uploads the post to the DB
@@ -126,8 +130,9 @@ public class PostActivity extends AppCompatActivity {
         hashMap.put("category", category);
         hashMap.put("postid", postid);
         hashMap.put("postText", postText);
-        hashMap.put("publisher", FirebaseAuth.getInstance().getCurrentUser().getUid());
+        hashMap.put("publisher", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
 
+        assert postid != null;
         reference.child(postid).setValue(hashMap);
     }
 }

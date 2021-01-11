@@ -18,11 +18,11 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import java.util.Map;
-import de.niceguys.studisapp.HtmlParser;
+import de.niceguys.studisapp.Model.HtmlParser;
 import de.niceguys.studisapp.Interfaces.Interface_Parser;
-import de.niceguys.studisapp.Manager;
+import de.niceguys.studisapp.Model.Manager;
 import de.niceguys.studisapp.R;
-import de.niceguys.studisapp.UniversityEvent;
+import de.niceguys.studisapp.Model.UniversityEvent;
 
 public class University_EventsFragment extends Fragment implements Interface_Parser {
 

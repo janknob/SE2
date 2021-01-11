@@ -2,16 +2,14 @@ package de.niceguys.studisapp.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -23,9 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.niceguys.studisapp.Activities.CreatePostActivity;
 import de.niceguys.studisapp.Model.Post;
-import de.niceguys.studisapp.PostActivity;
-import de.niceguys.studisapp.PostAdapter;
+import de.niceguys.studisapp.Model.PostAdapter;
 import de.niceguys.studisapp.R;
 
 
@@ -55,12 +53,10 @@ public class Lifestyle_TimelineFragment extends Fragment {
         floatingActionButton = view.findViewById(R.id.btn_new_tweet);
 
         // Button for new Posts
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), PostActivity.class);
-                startActivity(i);
-            }
+        floatingActionButton.setOnClickListener(view1 -> {
+            Intent i = new Intent(getActivity(), CreatePostActivity.class);
+            i.putExtra("category", category);
+            startActivity(i);
         });
         readPosts(category);
         return view;
@@ -81,8 +77,8 @@ public class Lifestyle_TimelineFragment extends Fragment {
     }
 
     // reads all the Post in the Database
-    private void readPosts(String postCategory)
-    {
+    private void readPosts(String postCategory) {
+
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -100,14 +96,12 @@ public class Lifestyle_TimelineFragment extends Fragment {
                         postList.add(post);
                     }
 
-
                     postAdapter.notifyDataSetChanged();
                 }
             }
             @Override
-            public void onCancelled(@NonNull DatabaseError error)
-            {
-            }
+            public void onCancelled(@NonNull DatabaseError error) { }
+
         });
     }
 }

@@ -1,10 +1,10 @@
-package de.niceguys.studisapp;
+package de.niceguys.studisapp.Model;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -31,8 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.List;
 
-import de.niceguys.studisapp.Model.Post;
-import de.niceguys.studisapp.Model.User;
+import de.niceguys.studisapp.R;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
 {
@@ -90,58 +89,50 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
         isLiked(post.getPostid(), viewHolder.like);
         nrLikes(viewHolder.likes, post.getPostid());
         // number of likes
-        viewHolder.like.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (viewHolder.like.getTag().equals("like"))
-                {
-                    FirebaseDatabase.getInstance().getReference().child("Likes").child(post.getPostid()).child(firebaseUser.getUid()).setValue(true);
-                }
-                else
-                {
-                    FirebaseDatabase.getInstance().getReference().child("Likes").child(post.getPostid()).child(firebaseUser.getUid()).removeValue();
-                }
+        viewHolder.like.setOnClickListener(view -> {
+            if (viewHolder.like.getTag().equals("like"))
+            {
+                FirebaseDatabase.getInstance().getReference().child("Likes").child(post.getPostid()).child(firebaseUser.getUid()).setValue(true);
+            }
+            else
+            {
+                FirebaseDatabase.getInstance().getReference().child("Likes").child(post.getPostid()).child(firebaseUser.getUid()).removeValue();
             }
         });
 
         // popup menu for report, edit and delete
-        viewHolder.more.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                PopupMenu popupMenu = new PopupMenu(mContext, view);
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem menuItem) {
-                        switch (menuItem.getItemId()) {
-                            case R.id.menu_post_edit:
-                                editPost(post.getPostid());
-                                return true;
-                            case R.id.menu_post_delete:
-                                FirebaseDatabase.getInstance().getReference("Posts").child(post.getPostid()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful())
-                                        {
-                                            Toast.makeText(mContext, mContext.getResources().getString(R.string.deleted), Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                });
-                                return true;
-                            case R.id.menu_post_report:
-                                Toast.makeText(mContext, mContext.getResources().getString(R.string.reportPostMessage), Toast.LENGTH_SHORT).show();
-                            default:
-                                return false;
-                        }
-                    }
-                });
-                popupMenu.inflate(R.menu.post_menu);
-                if (!post.getPublisher().equals(firebaseUser.getUid()))
-                {
-                 popupMenu.getMenu().findItem(R.id.menu_post_edit).setVisible(false);
-                 popupMenu.getMenu().findItem(R.id.menu_post_delete).setVisible(false);
+        viewHolder.more.setOnClickListener(view -> {
+            Context cw = new ContextThemeWrapper(mContext, R.style.popup);
+            PopupMenu popupMenu = new PopupMenu(cw, view);
+            popupMenu.setOnMenuItemClickListener(menuItem -> {
+                switch (menuItem.getItemId()) {
+                    case R.id.menu_post_edit:
+                        editPost(post.getPostid());
+                        return true;
+                    case R.id.menu_post_delete:
+                        FirebaseDatabase.getInstance().getReference("Posts").child(post.getPostid()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful())
+                                {
+                                    Toast.makeText(mContext, mContext.getResources().getString(R.string.deleted), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                        return true;
+                    case R.id.menu_post_report:
+                        Toast.makeText(mContext, mContext.getResources().getString(R.string.reportPostMessage), Toast.LENGTH_SHORT).show();
+                    default:
+                        return false;
                 }
-                popupMenu.show();
+            });
+            popupMenu.inflate(R.menu.post_menu);
+            if (!post.getPublisher().equals(firebaseUser.getUid()))
+            {
+             popupMenu.getMenu().findItem(R.id.menu_post_edit).setVisible(false);
+             popupMenu.getMenu().findItem(R.id.menu_post_delete).setVisible(false);
             }
+            popupMenu.show();
         });
     }
     // Returns the number of posts
@@ -225,7 +216,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                Glide.with(mContext).load(user.getImgUrl()).into(image_profile);
+                Glide.with(Manager.getInstance().getContext()).load(user.getImgUrl()).into(image_profile);
                 username.setText(user.getUsername());
 
             }

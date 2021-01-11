@@ -1,4 +1,4 @@
-package de.niceguys.studisapp;
+package de.niceguys.studisapp.Model;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -14,6 +14,7 @@ import java.util.TreeMap;
 
 import de.niceguys.studisapp.Interfaces.Interface_Downloader;
 import de.niceguys.studisapp.Interfaces.Interface_Parser;
+import de.niceguys.studisapp.R;
 
 public class HtmlParser implements Interface_Downloader {
 
@@ -126,6 +127,7 @@ public class HtmlParser implements Interface_Downloader {
             Date firstDate = sdf.parse(dateString);
 
             Calendar c = Calendar.getInstance();
+            assert firstDate != null;
             c.setTime(firstDate);
             firstDate = c.getTime();
 
@@ -775,7 +777,7 @@ public class HtmlParser implements Interface_Downloader {
             while (extras.contains("tr class=\"\"")) {
 
                 extras = extras.substring(extras.indexOf("tr class=\"\""));
-                String description = extras.substring(extras.indexOf("<td>") + 4, extras.indexOf("<sup>"));
+                String description = extras.substring(extras.indexOf("<td>") + 4, extras.indexOf("<", extras.indexOf("<td>")+4));
                 extras = extras.substring(extras.indexOf("</td>"));
 
                 extras = extras.substring(extras.indexOf("preise preis_typ1"));
@@ -807,7 +809,7 @@ public class HtmlParser implements Interface_Downloader {
             while (salads.contains("tr class=\"\"")) {
 
                 salads = salads.substring(salads.indexOf("tr class=\"\""));
-                String description = "";
+                String description;
                 try {
                     description = salads.substring(salads.indexOf("<td>") + 4, salads.indexOf("<a "));
                 } catch (Exception e) {

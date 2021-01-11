@@ -4,6 +4,6 @@
 
     <stroke
         android:width="2dp"
-        android:color="@color/whiteMain" />
+        android:color="@color/profile_image_stroke" />
 
 </shape>

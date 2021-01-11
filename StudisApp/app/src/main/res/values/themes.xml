@@ -1,16 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.StudisApp" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/toolbar_background</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -20,12 +12,22 @@
     </style>
 
     <style name="dialogMenu" parent="Widget.AppCompat.ButtonBar.AlertDialog">
-        <item name="android:textColorPrimary">@color/normalText</item>
-        <item name="textColorAlertDialogListItem">@color/normalText</item>
-        <item name="android:textColorAlertDialogListItem">@color/normalText</item>
-        <item name="checkboxStyle">@color/normalText</item>
-        <item name="android:checkboxStyle">@color/normalText</item>
-        <item name="android:background">@color/cardBackground</item>
+        <item name="android:textColorPrimary">@color/text</item>
+        <item name="textColorAlertDialogListItem">@color/text</item>
+        <item name="android:textColorAlertDialogListItem">@color/text</item>
+        <item name="checkboxStyle">@color/text</item>
+        <item name="android:checkboxStyle">@color/text</item>
+        <item name="android:background">@color/downloader_background</item>
+    </style>
+
+    <style name="dropdown">
+        <item name="android:textColor">@color/text</item>
+        <item name="android:background">@color/background</item>
+    </style>
+
+    <style name="popup">
+        <item name="android:textColor">@color/text</item>
+        <item name="android:background">@color/secondaryBackground</item>
     </style>
 
 </resources>

@@ -1,4 +1,4 @@
-package de.niceguys.studisapp;
+package de.niceguys.studisapp.Model;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import de.niceguys.studisapp.R;
 
 public class UniversitySemesterDialog extends AppCompatDialogFragment
 {

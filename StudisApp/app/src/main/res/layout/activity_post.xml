@@ -1,40 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PostActivity"
+    tools:context=".Activities.CreatePostActivity"
     android:background="@color/background">
 
 
-
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
-        android:id="@+id/toolbar">
+        android:layout_height="wrap_content">
+
         <ImageView
+            android:id="@+id/btn_close"
             android:layout_width="50dp"
             android:layout_height="40dp"
             android:layout_gravity="left"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_close"
-            android:id="@+id/btn_close"
-            />
+            android:src="@drawable/ic_close" />
+
         <Button
+            android:id="@+id/btn_post"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="@string/post"
             android:layout_gravity="right"
             android:layout_marginRight="10dp"
-            android:background="@drawable/btn_red_round"
-            android:id="@+id/btn_post"
-            android:textSize="15sp"
+            android:background="@drawable/button"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
 
-            style="?android:attr/borderlessButtonStyle"/>
+            android:text="@string/post"
+            android:textColor="@color/text_inverted"
+            android:textSize="15sp"
+            app:backgroundTint="@color/button_loginRegister_background"
+            app:backgroundTintMode="add" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -45,24 +48,26 @@
         android:padding="15dp">
 
         <Spinner
+            android:id="@+id/post_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/post_spinner"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"/>
-
+            android:layout_centerHorizontal="true"
+            android:theme="@style/dropdown" />
 
 
         <EditText
             android:id="@+id/post_text"
-            android:layout_below="@+id/post_spinner"
             android:layout_width="match_parent"
-            android:paddingTop="30dp"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/post_spinner"
             android:background="@android:color/transparent"
             android:hint="@string/hintPostText"
+            android:paddingTop="30dp"
             android:singleLine="false"
-            android:textSize="16sp"/>
+            android:textColor="@color/text"
+            android:textColorHint="@color/text_hint"
+            android:textSize="16sp" />
 
 
     </RelativeLayout>

@@ -1,4 +1,4 @@
-package de.niceguys.studisapp;
+package de.niceguys.studisapp.Model;
 
 import android.util.Log;
 
@@ -6,7 +6,7 @@ import com.koushikdutta.ion.Ion;
 
 import de.niceguys.studisapp.Interfaces.Interface_Downloader;
 
-class HtmlDownloader {
+public class HtmlDownloader {
 
     private final Interface_Downloader caller;
     private final String mode;
@@ -18,7 +18,7 @@ class HtmlDownloader {
 
     }
 
-    void download(String url) {
+    public void download(String url) {
 
         Log.w("DownloaderUrl", url);
         Ion.with(Manager.getInstance().getContext()).load(url).noCache()
@@ -37,7 +37,7 @@ class HtmlDownloader {
 
     }
 
-    void downloadWithParameter(String url, String name) {
+    public void downloadWithParameter(String url, String name) {
 
         Ion.with(Manager.getInstance().getContext())
                 .load(url)

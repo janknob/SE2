@@ -20,9 +20,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Objects;
-import de.niceguys.studisapp.Manager;
+import de.niceguys.studisapp.Model.Manager;
 import de.niceguys.studisapp.R;
-import de.niceguys.studisapp.UniversityTask;
+import de.niceguys.studisapp.Model.UniversityTask;
 public class University_TasksFragment extends Fragment {
 
     private View view;
@@ -60,32 +60,29 @@ public class University_TasksFragment extends Fragment {
         LinearLayout finished = view.findViewById(R.id.ll_university_tasks_finished);
         finished.removeAllViews();
         FloatingActionButton fab_main_tasks_addTask = view.findViewById(R.id.floatingActionButton);
-        fab_main_tasks_addTask.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        fab_main_tasks_addTask.setOnClickListener(view -> {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-                builder.setTitle(getResources().getString(R.string.createUniversityTask));
-                EditText et = new EditText(requireContext());
-                et.setHint(getResources().getString(R.string.desription));
-                builder.setView(et);
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+            builder.setTitle(getResources().getString(R.string.createUniversityTask));
+            EditText et = new EditText(requireContext());
+            et.setHint(getResources().getString(R.string.desription));
+            builder.setView(et);
 
-                builder.setPositiveButton(getResources().getString(R.string.save), (dialogInterface, i) -> {
+            builder.setPositiveButton(getResources().getString(R.string.save), (dialogInterface, i) -> {
 
-                    SharedPreferences.Editor editor = sp_tasks.edit();
-                    if (et.getText() != null)
-                    editor.putString(sp_tasks.getAll().size() + "", et.getText().toString() + "|false");
-                    editor.apply();
+                SharedPreferences.Editor editor = sp_tasks.edit();
+                if (et.getText() != null)
+                editor.putString(sp_tasks.getAll().size() + "", et.getText().toString() + "|false");
+                editor.apply();
 
-                    showTasks();
+                showTasks();
 
-                });
+            });
 
-                builder.setNegativeButton(getResources().getString(R.string.warning_cancle_add_task), null);
+            builder.setNegativeButton(getResources().getString(R.string.warning_cancle_add_task), null);
 
-                requireActivity().runOnUiThread(() -> builder.create().show());
+            requireActivity().runOnUiThread(() -> builder.create().show());
 
-            }
         });
         tasks.clear();
 

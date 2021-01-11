@@ -4,32 +4,33 @@
     android:id="@+id/cv_university_task"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="@color/cardBackground"
+    app:cardBackgroundColor="@color/cardviews_university_background"
     app:cardCornerRadius="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:background="@drawable/layout_bg">
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingEnd="15dp">
 
 
         <TextView
             android:id="@+id/tv_university_task"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="@string/tasktitle"
-            android:textColor="@color/normalText"
+            android:padding="5dp"
+            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            android:textColor="@color/text"
             android:textSize="18sp" />
 
         <CheckBox
             android:id="@+id/cb_university_task"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0" />
+            android:layout_weight="0"
+            app:buttonTint="@color/text" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

@@ -24,9 +24,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
-import de.niceguys.studisapp.HtmlParser;
+import de.niceguys.studisapp.Model.HtmlParser;
 import de.niceguys.studisapp.Interfaces.Interface_Parser;
-import de.niceguys.studisapp.Manager;
+import de.niceguys.studisapp.Model.Manager;
 import de.niceguys.studisapp.R;
 
 public class University_MealsFragment extends Fragment implements Interface_Parser {
@@ -236,8 +236,8 @@ public class University_MealsFragment extends Fragment implements Interface_Pars
             costs.setText(main.get(key));
             costs.setPadding(10,0,0,0);
 
-            costs.setTextColor(ContextCompat.getColor(requireContext(), R.color.normalText));
-            description.setTextColor(ContextCompat.getColor(requireContext(), R.color.normalText));
+            costs.setTextColor(ContextCompat.getColor(requireContext(), R.color.text));
+            description.setTextColor(ContextCompat.getColor(requireContext(), R.color.text));
 
             costs.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT, 0));
             description.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT, 1));
@@ -261,8 +261,8 @@ public class University_MealsFragment extends Fragment implements Interface_Pars
             costs.setText(dessert.get(key));
             costs.setPadding(10,0,0,0);
 
-            costs.setTextColor(ContextCompat.getColor(requireContext(), R.color.normalText));
-            description.setTextColor(ContextCompat.getColor(requireContext(), R.color.normalText));
+            costs.setTextColor(ContextCompat.getColor(requireContext(), R.color.text));
+            description.setTextColor(ContextCompat.getColor(requireContext(), R.color.text));
 
             costs.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT, 0));
             description.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT, 1));
@@ -286,8 +286,8 @@ public class University_MealsFragment extends Fragment implements Interface_Pars
             costs.setText(extra.get(key));
             costs.setPadding(10,0,0,0);
 
-            costs.setTextColor(ContextCompat.getColor(requireContext(), R.color.normalText));
-            description.setTextColor(ContextCompat.getColor(requireContext(), R.color.normalText));
+            costs.setTextColor(ContextCompat.getColor(requireContext(), R.color.text));
+            description.setTextColor(ContextCompat.getColor(requireContext(), R.color.text));
 
             costs.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT, 0));
             description.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT, 1));
@@ -311,8 +311,8 @@ public class University_MealsFragment extends Fragment implements Interface_Pars
             costs.setText(salad.get(key));
             costs.setPadding(10, 0, 0, 0);
 
-            costs.setTextColor(ContextCompat.getColor(requireContext(), R.color.normalText));
-            description.setTextColor(ContextCompat.getColor(requireContext(), R.color.normalText));
+            costs.setTextColor(ContextCompat.getColor(requireContext(), R.color.text));
+            description.setTextColor(ContextCompat.getColor(requireContext(), R.color.text));
 
             costs.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT, 0));
             description.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT, 1));

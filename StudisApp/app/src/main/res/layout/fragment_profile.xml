@@ -14,14 +14,15 @@
         android:id="@+id/tb_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/toolbar_background"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@android:drawable/ic_menu_sort_by_size"
-        app:title="@string/profile" />
+        app:title="@string/profile"
+        app:titleTextColor="@color/text_inverted" />
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/dL_profile"
@@ -43,9 +44,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:background="@color/background"
             android:fitsSystemWindows="true"
             app:headerLayout="@layout/menu_profile_header"
+            app:itemIconTint="@color/text"
+            app:itemTextColor="@color/text"
             app:menu="@menu/menu_navigationdrawer_profile">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -57,11 +62,12 @@
                     android:id="@+id/logout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="20dp"
                     android:gravity="left"
+                    android:paddingLeft="20dp"
                     android:text="@string/logout"
                     android:textAllCaps="true"
-                    android:textSize="20dp"/>
+                    android:textColor="@color/text_hint"
+                    android:textSize="20dp" />
             </LinearLayout>
         </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>

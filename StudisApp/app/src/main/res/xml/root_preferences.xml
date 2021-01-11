@@ -1,4 +1,6 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
 
     <PreferenceCategory app:title="@string/language">
 
@@ -9,6 +11,7 @@
             app:entryValues="@array/reply_values"
             app:key="language"
             app:title="@string/select_language"
+            android:textColor="@color/text"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
