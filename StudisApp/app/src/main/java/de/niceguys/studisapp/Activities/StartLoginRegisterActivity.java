@@ -293,7 +293,7 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
 
                     for (DataSnapshot ds : snapshot.getChildren()) {
 
-                        assert user != null;
+                        //assert user != null;
                         if (Objects.equals(ds.child("id").getValue(), user.getUid())) {
 
                             System.out.println(ds.child("username").getValue(String.class));
