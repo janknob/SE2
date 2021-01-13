@@ -51,7 +51,7 @@ public class CreatePostActivity extends AppCompatActivity {
         spinner.setAdapter(arrayAdapter);
 
         String givenCategory = getIntent().getStringExtra("category");
-        if (!givenCategory.equals(getString(R.string.timeline))) {
+        if (!givenCategory.equals("timeline")) {
 
             int index = arrayAdapter.getPosition(givenCategory);
             spinner.setSelection(index);
@@ -64,22 +64,22 @@ public class CreatePostActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        category = "Events";
+                        category = "events";
                         break;
                     case 1:
-                        category = "Discounts";
+                        category = "discounts";
                         break;
                     case 2:
-                        category = "Jobs";
+                        category = "jobs";
                         break;
                     case 3:
-                        category = "Tutoring";
+                        category = "tutoring";
                         break;
                     case 4:
-                        category = "Apartments";
+                        category = "apartments";
                         break;
                     case 5:
-                        category = "Others";
+                        category = "others";
                         break;
                 }
             }

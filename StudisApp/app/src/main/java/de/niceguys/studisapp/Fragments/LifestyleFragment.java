@@ -76,7 +76,7 @@ public class LifestyleFragment extends Fragment {
                 case R.id.menu_lifestyle_timeline:
 
                     FragmentTransaction ft8 = requireActivity().getSupportFragmentManager().beginTransaction();
-                    timelineFragment.setCategory(getString(R.string.timeline));
+                    timelineFragment.setCategory("timeline");
                     if (eventFragment != null && eventFragment.isAdded()) ft8.hide(eventFragment);
                     if (apartmentFragment != null && apartmentFragment.isAdded()) ft8.hide(apartmentFragment);
                     if (discountsFragment != null && discountsFragment.isAdded()) ft8.hide(discountsFragment);
@@ -86,7 +86,7 @@ public class LifestyleFragment extends Fragment {
                     ft8.remove(timelineFragment);
                     timelineFragment = Lifestyle_TimelineFragment.newInstance();
                     ft8.add(R.id.fl_lifestyle_fragmentContainer, timelineFragment);
-                    timelineFragment.setCategory(getString(R.string.timeline));
+                    timelineFragment.setCategory("timeline");
                     ft8.show(timelineFragment);
                     ft8.commit();
                     tb.setTitle(getResources().getString(R.string.timeline));
@@ -102,7 +102,7 @@ public class LifestyleFragment extends Fragment {
                     }
                     Log.w("LifestyleFragment", "Events selected");
                     FragmentTransaction ft = requireActivity().getSupportFragmentManager().beginTransaction();
-                    eventFragment.setCategory(getString(R.string.events));
+                    eventFragment.setCategory("events");
                     if (discountsFragment != null && discountsFragment.isAdded()) ft.hide(discountsFragment);
                     if (othersFragment != null && othersFragment.isAdded()) ft.hide(othersFragment);
                     if (jobsFragment != null && jobsFragment.isAdded()) ft.hide(jobsFragment);
@@ -124,7 +124,7 @@ public class LifestyleFragment extends Fragment {
                         ft2.commit();
                     }
                     FragmentTransaction ft3 = requireActivity().getSupportFragmentManager().beginTransaction();
-                    discountsFragment.setCategory(getString(R.string.discounts));
+                    discountsFragment.setCategory("discounts");
                     if (eventFragment != null && eventFragment.isAdded()) ft3.hide(eventFragment);
                     if (othersFragment != null && othersFragment.isAdded()) ft3.hide(othersFragment);
                     if (jobsFragment != null && jobsFragment.isAdded()) ft3.hide(jobsFragment);
@@ -146,7 +146,7 @@ public class LifestyleFragment extends Fragment {
                         ft2.commit();
                     }
                     FragmentTransaction ft5 = requireActivity().getSupportFragmentManager().beginTransaction();
-                    jobsFragment.setCategory(getString(R.string.jobs));
+                    jobsFragment.setCategory("jobs");
                     if (eventFragment != null && eventFragment.isAdded()) ft5.hide(eventFragment);
                     if (discountsFragment != null && discountsFragment.isAdded()) ft5.hide(discountsFragment);
                     if (othersFragment != null && othersFragment.isAdded()) ft5.hide(othersFragment);
@@ -169,7 +169,7 @@ public class LifestyleFragment extends Fragment {
                     }
 
                     FragmentTransaction ft6 = requireActivity().getSupportFragmentManager().beginTransaction();
-                    tutoringFragment.setCategory(getString(R.string.tutoring));
+                    tutoringFragment.setCategory("tutoring");
                     if (eventFragment != null && eventFragment.isAdded()) ft6.hide(eventFragment);
                     if (discountsFragment != null && discountsFragment.isAdded()) ft6.hide(discountsFragment);
                     if (othersFragment != null && othersFragment.isAdded()) ft6.hide(othersFragment);
@@ -192,7 +192,7 @@ public class LifestyleFragment extends Fragment {
                     }
 
                     FragmentTransaction ft7 = requireActivity().getSupportFragmentManager().beginTransaction();
-                    apartmentFragment.setCategory(getString(R.string.apartments));
+                    apartmentFragment.setCategory("apartments");
                     if (eventFragment != null && eventFragment.isAdded()) ft7.hide(eventFragment);
                     //if (eventFragment != null && eventFragment.isAdded()) ft7.hide(eventFragment);
                     if (discountsFragment != null && discountsFragment.isAdded()) ft7.hide(discountsFragment);
@@ -215,7 +215,7 @@ public class LifestyleFragment extends Fragment {
                         ft2.commit();
                     }
                     FragmentTransaction ft4 = requireActivity().getSupportFragmentManager().beginTransaction();
-                    othersFragment.setCategory(getString(R.string.others));
+                    othersFragment.setCategory("others");
                     if (eventFragment != null && eventFragment.isAdded()) ft4.hide(eventFragment);
                     if (discountsFragment != null && discountsFragment.isAdded()) ft4.hide(discountsFragment);
                     if (jobsFragment != null && jobsFragment.isAdded()) ft4.hide(jobsFragment);
@@ -235,7 +235,7 @@ public class LifestyleFragment extends Fragment {
 
         // default timeline fragment
         timelineFragment = Lifestyle_TimelineFragment.newInstance();
-        timelineFragment.setCategory(getString(R.string.timeline));
+        timelineFragment.setCategory("timeline");
         FragmentTransaction ft = getParentFragmentManager().beginTransaction();
         ft.add(R.id.fl_lifestyle_fragmentContainer, timelineFragment);
         ft.commit();

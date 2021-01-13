@@ -60,23 +60,23 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
         viewHolder.post_text.setText(mPost.get(i).getPostText());
         viewHolder.username.setText(mPost.get(i).getPublisher());
         //TODO Hard Code shit
-        if (mPost.get(i).getCategory().equals("Events"))
+        if (mPost.get(i).getCategory().equals("events"))
         {
             viewHolder.category.setText(mContext.getResources().getString(R.string.events));
         }
-        else if (mPost.get(i).getCategory().equals("Discounts"))
+        else if (mPost.get(i).getCategory().equals("discounts"))
         {
             viewHolder.category.setText(mContext.getResources().getString(R.string.discounts));
         }
-        else if (mPost.get(i).getCategory().equals("Others"))
+        else if (mPost.get(i).getCategory().equals("others"))
         {
             viewHolder.category.setText(mContext.getResources().getString(R.string.others));
         }
-        else if (mPost.get(i).getCategory().equals("Jobs"))
+        else if (mPost.get(i).getCategory().equals("jobs"))
         {
             viewHolder.category.setText(mContext.getResources().getString(R.string.jobs));
         }
-        else if (mPost.get(i).getCategory().equals("Tutoring"))
+        else if (mPost.get(i).getCategory().equals("tutoring"))
         {
             viewHolder.category.setText(mContext.getResources().getString(R.string.tutoring));
         }

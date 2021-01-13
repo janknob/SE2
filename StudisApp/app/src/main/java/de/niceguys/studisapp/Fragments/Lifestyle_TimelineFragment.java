@@ -87,7 +87,7 @@ public class Lifestyle_TimelineFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
                     Post post = snapshot.getValue(Post.class);
-                    if ("Timeline".equals(postCategory))
+                    if ("timeline".equals(postCategory))
                     {
                         postList.add(post);
                     }
