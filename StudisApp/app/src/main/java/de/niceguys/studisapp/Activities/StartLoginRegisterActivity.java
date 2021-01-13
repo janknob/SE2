@@ -376,7 +376,7 @@ public class StartLoginRegisterActivity extends AppCompatActivity {
                 hashMap.put("courseOfStudyId", "");
                 hashMap.put("postalCode", "");
                 hashMap.put("university", "");
-                hashMap.put("imgUrl", "https://firebasestorage.googleapis.com/v0/b/studisapp-45ebf.appspot.com/o/146p9b.jpg?alt=media&token=4d3dd331-ee28-4400-8e68-922b0f92ec5d");
+                hashMap.put("imgUrl", "https://firebasestorage.googleapis.com/v0/b/studisapp-45ebf.appspot.com/o/blank-profile-picture-973460_1280.png?alt=media&token=81bb90ee-1e19-4cde-948b-b1464b8a7835");
                 // Method which is called when the Registration was successful and automatically switch to the MainActivity
                 reference.setValue(hashMap).addOnCompleteListener(task1 -> {
                     if (task1.isSuccessful())
